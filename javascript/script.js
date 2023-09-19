@@ -220,6 +220,7 @@ function validateLogIn(){
     }
     else{
         setSuccessfor(passwordLogIn)
+        window.location.href = '/Admin/Dashboard.html'
     }
 }
 function validateLogInAdmin(){

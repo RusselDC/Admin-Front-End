@@ -1,0 +1,1112 @@
+:root{
+    --blue:#0D99FF;
+    --lightgray:#9C9C9C;
+    --darkgray:#414141;
+    --white:#ffffff;        
+    --orange: #FCC865; 
+    --green: #73E977;
+    --red:#fa6363;
+    --smaller:.8vw;
+    --small: 1vw;
+    --medium: 1.2vw;
+    --large: 2.5vw;
+    --larger: 3vw;
+}
+#containerBody{
+    width: 100%;
+    height: 82vh;
+    grid-area: containerBody;
+    display: flex;
+    flex-direction: column; 
+    padding-bottom: 2.5vh;
+    overflow-y: scroll;
+}
+#containerBody::-webkit-scrollbar{
+    display: none;
+}
+.accordion{
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.accordionHeader{
+    width: 100%;
+    height: 10vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 2.7vh;
+    background-color: var(--blue);
+    padding: 0 2vw;
+    color: var(--white);
+    cursor: pointer;
+    border-radius: .4vw;
+    margin-top: .5vh;
+    z-index: 5;
+}
+
+.openMedicines{
+    font-size: var(--medium);
+    transition: all ease .5s;
+}  
+.medicineContainer {
+    animation: slide-up .5s ease;
+    width: 100%;
+    display: none;
+
+}
+.medicineContainer.showMedicines {
+    animation: slide-down .5s ease;
+    width: 100%;
+    display: block;
+}
+.medicines{
+    width: 100%;
+    height: fit-content;
+    margin-top: .5vh;
+    border-radius: .4vw;
+}
+.medicineCountAndExpiration{
+    width: 100%;
+    height: fit-content;
+    margin-top: .5vh;
+    display: none;
+}
+.medicineCountAndExpiration.showMedicines{
+    animation: slide-down .5s ease;
+    width: 100%;
+    height: fit-content;
+    margin-top: .5vh;
+    display: block;
+}
+
+.medicineName{
+    position: relative;
+    padding: 0 2.5vw;
+    height: 8.5vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #4db4fd;
+    color: var(--white);
+    cursor: pointer;
+    z-index: 3;
+    border-radius: .4vw;
+}
+.medicineType{
+    width: 20%;
+    height: 4vh;
+    display: flex;
+    align-items: center;
+    color: var(--white);
+    font-size: 2.5;
+    border-radius: .4vw;
+}
+.cltType{
+    position: relative;
+    width: 15%;
+    display: flex;
+    align-items: center;
+    transition: all ease .3s;
+    
+}
+.patientNamePrescribe{
+    position: relative;
+    width: 22%;
+    display: flex;
+    align-items: center;
+    transition: all ease .3s;
+
+}
+.prescribedBy{
+    position: relative;
+    width: 18%;
+    display: flex;
+    align-items: center;
+    transition: all ease .3s;
+
+}
+.dateIssued{
+    position: relative;
+    width: 17%;
+    display: flex;
+    align-items: center;
+    transition: all ease .3s;
+
+}
+.prescribeInfo{
+    position: relative;
+    width: 25%;
+    display: flex;
+    align-items: center;
+    transition: all ease .3s;
+}
+.medicineInformations{
+    position: relative;
+    margin-top: .5vh;
+    width: 100%;
+    height: 8vh;
+    background-color: var(--white);
+    padding: 1vh 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    font-size: var(--medium);
+    border-bottom: solid 1px rgb(223, 223, 223);
+    color: var(--darkgray);
+    border-radius: .4vw;
+}
+.fa-caret-down{
+    transition: all ease-in .3s;
+}
+.medicineOptions{
+    width: fit-content;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    justify-content: space-evenly;
+    font-size: var(--small);
+    cursor: pointer;
+    transition: all ease .5s;
+}
+.medicineOptions i{
+    margin-right: 1vw;
+}
+.medicineOptions i:last-child{
+    margin-right: 0;
+}
+.medicineOptions i:hover {
+    color: var(--darkgray);
+}
+.editMedicine{
+    color: var(--blue);
+}
+.viewMedicine{
+    color: var(--green);
+}
+.deleteMedicine{
+    color: var(--red);
+}
+.prescribeMedicine{
+    color: var(--orange);
+}
+
+
+.medicineType{
+    position: relative;
+    width: 10%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all ease .3s;
+}
+.medicineID{
+    position: relative;
+    width: 15%;
+    display: flex;
+    align-items: center;
+    transition: all ease .3s;
+}
+.medicineBrandName{
+    position: relative;
+    width: 15%;
+    display: flex;
+    align-items: center;
+    transition: all ease .3s;
+}
+.medicineNameHolder{
+    width: 55%;
+}
+.medicineIdHolder{
+    width: 43%;
+
+}
+.medicineCount{
+    position: relative;
+    width: 10%;
+    display: flex;
+    align-items: center;
+    transition: all ease .3s;
+}
+.medicineExpiration{
+    position: relative;
+    width: 15%;
+    display: flex;
+    align-items: center;
+}
+.medicineTypes{
+    margin: 0 2vw 0 1vw;
+    font-size: var(--small);
+    color: var(--lightgray);
+}
+
+.total{
+    margin-right: 2vw;
+    font-size: var(--small);
+    color: var(--lightgray);
+}
+.medicineIDS{
+    margin-right: 2vw;
+    font-size: var(--small);
+    color: var(--lightgray);
+}
+.medicineBrands{
+    margin-right: 2vw;
+    font-size: var(--small);
+    color: var(--lightgray);
+}
+.minusButton,.plusButton{
+    margin-right: 1vw;
+    font-size: var(--smaller);
+    background: lightgray;
+    border: solid 1px lightgray;
+    padding: .3vw;
+    border-radius: .2vw;
+    cursor: pointer;
+    transition: all ease .3s;
+}
+.minusButton:hover,.plusButton:hover{
+    color: var(--darkgray);
+    background: none;
+}
+.clt{
+    font-size: 2.2vh;
+    margin-right: 1vw;
+    color: var(--darkgray);
+}
+
+.Expiration{
+    margin-right: 1vw;
+    font-size: var(--small);
+    color: var(--lightgray);
+}
+.medicinesForm{
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 40vw;
+    height: 100%;
+    background-color: var(--white);
+    -webkit-box-shadow: 0px 0px 9px 0px rgba(156,156,156,1);
+    -moz-box-shadow: 0px 0px 9px 0px rgba(156,156,156,1);
+    box-shadow: 0px 0px 9px 0px rgba(156,156,156,1);
+    opacity: 0;
+    visibility: hidden;
+    animation: slide-left .5s ease-in; 
+}
+.medicinesForm form{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.formTitle{
+    width: 100%;
+    height: 10vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 4vh;
+    color: var(--darkgray);
+}
+.inputHolder{
+    position: relative;
+    width: 90%;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 2vh;
+}
+.inputHolder1{
+    position: relative;
+    width: 90%;
+    height: fit-content;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 2vh;
+}
+.inputHolder2{
+    position: relative;
+    width: 90%;
+    height: fit-content;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 2vh;
+}
+.inputHolder2 .medicineHolder{
+    width: 30%;
+}
+.medicineTypeContainer{
+    width: 100%;
+    height: 6vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--darkgray);
+    border: solid 1px lightgray;
+    border-radius: .4vw;
+    transition: all ease .3s;
+}
+.inputHolder3{
+    position: relative;
+    width: 90%;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-bottom: 2vh;
+}
+#addedMedicinePrescription{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: 50vh;
+    overflow-y: scroll;
+}
+#addedMedicinePrescription::-webkit-scrollbar{
+    display: none;
+}
+.inputHolder3 .nameAndBrand{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+.inputHolder3 .nameAndBrand .p1,.inputHolder3 .nameAndBrand .p2{
+    width: 49% !important;
+}
+.medicineTypeContainer .medicineTypeHolder{
+    width: 100%;
+    height: 100%;
+    padding: 0 1vw;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+}
+#medicineTypeName{
+    padding-left: 1vw;
+}
+.medicineTypeOptions{
+    width: 10.5vw;
+    height: fit-content;
+    position: absolute;
+    bottom: -19.2vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+}
+.medicineTypeOptions .showElement{
+    width: 10.5vw;
+    height: fit-content;
+    position: absolute;
+    bottom: -19.2vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+}
+.medicineTypeOptions span{
+    background-color: var(--blue);
+    color: white;
+    width: 100%;
+    height: 6vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: .25vh;
+    border-radius: .4vw;
+    border: solid 1px var(--blue);
+    transition: all ease .3s;
+    cursor: pointer;
+}
+.medicineTypeOptions span:hover{
+    color: var(--blue);
+    background-color: var(--white);
+}
+.inputHolder2 .medicineStocksCount{
+    width: 30%;
+}
+.inputHolder2 .medicineLowStock{
+    width: 30%;
+}
+.labelForm{
+    width: 100%;
+    font-size: var(--small);
+    color: var(--darkgray);
+}
+.asterisk{
+    color: var(--red);
+}
+.inputValue{
+    width: 100%;
+    height: 6vh;
+    outline: none;
+    font-size: var(--small);
+    padding: 0 1vw;
+    color: var(--darkgray);
+    border: solid 1px lightgray;
+    border-radius: .4vw;
+    transition: all ease .3s;
+    text-align: center;
+}
+#medicineNameAdd{
+    width: 100%;
+}
+.inputValue:focus{
+    border-color: var(--green);
+}
+.medicineBrand{
+    width: 50%;
+    height: fit-content;
+}
+.medicineDosage{
+    padding-top: .5vh;
+    width: 48%;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;  
+}
+
+.dosageContainer{
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    align-items: center;
+}
+.dosageContainer input{
+    margin-right: .5vw;
+}
+.dosageContainer .caretDosage{
+    position: relative;
+    width: 5vw;
+    padding: 0 .5vw;
+    height: 3vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    justify-content: space-evenly;
+    border-radius: .4vw;
+    cursor: pointer;
+    color: white;
+    font-size: var(--small);
+    background-color: #0D99FF;
+    border: solid 1px var(--blue);
+    transition: all ease .3s;
+}
+#dosageType{
+    padding: 0 .5vw;
+}
+.dosageContainer #sortCarretDosage:hover{
+    color: var(--blue);
+    background-color: var(--white);
+}
+.dosageOptions{
+    height: 14vh;
+    width: fit-content;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    position: absolute;
+    right: 0;
+    bottom: -14vh;
+    visibility: hidden;
+    opacity: 0;
+}
+.dosageOptions span{
+    position: relative;
+    width: 5vw;
+    padding: 0 .5vw;
+    height: 3vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    justify-content: space-evenly;
+    border-radius: .4vw;
+    cursor: pointer;
+    color: white;
+    font-size: var(--small);
+    background-color: #0D99FF;
+    border: solid 1px var(--blue);
+    transition: all ease .3s;
+}
+.dosageOptions .showElement{
+    height: 14vh;
+    width: fit-content;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    position: absolute;
+    right: 0;
+    bottom: -14vh;
+}
+
+.dosageOptions1{
+    height: 14vh;
+    width: fit-content;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    position: absolute;
+    right: 0;
+    bottom: -14vh;
+    visibility: hidden;
+    opacity: 0;
+}
+.dosageOptions1 span{
+    position: relative;
+    width: 5vw;
+    padding: 0 .5vw;
+    height: 3vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    justify-content: space-evenly;
+    border-radius: .4vw;
+    cursor: pointer;
+    color: white;
+    font-size: var(--small);
+    background-color: #0D99FF;
+    border: solid 1px var(--blue);
+    transition: all ease .3s;
+}
+.dosageOptions1 .showElement{
+    height: 14vh;
+    width: fit-content;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    position: absolute;
+    right: 0;
+    bottom: -14vh;
+}
+.inputHolder textarea{
+    width: 100%;
+    color: var(--darkgray);
+    padding: .5vw;
+    font-size: var(--small);
+    letter-spacing: .05vw;
+    font-family: 'Poppins', Arial, Helvetica, sans-serif; 
+    outline: none;
+    border-radius: .2vw;
+    border: solid 1px lightgray;
+    resize: none;
+    transition: all ease .3s;
+}
+.inputHolder textarea:focus{
+    border: solid 1px var(--green);
+}
+.manufacturedDate {
+    width: 48%;
+    display: flex;
+    flex-direction: column;
+}
+.manufacturedDate input[type = "date"]{
+    font-family: 'Poppins', Arial, Helvetica, sans-serif; 
+    height: 5vh;
+    display: flex;
+    padding: 0 1vw;
+    width: 100%;
+    cursor: pointer;
+    outline: none;
+    border: solid 1px lightgray;
+    letter-spacing: .1vw;
+    transition: all ease .3s;
+}
+.manufacturedDate input[type = "date"]:focus{
+    border: solid 1px var(--green);
+}
+.buttonForm{
+    position: absolute;
+    bottom: 2vh;
+    width: 60%;
+    height: 10vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    justify-content: space-evenly;
+}
+.buttonForm button{
+    width: 9vw;
+    height: 6vh;
+    color: var(--white);
+    font-size: var(--small);
+    outline: none;
+    border-radius: .4vw;
+    cursor: pointer;
+}
+.submitButton{
+    background-color: var(--green);
+    border: solid 1px var(--green);
+    transition: all ease .3s;
+}
+.submitButton:hover{
+    color: var(--green);
+    background-color: var(--white);
+}
+.cancelButton{
+    background-color: var(--red);
+    border: solid 1px var(--red);
+    transition: all ease .3s;
+}
+.cancelButton:hover{
+    color: var(--red);
+    background-color: var(--white);
+}
+.nameAndBrand{
+    display: flex;
+}
+.cancelMedicinePrescribe{
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin-left: .5vw;
+    width: 1.5vw;
+    height: 1.5vw;
+}
+.cancelMedicinePrescribe i {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    background-color: var(--red);
+    color: white;
+    border: solid 1px var(--red);
+    border-radius: 50%;
+    font-size: var(--smaller);
+    cursor: pointer;
+    transition: all ease .3s;
+}
+.cancelMedicinePrescribe i:hover{
+    color: var(--red);
+    background-color: var(--white);
+}
+.cloneButtonHolder{
+    width: 90%;
+    height: fit-content;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1vh;
+}
+.cloneButtonHolder input{
+    width: 90%;
+}
+#cloneButton{
+    width: 2.5vw;
+    height: 2.5vw;
+    outline: none;
+    border: solid 1px var(--green);
+    color: var(--white);
+    background-color: var(--green);
+    border-radius: 50%;
+    font-size: var(--small);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    justify-content: space-evenly;
+    cursor: pointer;
+    transition: all ease .3s;
+    letter-spacing: .05vw;
+}
+#cloneButton:hover{
+    color: var(--green);
+    background-color: var(--white);
+}
+.searchPatientsName{
+    position: absolute;
+    top: 16.5vh;
+    width: 81%;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 20;
+    border-radius: .4vw;
+    -webkit-box-shadow: 0px 0px 9px 0px rgba(156,156,156,1);
+    -moz-box-shadow: 0px 0px 9px 0px rgba(156,156,156,1);
+    box-shadow: 0px 0px 9px 0px rgba(156,156,156,1);
+}
+.medicineClassificationHolder{
+    position: absolute;
+    top: 6.5vh;
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 20;
+    border-radius: .4vw;
+    -webkit-box-shadow: 0px 0px 9px 0px rgba(156,156,156,1);
+    -moz-box-shadow: 0px 0px 9px 0px rgba(156,156,156,1);
+    box-shadow: 0px 0px 9px 0px rgba(156,156,156,1);
+}
+.patientName{
+    width: 100%;
+    height: 6vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--darkgray);
+    font-size: var(--medium);
+    background-color: var(--white);
+    border: solid 1px lightgray;
+    border-width: 0 0 1px 0;
+    cursor: pointer;
+}
+.medicineClassificationName{
+    width: 100%;
+    height: 6vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--darkgray);
+    font-size: var(--medium);
+    background-color: var(--white);
+    border: solid 1px lightgray;
+    border-width: 0 0 1px 0;
+    cursor: pointer;
+}
+.patientName:hover{
+    background-color: lightgray;
+}
+.medicineClassificationName:hover{
+    background-color: lightgray;
+}
+.patientName .highlight {
+    background-color: lightgray;
+    font-weight: bold;
+}
+.medicineClassificationName .highlight {
+    background-color: rgb(233, 233, 233);
+    font-weight: bold;
+}
+.highlight {
+    background-color: lightgray;
+    color:var(--darkgray);
+}
+.bg{
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.26);
+    backdrop-filter: blur(4px);
+}
+.printPage{
+    position: relative;
+    width: 40vw;
+    height: 90vh;
+    background-color: var(--white);
+    -webkit-box-shadow: 0px 0px 9px 0px rgba(156,156,156,1);
+    -moz-box-shadow: 0px 0px 9px 0px rgba(156,156,156,1);
+    box-shadow: 0px 0px 9px 0px rgba(156,156,156,1);
+    border-radius: .4vw;
+    padding: 1vw;
+}
+.printPage header{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+.printPage header img{
+    width: 7vw;
+}
+.clinicName{
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
+}
+.clinicName span{
+    width: 100%;
+    font-size: var(--medium);
+    color: var(--blue);
+}
+.clinicName span:first-child{
+    font-size: 3.5vh;
+    font-weight: 600;
+}
+.clinicName span:last-child{
+    font-size: 3vh;
+}
+.clinicInfo{
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    justify-content: space-between;
+    padding: 1vh;
+    border: solid 1px var(--blue);
+    border-width: 0 0 1px 0;
+}
+.clinicDoctor{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    font-size: var(--small);
+    color: var(--darkgray);
+}
+
+.clinicContacts{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    font-size: var(--small);
+    color: var(--darkgray);
+}
+.printPage footer{
+    position: absolute;
+    display: flex;
+    align-items: center;
+    bottom: 1vh;
+    width: 95%;
+    height: 8vh;
+    padding: 1vh;
+    border: solid 1px var(--blue);
+    border-width: 1px 0 0 0;
+    font-size: var(--small);
+    color: var(--darkgray);
+}
+.patientInformation{
+    position: relative;
+    width: 100%;
+    padding: 2vh 0 1vh;
+    display: flex;
+    justify-content: space-between;
+    font-size: 2.2vh;
+    color: var(--darkgray);
+}
+.nameAddress{
+    position: relative;
+    width: 68%;
+}
+.nameAddress div{
+    width: 100%;
+    display: flex;
+}
+.nameAddress div span{
+    padding-left: .5vw;
+    margin-bottom: 1vh;
+}
+.nameAddress div span:first-child{ 
+    width: fit-content;
+    margin-right: .5vw;
+}
+.nameAddress div span:last-child{ 
+    flex-grow: 1;
+    border: solid 1px var(--darkgray);
+    border-width: 0 0 1px 0;
+}
+.ageDate{
+    position: relative;
+    width: 30%;
+}
+.ageDate div{
+    width: 100%;
+    display: flex;
+}
+.ageDate div span{
+    padding-left: .5vw;
+    margin-bottom: 1vh;
+}
+.ageDate div span:first-child{ 
+    width: fit-content;
+    margin-right: .5vw;
+}
+.ageDate div span:last-child{ 
+    flex-grow: 1;
+    border: solid 1px var(--darkgray);
+    border-width: 0 0 1px 0;
+}
+.medicinesPrescribed{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+.fa-prescription{
+    width: 100%;
+    padding-left: 1vw;
+    font-size: var(--large);
+    color: var(--blue);
+}
+#prescribedMedicineContainer{
+    width: 100%;
+    height: fit-content;
+    padding: 1vh 1vw 0 3vw;
+}
+.medicinesPrescribedInfo{
+    width: 100%;
+    height: fit-content;
+    font-size: var(--medium);
+    color: var(--darkgray);
+}
+.buttonsHolder{
+    right: 18%;
+    position: absolute;
+    width: fit-content;
+    height: 20vh;
+    z-index: 20;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+.buttonsHolder button{
+    width: 10vw;
+    height: 7vh;
+    outline: none;
+    border: none;
+    border-radius: .4vw;
+    font-size: var(--small);  
+    cursor: pointer;  
+    letter-spacing: .1vw;
+}
+.buttonsHolder button i{
+    margin-right: .5vw;
+}
+#printButton{
+    color: var(--white);
+    background-color: var(--green);
+    border: solid 1px var(--green);
+    transition: all ease .3s;
+}
+#printButton:hover{
+    color: var(--green);
+    background-color: var(--white);
+    border: solid 1px var(--green);
+}
+#cancelPrint{
+    color: var(--white);
+    background-color: var(--red);
+    border: solid 1px var(--red);
+    transition: all ease .3s;
+}
+#cancelPrint:hover{
+    color: var(--red);
+    background-color: var(--white);
+    border: solid 1px var(--red);
+}
+.hidden{
+    display: none;
+}
+
+.showElement1{
+    visibility: visible !important;
+    opacity: 1 !important;
+    z-index: 10;
+    animation: slide-right .5s ease-in; 
+}
+.printPage.rtl{
+    direction: rtl;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+@media print{
+    .printPage{
+        width: 100%;
+        box-shadow: none;
+        margin: 0;
+    }
+    .printPage header img{
+        width: 15vw;
+    }
+    .clinicName span{
+        width: 100%;
+        color: var(--blue);
+    }
+    .clinicName span:first-child{
+        font-size: 3.2vh;
+        font-weight: 600;
+    }
+    .clinicName span:last-child{
+        font-size: 2.7vh;
+    }
+    .printPage footer{
+        position: absolute;
+        display: flex;
+        align-items: center;
+        bottom: 1vh;
+        width: 100%;
+        height: 8vh;
+        padding: 7vh 1vh 1vh 1vh;
+        border: solid 1px var(--blue);
+        border-width: 1px 0 0 0;
+        font-size: 2vh;
+        color: var(--darkgray);
+        background-color: #414141;
+    }
+    .clinicDoctor{
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        font-size: 2vh;
+        color: var(--darkgray);
+    }
+    .clinicContacts{
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        font-size: 2vh;
+        color: var(--darkgray);
+    }
+    .fa-prescription{
+        width: 100%;
+        padding-left: 2vw;
+        font-size: 6vh;
+        color: var(--blue);
+    }
+    #prescribedMedicineContainer{
+        width: 100%;
+        height: fit-content;
+        padding: 1vh 1vw 0 5vw;
+    }
+    .medicinesPrescribedInfo{
+        width: 100%;
+        height: fit-content;
+        font-size: 2vh;
+        color: var(--darkgray);
+    }
+    .buttonsHolder{
+        display: none;
+    }
+}
+@keyframes slide-down{
+    0%{
+        transform: translateY(-5vh);
+    }
+    100%{
+        transform: translateY(0);
+    }
+}
+@keyframes slide-up{
+    100%{
+        transform: translateY(-7vh);
+    }
+}
+@keyframes slide-right{
+    0%{
+        transform: translateX(20vw);
+    }
+    100%{
+        transform: translateY(0);
+    }
+}
+@keyframes slide-left{
+    0%{
+        transform: translateX(0);
+    }
+    100%{
+        transform: translateY(20vw);
+    }
+}

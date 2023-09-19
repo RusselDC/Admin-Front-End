@@ -1,0 +1,985 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="../javascript/Patients.js" defer></script>
+    <link rel="website icon" type="png " href="../images/logo.png" />
+    <script
+      src="https://kit.fontawesome.com/275edc9f9d.js"
+      crossorigin="anonymous"
+      defer
+    ></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.css"
+    />
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.js"></script>
+
+    <title>Patient</title>
+    <link rel="stylesheet" href="../css/admin.css" />
+    <link rel="stylesheet" href="../css/patientView.css" />
+  </head>
+  <body onload="onload()">
+    <section id="main">
+      <div class="header">
+        <div class="headerContainer">
+          <div class="headerContent">
+            <a
+              href="./PatientViewPatient.html"
+              class="headerLink headerLinkActive"
+              >Patient's List</a
+            >
+          </div>
+          <div class="profile">
+            <div class="info">
+              <span id="name"> Arellano, John Kenneth R. </span>
+              <span id="role"> Dentist </span>
+            </div>
+            <div class="profileHolder">
+              <img src="../images/kenneth.png" alt="" />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="sidebar">
+        <img src="../images/logo.png" alt="" />
+        <nav>
+          <ul>
+            <li>
+              <a href="Dashboard.html" class="links"
+                ><i class="fa-solid fa-house-chimney"></i
+              ></a>
+            </li>
+            <li>
+              <a href="StaffsMainPage.html" class="links"
+                ><i class="fa-solid fa-user-nurse"></i
+              ></a>
+            </li>
+            <li>
+              <a href="PatientsMainPage.html" class="links activePage"
+                ><i class="fa-solid fa-hospital-user"></i
+              ></a>
+            </li>
+            <li>
+              <a href="ServicesMainPage.html" class="links"
+                ><i class="fa-solid fa-hand-holding-medical"></i
+              ></a>
+            </li>
+            <li>
+              <a href="MedicinesMainPage.html" class="links"
+                ><i class="fa-solid fa-pills"></i
+              ></a>
+            </li>
+            <li>
+              <a href="AppointmentsMainPage.html" class="links"
+                ><i class="fa-solid fa-calendar-check"></i
+              ></a>
+            </li>
+            <li>
+              <a href="ArchivesMainPage.html" class="links"
+                ><i class="fa-solid fa-boxes-packing"></i
+              ></a>
+            </li>
+            <li>
+              <a href="Settings.html" class="links"
+                ><i class="fa-solid fa-gear"></i
+              ></a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+      <div class="mainContainer">
+        <div class="containerHeader">
+          <span class="pageTitle">Patient / View Patient</span>
+          <div class="sort">
+            <button class="sortButton" id="sortButton">
+              <span id="sortText">All</span>
+              <i class="fa-solid fa-caret-down"></i>
+            </button>
+            <div class="sortOptions1" id="sortOptions">
+              <span id="allPatients">All</span>
+              <span id="activePatient">Active</span>
+            </div>
+          </div>
+        </div>
+        <div class="tableContainer">
+          <div class="patientDetails">
+            <div class="img"><img src="/images/nicole.png" alt="" /></div>
+            <div class="personal">
+              <div class="name">Santos, Nicole Salamat</div>
+              <div class="dflex">
+                <div>
+                  <div class="sex">Female</div>
+                  <div class="age"><span>20</span> years old</div>
+                </div>
+                <div>
+                  <a href="healthHistory.html"
+                    ><button id="dentalHistory">View Health History</button></a
+                  >
+                  <a href="dentalChart.html"
+                    ><button id="dentalHistory">View Dental Chart</button></a
+                  >
+                </div>
+              </div>
+            </div>
+            <div class="contact">
+              <div class="phone">
+                <div class="label">Contact #:</div>
+                <div class="input">0950 254 2168</div>
+              </div>
+              <div class="email">
+                <div class="label">Email Address:</div>
+                <div class="input">nicole.santos.s@bulsu.edu.ph</div>
+              </div>
+              <div class="address">
+                <div class="label">Address:</div>
+                <div class="input">Paombong, Bulacan</div>
+              </div>
+            </div>
+          </div>
+          <div class="listOfRecords tmtRec">
+            <table id="treatmentRecords" class="display">
+              <thead>
+                <tr>
+                  <th class="searchable">Service</th>
+                  <th class="searchable">Date & Time</th>
+                  <th class="searchable">Payment Details</th>
+                  <th class="searchable">Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                    <div class="serviceName">ert</div>
+                    <div class="serviceNotes">aaa blue</div>
+                  </td>
+                  <td>
+                    <div class="date">September 44, 1001</div>
+                    <div class="time">12:45pm</div>
+                  </td>
+                  <td>
+                    <div class="payment">
+                      <div class="labels">
+                        <div class="cost">TOTAL</div>
+                        <div class="deposit">PAYMENT</div>
+                        <div class="bal">BALANCE</div>
+                      </div>
+                      <div class="input">
+                        <div class="cost">P 30,000</div>
+                        <div class="deposit">P 10,000</div>
+                        <div class="bal">P 20,000</div>
+                      </div>
+                    </div>
+                  </td>
+                  <td>
+                    <a href="viewPlan.html"><button>View Plan</button></a>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="serviceName">
+                      Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                      Suscipit dolore laborum necessitatibus officia
+                      perferendis, hic commodi ad ex sunt autem unde
+                      voluptatibus ab veritatis velit? Aliquam assumenda
+                      accusantium vel vitae.
+                    </div>
+                    <div class="serviceNotes">kulay blue</div>
+                  </td>
+                  <td>
+                    <div class="date">September 44, 1001</div>
+                    <div class="time">12:45pm</div>
+                  </td>
+                  <td>
+                    <div class="payment">
+                      <div class="labels">
+                        <div class="cost">TOTAL</div>
+                        <div class="deposit">PAYMENT</div>
+                        <div class="bal">BALANCE</div>
+                      </div>
+                      <div class="input">
+                        <div class="cost">P 30,000</div>
+                        <div class="deposit">P 10,000</div>
+                        <div class="bal">P 20,000</div>
+                      </div>
+                    </div>
+                  </td>
+                  <td>
+                    <a href="viewPlan.html"><button>View Plan</button></a>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="serviceName">b</div>
+                    <div class="serviceNotes">kulay blue</div>
+                  </td>
+                  <td>
+                    <div class="date">September 44, 1001</div>
+                    <div class="time">12:45pm</div>
+                  </td>
+                  <td>
+                    <div class="payment">
+                      <div class="labels">
+                        <div class="cost">TOTAL</div>
+                        <div class="deposit">PAYMENT</div>
+                        <div class="bal">BALANCE</div>
+                      </div>
+                      <div class="input">
+                        <div class="cost">P 30,000</div>
+                        <div class="deposit">P 10,000</div>
+                        <div class="bal">P 20,000</div>
+                      </div>
+                    </div>
+                  </td>
+                  <td>
+                    <a href="viewPlan.html"><button>View Plan</button></a>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="serviceName">c</div>
+                    <div class="serviceNotes">kulay blue</div>
+                  </td>
+                  <td>
+                    <div class="date">September 44, 1001</div>
+                    <div class="time">12:45pm</div>
+                  </td>
+                  <td>
+                    <div class="payment">
+                      <div class="labels">
+                        <div class="cost">TOTAL</div>
+                        <div class="deposit">PAYMENT</div>
+                        <div class="bal">BALANCE</div>
+                      </div>
+                      <div class="input">
+                        <div class="cost">P 30,000</div>
+                        <div class="deposit">P 10,000</div>
+                        <div class="bal">P 20,000</div>
+                      </div>
+                    </div>
+                  </td>
+                  <td>
+                    <a href="viewPlan.html"><button>View Plan</button></a>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="serviceName">d</div>
+                    <div class="serviceNotes">kulay blue</div>
+                  </td>
+                  <td>
+                    <div class="date">September 44, 1001</div>
+                    <div class="time">12:45pm</div>
+                  </td>
+                  <td>
+                    <div class="payment">
+                      <div class="labels">
+                        <div class="cost">TOTAL</div>
+                        <div class="deposit">PAYMENT</div>
+                        <div class="bal">BALANCE</div>
+                      </div>
+                      <div class="input">
+                        <div class="cost">P 30,000</div>
+                        <div class="deposit">P 10,000</div>
+                        <div class="bal">P 20,000</div>
+                      </div>
+                    </div>
+                  </td>
+                  <td>
+                    <a href="viewPlan.html"><button>View Plan</button></a>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="serviceName">h</div>
+                    <div class="serviceNotes">kulay blue</div>
+                  </td>
+                  <td>
+                    <div class="date">September 44, 1001</div>
+                    <div class="time">12:45pm</div>
+                  </td>
+                  <td>
+                    <div class="payment">
+                      <div class="labels">
+                        <div class="cost">TOTAL</div>
+                        <div class="deposit">PAYMENT</div>
+                        <div class="bal">BALANCE</div>
+                      </div>
+                      <div class="input">
+                        <div class="cost">P 30,000</div>
+                        <div class="deposit">P 10,000</div>
+                        <div class="bal">P 20,000</div>
+                      </div>
+                    </div>
+                  </td>
+                  <td>
+                    <a href="viewPlan.html"><button>View Plan</button></a>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="serviceName">hhh</div>
+                    <div class="serviceNotes">kulay blue</div>
+                  </td>
+                  <td>
+                    <div class="date">September 44, 1001</div>
+                    <div class="time">12:45pm</div>
+                  </td>
+                  <td>
+                    <div class="payment">
+                      <div class="labels">
+                        <div class="cost">TOTAL</div>
+                        <div class="deposit">PAYMENT</div>
+                        <div class="bal">BALANCE</div>
+                      </div>
+                      <div class="input">
+                        <div class="cost">P 30,000</div>
+                        <div class="deposit">P 10,000</div>
+                        <div class="bal">P 20,000</div>
+                      </div>
+                    </div>
+                  </td>
+                  <td>
+                    <a href="viewPlan.html"><button>View Plan</button></a>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="serviceName">d</div>
+                    <div class="serviceNotes">kulay blue</div>
+                  </td>
+                  <td>
+                    <div class="date">September 44, 1001</div>
+                    <div class="time">12:45pm</div>
+                  </td>
+                  <td>
+                    <div class="payment">
+                      <div class="labels">
+                        <div class="cost">TOTAL</div>
+                        <div class="deposit">PAYMENT</div>
+                        <div class="bal">BALANCE</div>
+                      </div>
+                      <div class="input">
+                        <div class="cost">P 30,000</div>
+                        <div class="deposit">P 10,000</div>
+                        <div class="bal">P 20,000</div>
+                      </div>
+                    </div>
+                  </td>
+                  <td>
+                    <a href="viewPlan.html"><button>View Plan</button></a>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="serviceName">r</div>
+                    <div class="serviceNotes">kulay blue</div>
+                  </td>
+                  <td>
+                    <div class="date">September 44, 1001</div>
+                    <div class="time">12:45pm</div>
+                  </td>
+                  <td>
+                    <div class="payment">
+                      <div class="labels">
+                        <div class="cost">TOTAL</div>
+                        <div class="deposit">PAYMENT</div>
+                        <div class="bal">BALANCE</div>
+                      </div>
+                      <div class="input">
+                        <div class="cost">P 30,000</div>
+                        <div class="deposit">P 10,000</div>
+                        <div class="bal">P 20,000</div>
+                      </div>
+                    </div>
+                  </td>
+                  <td>
+                    <a href="viewPlan.html"><button>View Plan</button></a>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="serviceName">ty</div>
+                    <div class="serviceNotes">kulay blue</div>
+                  </td>
+                  <td>
+                    <div class="date">September 44, 1001</div>
+                    <div class="time">12:45pm</div>
+                  </td>
+                  <td>
+                    <div class="payment">
+                      <div class="labels">
+                        <div class="cost">TOTAL</div>
+                        <div class="deposit">PAYMENT</div>
+                        <div class="bal">BALANCE</div>
+                      </div>
+                      <div class="input">
+                        <div class="cost">P 30,000</div>
+                        <div class="deposit">P 10,000</div>
+                        <div class="bal">P 20,000</div>
+                      </div>
+                    </div>
+                  </td>
+                  <td>
+                    <a href="viewPlan.html"><button>View Plan</button></a>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="serviceName">f</div>
+                    <div class="serviceNotes">kulay blue</div>
+                  </td>
+                  <td>
+                    <div class="date">September 44, 1001</div>
+                    <div class="time">12:45pm</div>
+                  </td>
+                  <td>
+                    <div class="payment">
+                      <div class="labels">
+                        <div class="cost">TOTAL</div>
+                        <div class="deposit">PAYMENT</div>
+                        <div class="bal">BALANCE</div>
+                      </div>
+                      <div class="input">
+                        <div class="cost">P 30,000</div>
+                        <div class="deposit">P 10,000</div>
+                        <div class="bal">P 20,000</div>
+                      </div>
+                    </div>
+                  </td>
+                  <td>
+                    <a href="viewPlan.html"><button>View Plan</button></a>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="serviceName">fc</div>
+                    <div class="serviceNotes">kulay blue</div>
+                  </td>
+                  <td>
+                    <div class="date">September 44, 1001</div>
+                    <div class="time">12:45pm</div>
+                  </td>
+                  <td>
+                    <div class="payment">
+                      <div class="labels">
+                        <div class="cost">TOTAL</div>
+                        <div class="deposit">PAYMENT</div>
+                        <div class="bal">BALANCE</div>
+                      </div>
+                      <div class="input">
+                        <div class="cost">P 30,000</div>
+                        <div class="deposit">P 10,000</div>
+                        <div class="bal">P 20,000</div>
+                      </div>
+                    </div>
+                  </td>
+                  <td>
+                    <a href="viewPlan.html"><button>View Plan</button></a>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="serviceName">cb</div>
+                    <div class="serviceNotes">kulay blue</div>
+                  </td>
+                  <td>
+                    <div class="date">September 44, 1001</div>
+                    <div class="time">12:45pm</div>
+                  </td>
+                  <td>
+                    <div class="payment">
+                      <div class="labels">
+                        <div class="cost">TOTAL</div>
+                        <div class="deposit">PAYMENT</div>
+                        <div class="bal">BALANCE</div>
+                      </div>
+                      <div class="input">
+                        <div class="cost">P 30,000</div>
+                        <div class="deposit">P 10,000</div>
+                        <div class="bal">P 20,000</div>
+                      </div>
+                    </div>
+                  </td>
+                  <td>
+                    <a href="viewPlan.html"><button>View Plan</button></a>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="serviceName">cb</div>
+                    <div class="serviceNotes">kulay blue</div>
+                  </td>
+                  <td>
+                    <div class="date">September 44, 1001</div>
+                    <div class="time">12:45pm</div>
+                  </td>
+                  <td>
+                    <div class="payment">
+                      <div class="labels">
+                        <div class="cost">TOTAL</div>
+                        <div class="deposit">PAYMENT</div>
+                        <div class="bal">BALANCE</div>
+                      </div>
+                      <div class="input">
+                        <div class="cost">P 30,000</div>
+                        <div class="deposit">P 10,000</div>
+                        <div class="bal">P 20,000</div>
+                      </div>
+                    </div>
+                  </td>
+                  <td>
+                    <a href="viewPlan.html"><button>View Plan</button></a>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="serviceName">fg</div>
+                    <div class="serviceNotes">kulay blue</div>
+                  </td>
+                  <td>
+                    <div class="date">September 44, 1001</div>
+                    <div class="time">12:45pm</div>
+                  </td>
+                  <td>
+                    <div class="payment">
+                      <div class="labels">
+                        <div class="cost">TOTAL</div>
+                        <div class="deposit">PAYMENT</div>
+                        <div class="bal">BALANCE</div>
+                      </div>
+                      <div class="input">
+                        <div class="cost">P 30,000</div>
+                        <div class="deposit">P 10,000</div>
+                        <div class="bal">P 20,000</div>
+                      </div>
+                    </div>
+                  </td>
+                  <td>
+                    <a href="viewPlan.html"><button>View Plan</button></a>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="serviceName">fdg</div>
+                    <div class="serviceNotes">kulay blue</div>
+                  </td>
+                  <td>
+                    <div class="date">September 44, 1001</div>
+                    <div class="time">12:45pm</div>
+                  </td>
+                  <td>
+                    <div class="payment">
+                      <div class="labels">
+                        <div class="cost">TOTAL</div>
+                        <div class="deposit">PAYMENT</div>
+                        <div class="bal">BALANCE</div>
+                      </div>
+                      <div class="input">
+                        <div class="cost">P 30,000</div>
+                        <div class="deposit">P 10,000</div>
+                        <div class="bal">P 20,000</div>
+                      </div>
+                    </div>
+                  </td>
+                  <td>
+                    <a href="viewPlan.html"><button>View Plan</button></a>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="serviceName">fd</div>
+                    <div class="serviceNotes">kulay blue</div>
+                  </td>
+                  <td>
+                    <div class="date">September 44, 1001</div>
+                    <div class="time">12:45pm</div>
+                  </td>
+                  <td>
+                    <div class="payment">
+                      <div class="labels">
+                        <div class="cost">TOTAL</div>
+                        <div class="deposit">PAYMENT</div>
+                        <div class="bal">BALANCE</div>
+                      </div>
+                      <div class="input">
+                        <div class="cost">P 30,000</div>
+                        <div class="deposit">P 10,000</div>
+                        <div class="bal">P 20,000</div>
+                      </div>
+                    </div>
+                  </td>
+                  <td>
+                    <a href="viewPlan.html"><button>View Plan</button></a>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="serviceName">fh</div>
+                    <div class="serviceNotes">kulay blue</div>
+                  </td>
+                  <td>
+                    <div class="date">September 44, 1001</div>
+                    <div class="time">12:45pm</div>
+                  </td>
+                  <td>
+                    <div class="payment">
+                      <div class="labels">
+                        <div class="cost">TOTAL</div>
+                        <div class="deposit">PAYMENT</div>
+                        <div class="bal">BALANCE</div>
+                      </div>
+                      <div class="input">
+                        <div class="cost">P 30,000</div>
+                        <div class="deposit">P 10,000</div>
+                        <div class="bal">P 20,000</div>
+                      </div>
+                    </div>
+                  </td>
+                  <td>
+                    <a href="viewPlan.html"><button>View Plan</button></a>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="serviceName">fgh</div>
+                    <div class="serviceNotes">kulay blue</div>
+                  </td>
+                  <td>
+                    <div class="date">September 44, 1001</div>
+                    <div class="time">12:45pm</div>
+                  </td>
+                  <td>
+                    <div class="payment">
+                      <div class="labels">
+                        <div class="cost">TOTAL</div>
+                        <div class="deposit">PAYMENT</div>
+                        <div class="bal">BALANCE</div>
+                      </div>
+                      <div class="input">
+                        <div class="cost">P 30,000</div>
+                        <div class="deposit">P 10,000</div>
+                        <div class="bal">P 20,000</div>
+                      </div>
+                    </div>
+                  </td>
+                  <td>
+                    <a href="viewPlan.html"><button>View Plan</button></a>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="serviceName">h</div>
+                    <div class="serviceNotes">kulay blue</div>
+                  </td>
+                  <td>
+                    <div class="date">September 44, 1001</div>
+                    <div class="time">12:45pm</div>
+                  </td>
+                  <td>
+                    <div class="payment">
+                      <div class="labels">
+                        <div class="cost">TOTAL</div>
+                        <div class="deposit">PAYMENT</div>
+                        <div class="bal">BALANCE</div>
+                      </div>
+                      <div class="input">
+                        <div class="cost">P 30,000</div>
+                        <div class="deposit">P 10,000</div>
+                        <div class="bal">P 20,000</div>
+                      </div>
+                    </div>
+                  </td>
+                  <td>
+                    <a href="viewPlan.html"><button>View Plan</button></a>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="serviceName">cg</div>
+                    <div class="serviceNotes">kulay blue</div>
+                  </td>
+                  <td>
+                    <div class="date">September 44, 1001</div>
+                    <div class="time">12:45pm</div>
+                  </td>
+                  <td>
+                    <div class="payment">
+                      <div class="labels">
+                        <div class="cost">TOTAL</div>
+                        <div class="deposit">PAYMENT</div>
+                        <div class="bal">BALANCE</div>
+                      </div>
+                      <div class="input">
+                        <div class="cost">P 30,000</div>
+                        <div class="deposit">P 10,000</div>
+                        <div class="bal">P 20,000</div>
+                      </div>
+                    </div>
+                  </td>
+                  <td>
+                    <a href="viewPlan.html"><button>View Plan</button></a>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="serviceName">g</div>
+                    <div class="serviceNotes">kulay blue</div>
+                  </td>
+                  <td>
+                    <div class="date">September 44, 1001</div>
+                    <div class="time">12:45pm</div>
+                  </td>
+                  <td>
+                    <div class="payment">
+                      <div class="labels">
+                        <div class="cost">TOTAL</div>
+                        <div class="deposit">PAYMENT</div>
+                        <div class="bal">BALANCE</div>
+                      </div>
+                      <div class="input">
+                        <div class="cost">P 30,000</div>
+                        <div class="deposit">P 10,000</div>
+                        <div class="bal">P 20,000</div>
+                      </div>
+                    </div>
+                  </td>
+                  <td>
+                    <a href="viewPlan.html"><button>View Plan</button></a>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="serviceName">gg</div>
+                    <div class="serviceNotes">kulay blue</div>
+                  </td>
+                  <td>
+                    <div class="date">September 44, 1001</div>
+                    <div class="time">12:45pm</div>
+                  </td>
+                  <td>
+                    <div class="payment">
+                      <div class="labels">
+                        <div class="cost">TOTAL</div>
+                        <div class="deposit">PAYMENT</div>
+                        <div class="bal">BALANCE</div>
+                      </div>
+                      <div class="input">
+                        <div class="cost">P 30,000</div>
+                        <div class="deposit">P 10,000</div>
+                        <div class="bal">P 20,000</div>
+                      </div>
+                    </div>
+                  </td>
+                  <td>
+                    <a href="viewPlan.html"><button>View Plan</button></a>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="serviceName">chr</div>
+                    <div class="serviceNotes">kulay blue</div>
+                  </td>
+                  <td>
+                    <div class="date">September 44, 1001</div>
+                    <div class="time">12:45pm</div>
+                  </td>
+                  <td>
+                    <div class="payment">
+                      <div class="labels">
+                        <div class="cost">TOTAL</div>
+                        <div class="deposit">PAYMENT</div>
+                        <div class="bal">BALANCE</div>
+                      </div>
+                      <div class="input">
+                        <div class="cost">P 30,000</div>
+                        <div class="deposit">P 10,000</div>
+                        <div class="bal">P 20,000</div>
+                      </div>
+                    </div>
+                  </td>
+                  <td>
+                    <a href="viewPlan.html"><button>View Plan</button></a>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="serviceName">ert</div>
+                    <div class="serviceNotes">kulay blue</div>
+                  </td>
+                  <td>
+                    <div class="date">September 44, 1001</div>
+                    <div class="time">12:45pm</div>
+                  </td>
+                  <td>
+                    <div class="payment">
+                      <div class="labels">
+                        <div class="cost">TOTAL</div>
+                        <div class="deposit">PAYMENT</div>
+                        <div class="bal">BALANCE</div>
+                      </div>
+                      <div class="input">
+                        <div class="cost">P 30,000</div>
+                        <div class="deposit">P 10,000</div>
+                        <div class="bal">P 20,000</div>
+                      </div>
+                    </div>
+                  </td>
+                  <td>
+                    <a href="viewPlan.html"><button>View Plan</button></a>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="serviceName">ey</div>
+                    <div class="serviceNotes">kulay blue</div>
+                  </td>
+                  <td>
+                    <div class="date">September 44, 1001</div>
+                    <div class="time">12:45pm</div>
+                  </td>
+                  <td>
+                    <div class="payment">
+                      <div class="labels">
+                        <div class="cost">TOTAL</div>
+                        <div class="deposit">PAYMENT</div>
+                        <div class="bal">BALANCE</div>
+                      </div>
+                      <div class="input">
+                        <div class="cost">P 30,000</div>
+                        <div class="deposit">P 10,000</div>
+                        <div class="bal">P 20,000</div>
+                      </div>
+                    </div>
+                  </td>
+                  <td>
+                    <a href="viewPlan.html"><button>View Plan</button></a>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="serviceName">fdh</div>
+                    <div class="serviceNotes">kulay blue</div>
+                  </td>
+                  <td>
+                    <div class="date">September 44, 1001</div>
+                    <div class="time">12:45pm</div>
+                  </td>
+                  <td>
+                    <div class="payment">
+                      <div class="labels">
+                        <div class="cost">TOTAL</div>
+                        <div class="deposit">PAYMENT</div>
+                        <div class="bal">BALANCE</div>
+                      </div>
+                      <div class="input">
+                        <div class="cost">P 30,000</div>
+                        <div class="deposit">P 10,000</div>
+                        <div class="bal">P 20,000</div>
+                      </div>
+                    </div>
+                  </td>
+                  <td>
+                    <a href="viewPlan.html"><button>View Plan</button></a>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="listOfRecords apptRec">
+            <table id="appointmentRecord" class="display">
+              <thead>
+                <tr>
+                  <th>Service</th>
+                  <th>Date & Time</th>
+                  <th>Clinic Name</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="serviceName">Dental Checkup</td>
+                  <td class="dateNtime">
+                    <div class="date">August 15, 2005</div>
+                    <div class="time">5:00 pm</div>
+                  </td>
+                  <td class="clinicName">Pablo de Jesus Dental Clinic</td>
+                </tr>
+                <tr>
+                  <td class="serviceName">New Service 1</td>
+                  <td class="dateNtime">
+                    <div class="date">January 1, 2022</div>
+                    <div class="time">10:00 am</div>
+                  </td>
+                  <td class="clinicName">New Clinic 1</td>
+                </tr>
+
+                <tr>
+                  <td class="serviceName">New Service 2</td>
+                  <td class="dateNtime">
+                    <div class="date">February 15, 2022</div>
+                    <div class="time">2:30 pm</div>
+                  </td>
+                  <td class="clinicName">New Clinic 2</td>
+                </tr>
+
+                <tr>
+                  <td class="serviceName">New Service 3</td>
+                  <td class="dateNtime">
+                    <div class="date">March 20, 2022</div>
+                    <div class="time">11:15 am</div>
+                  </td>
+                  <td class="clinicName">New Clinic 3</td>
+                </tr>
+
+                <tr>
+                  <td class="serviceName">New Service 4</td>
+                  <td class="dateNtime">
+                    <div class="date">April 10, 2022</div>
+                    <div class="time">4:45 pm</div>
+                  </td>
+                  <td class="clinicName">New Clinic 4</td>
+                </tr>
+
+                <tr>
+                  <td class="serviceName">New Service 5</td>
+                  <td class="dateNtime">
+                    <div class="date">May 5, 2022</div>
+                    <div class="time">8:00 am</div>
+                  </td>
+                  <td class="clinicName">New Clinic 5</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <a href="./PatientsMainPage.html">
+            <button class="goback">
+              <i class="fa-solid fa-chevron-left"></i>Go Back
+            </button></a
+          >
+        </div>
+      </div>
+    </section>
+    <script src="/javascript/patientView.js"></script>
+    <script>
+      $(document).ready(function () {
+        $("#appointmentRecord").DataTable({
+          lengthMenu: [[3], [3]], // Set the number of entries per page to 3"language": {
+          language: {
+            search: "",
+            searchPlaceholder: "Search",
+          },
+        });
+        $("#treatmentRecords").DataTable({
+          lengthMenu: [[3], [3]], // Set the number of entries per page to 3"language": {
+          language: {
+            search: "",
+            searchPlaceholder: "Search",
+          },
+        });
+      });
+    </script>
+  </body>
+</html>

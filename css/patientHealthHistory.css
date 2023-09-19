@@ -1,0 +1,224 @@
+.goback {
+  display: flex;
+  gap: 0.25vw;
+  align-items: center;
+  font-weight: 500;
+  font-family: "Poppins", Arial, Helvetica, sans-serif;
+  padding: 0.5vw 1.5vw;
+  font-size: var(--small);
+  cursor: pointer;
+  box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.25);
+  transition: all 0.3s ease 0s;
+  position: fixed;
+  bottom: 1vw;
+  left: 9vw;
+  border: none;
+  border-radius: 1vw;
+  text-decoration: none;
+  border: rgba(184, 184, 184, 0.25) solid 1px;
+  background-color: #fff;
+  color: rgb(13, 153, 255);
+}
+.goback:hover {
+  transition: all 0.3s ease 0s;
+  background-color: rgb(13, 153, 255);
+  color: #fff;
+}
+.tableContainer {
+  background-color: #fff;
+  height: 80vh;
+  overflow-y: auto;
+  /* padding: 5vh; */
+  /* padding-top: 3vh; */
+  padding-bottom: 0;
+  border-top: solid 0.1vw #e2e2e2;
+}
+.tableContainer::-webkit-scrollbar {
+  display: none;
+}
+.dental-visit {
+  margin: 0 5vh;
+  margin-top: 3vh;
+}
+.indent,
+.radiobutton-questions,
+.form-footer,
+label[for="others"],
+label[for="medications"],
+label[for="what"] {
+  padding: 0 5vh;
+}
+.healthHistory {
+  padding-bottom: 5vh;
+}
+.form-footer {
+  display: flex;
+  justify-content: end;
+  gap: 1vh;
+}
+.form-footer button,
+.print {
+  border: none;
+  border-radius: 1vw;
+  background-color: rgb(255, 255, 255);
+  color: rgb(13, 153, 255);
+  font-family: "Poppins", Arial, Helvetica, sans-serif;
+  font-size: 2.5vh;
+  cursor: pointer;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 2px 2px 0px;
+  transition: all 0.3s ease 0s;
+  border: rgba(184, 184, 184, 0.25) solid 1px;
+  padding: 0.5vw 1.5vw;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.form-footer button:hover,
+.print:hover {
+  transition: all 0.3s ease 0s;
+  background-color: rgb(13, 153, 255);
+  color: #fff;
+}
+.dental-visit {
+  display: flex;
+  gap: 0.5rem;
+}
+.dental-visit .when,
+.dental-visit .where {
+  width: 50%;
+}
+form p,
+form label {
+  font-size: 2.5vh;
+}
+input {
+  font-family: "Poppins", sans-serif;
+  font-size: 2.5vh;
+  padding: 0.45rem 0.9rem;
+  border-radius: 0.25rem;
+  border: 1px #2d2d2d solid;
+  cursor: pointer;
+  outline: none;
+  width: 100%;
+  margin-bottom: 0.5rem;
+}
+input[type="date"] {
+  box-shadow: inset 0 1px 1px 0 #00000025;
+  text-align: center;
+}
+.radiobutton-questions iconify-icon {
+  cursor: pointer;
+  font-size: 1.5vw;
+}
+.radiobutton-questions {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.radiobutton-questions p {
+  width: 70%;
+}
+.radiobutton-questions label {
+  width: 15%;
+  display: flex;
+}
+.last {
+  margin-bottom: 1vw;
+}
+.radiobutton-questions span {
+  /* display: none; */
+  cursor: pointer;
+}
+input[type="radio"] {
+  display: none;
+  width: fit-content;
+  margin: 0;
+}
+
+.patientDetails img {
+  width: 20vh;
+  height: 20vh;
+  object-fit: cover;
+  border-radius: 50%;
+}
+.patientDetails {
+  padding: 1vw;
+  font-size: 2.5vh;
+  display: flex;
+  align-items: center;
+  /* gap: 1vw; */
+  width: 100%;
+  justify-content: space-evenly;
+  background-color: #eee;
+  color: #5a5a5a;
+}
+.patientDetails .name {
+  font-size: 4vh;
+  font-weight: 600;
+}
+.personal,
+.contact {
+  width: 40%;
+}
+.phone,
+.email,
+.address {
+  display: flex;
+  gap: 1vw;
+}
+
+.phone .label,
+.email .label,
+.address .label {
+  width: 40%;
+  font-weight: 600;
+}
+
+.phone .input,
+.email .input,
+.address .input {
+  width: 50%;
+  text-align: left;
+}
+.dflex {
+  display: flex;
+  align-items: center;
+  gap: 5vh;
+}
+#dentalHistfory:hover {
+  background-color: rgb(13, 153, 255);
+  color: rgb(255, 255, 255);
+  transition: all 0.3s ease 0s;
+}
+svg {
+  width: 3vh;
+  height: 3vh;
+}
+@media screen and (max-width: 1200px) {
+  .dental-visit {
+    display: block;
+  }
+  .dental-visit .when,
+  .dental-visit .where {
+    width: 100%;
+  }
+}
+@media screen and (max-width: 1000px) {
+  .healthHistory {
+    width: 100%;
+  }
+  .dental-visit {
+    display: flex;
+    /* flex-wrap: wrap; */
+  }
+}
+
+@media screen and (max-width: 710px) {
+  .dental-visit {
+    display: block;
+  }
+  .tab-content .recordType:nth-of-type(2) {
+    margin: 5px 0;
+  }
+}

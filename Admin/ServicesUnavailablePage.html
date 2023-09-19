@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/admin.css">
+    <link rel="stylesheet" href="../css/services.css">
+    <script src="../javascript/serviceUnavailable.js" defer></script>
+    <script src="../javascript/sweetalert2.js" defer></script>
+    <link rel="website icon" type="png " href="../images/logo.png">
+    <script src="https://kit.fontawesome.com/275edc9f9d.js" crossorigin="anonymous" defer></script>
+    <title>Services</title>
+</head>
+
+<body onload="onload()">
+    <section id="main">
+        <div class="header">
+            <div class="headerContainer">
+                <div class="headerContent">
+                    <a href="ServicesMainPage.html" class="headerLink">Available</a>
+                    <a href="" class="headerLink headerLinkActive">Unavailable</a>
+                </div>
+                <div class="profile">
+                    <div class="info">
+                        <span id="name">
+                            Arellano, John Kenneth R.
+                        </span>
+                        <span id="role">
+                            Dentist
+                        </span>
+                    </div>
+                    <div class="profileHolder">
+                        <img src="../images/kenneth.png" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="sidebar">
+            <img src="../images/logo.png" alt="">
+            <nav>
+                <ul>
+                    <li><a href="Dashboard.html" class="links"><i class="fa-solid fa-house-chimney"></i></a></li>
+                    <li><a href="StaffsMainPage.html" class="links"><i class="fa-solid fa-user-nurse"></i></a></li>
+                    <li><a href="PatientsMainPage.html" class="links"><i class="fa-solid fa-hospital-user"></i></a></li>
+                    <li><a href="" class="links activePage"><i class="fa-solid fa-hand-holding-medical"></i></a></li>
+                    <li><a href="MedicinesMainPage.html" class="links"><i class="fa-solid fa-pills"></i></i></a></li>
+                    <li><a href="AppointmentsMainPage.html" class="links"><i class="fa-solid fa-calendar-check"></i></a>
+                    </li>
+                    <li><a href="ArchivesMainPage.html" class="links"><i class="fa-solid fa-boxes-packing"></i></a></li>
+                    <li><a href="Settings.html" class="links"><i class="fa-solid fa-gear"></i></a></li>
+                </ul>
+            </nav>
+        </div>
+        <div class="mainContainer">
+            <div class="containerHeader">
+                <span class="pageTitle">Services</span>
+                <div class="sort">
+                    <div class="searchBar">
+                        <input type="text" placeholder="Search" id="search">
+                        <i class="fa-sharp fa-solid fa-magnifying-glass"></i>
+                    </div>
+                </div>
+            </div>
+            <div id="containerBody">
+            </div>
+            <div class="formContainer hidden" id="formContainer">
+                <form action="" class="formHandler hidden" id="editServicesForm">
+                    <div class="formTitle">Edit Service</div>
+                    <div class="formBody">
+                        <div class="formBody1">
+                            <div class="imgHolderService" id="dropArea" ondrop="handleDrop(event)"
+                                ondragover="handleDragOver(event)">
+                                <label for="fileInput" id="uploadImg"><i class="fa-solid fa-camera"></i></label>
+                                <input type="file" id="fileInput" onchange="previewImage(event)">
+                                <img id="preview" src="../images/placeholder.png" alt="">
+                            </div>
+                            <label class="formLabel" for="serviceDescriptionEdit">Service Description <span
+                                    style="color: #fa6363;">*</span></label>
+                            <textarea name="" id="serviceDescriptionEdit"
+                                placeholder="Get a brighter smile with our professional teeth whitening treatment."></textarea>
+                        </div>
+                        <div class="formBody1">
+                            <div class="inputHolder">
+                                <label for="serviceNameEdit" class="formLabel">Service Name<span
+                                        style="color: #fa6363;">*</span></label>
+                                <input class="formInput" type="text" id="serviceNameEdit"
+                                    placeholder="Ex. Teet Whitening">
+                            </div>
+                            <span class="servicesLabel">Concurrent Services</span>
+                            <div class="checkboxes" id="checkboxesEdit">
+
+                            </div>
+                            <div class="buttonContainer">
+                                <button class="cancelAction" id="cancelEdit" type="button">Cancel</button>
+                                <button class="saveAction" id="saveEdit" type="button">Save</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <!-- template loader -->
+            <template id="templateLoader">
+                <div class="servicesContainer">
+                    <div class="service skeleton">
+                        <div class="serviceHeader">
+                            <span id="serviceName" class="skeleton1"></span>
+                        </div>
+                        <div class="serviceBody">
+                            <div class="serviceImgHolder skeleton1">
+                            </div>
+                            <span class="serviceInfo">
+                                <div class="span1 skeleton1"></div>
+                                <div class="span2 skeleton1"></div>
+                                <div class="span1 skeleton1 "></div>
+                                <div class="span2 skeleton1"></div>
+                                <div class="span3 skeleton1"></div>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </template>
+            
+            <!-- No Data Found Template -->
+            <template id="no-data-found">
+                <div class="no-data-found" >
+                    <img src="../images/No Data Found.png" alt="">
+                </div>
+            </template>   
+
+            <template id="mainTemplate">
+                <div class="servicesContainer">
+                    <div class="service">
+                        <div class="serviceHeader">
+                            <span style="display: none;" id="serviceId"></span>
+                            <span class="spanHeader" id="serviceName"></span>
+                            <i class="fa-solid fa-ellipsis-vertical selectAction"></i>
+                            <div class="serviceOptions hidden" id="serviceOptions">
+                                <span class="editService">Edit</span>
+                                <span class="deleteService">Delete</span>
+                                <span class="unavailableService">Unavailable</span>
+                            </div>
+                        </div>
+                        <div class="serviceBody">
+                            <div class="serviceImgHolder">
+                                <img src="../images/4.jpeg" alt="" id="imgHold">
+                            </div>
+                            <span id="serviceInfo" class="serviceInfo">
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </template>
+
+            <!-- template checkbox -->
+            <template id="templateCheckbox">
+                <div class="checkboxContainer">
+                    <div class="checkbox">
+                        <span style="display: none;" id="serviceIdCheckBox"></span>
+                        <span style="display: none;" id="serviceOriginalName"></span>
+                        <input type="checkbox" name="" id="" style="display: none;">
+                        <label for="" class="checkboxLabel">
+                            <i class="fa-solid fa-circle-check"></i>
+                            <span id="serviceName">Service 1</span>
+                        </label>
+                    </div>
+                </div>
+            </template>
+
+            <!-- template checkbox loader -->
+            <template id="templateCheckboxLoader">
+                <div class="checkboxContainer">
+                    <div class="checkbox">
+                        <label for="" class="checkboxLabel skeleton1">
+                            <span id="serviceName"></span>
+                        </label>
+                    </div>
+                </div>
+            </template>
+        </div>
+    </section>
+</body>
+
+</html>

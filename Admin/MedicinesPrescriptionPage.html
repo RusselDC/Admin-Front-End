@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/admin.css">
+    <link rel="stylesheet" href="../css/medicine.css">
+    <script src="../javascript/medicinePrescription.js" defer></script>
+    <script src="../javascript/sweetalert2.js" defer></script>
+    <link rel="website icon" type="png " href="../images/logo.png">
+    <script src="https://kit.fontawesome.com/275edc9f9d.js" crossorigin="anonymous" defer></script>
+    <title>Medicine</title>
+</head>
+
+<body onload="onload()">
+    <section id="main">
+        <div class="header">
+            <div class="headerContainer">
+                <div class="headerContent">
+                    <a href="MedicinesMainPage.html" class="headerLink">Available</a>
+                    <a href="MedicinesCriticalPage.html" class="headerLink ">Critical Stocks</a>
+                    <a href="MedicinesExpirationPage.html" class="headerLink ">Expiration Report</a>
+                    <a href="" class="headerLink headerLinkActive">Presc. History</a>
+                </div>
+                <div class="profile">
+                    <div class="info">
+                        <span id="name">
+                            Arellano, John Kenneth R.
+                        </span>
+                        <span id="role">
+                            Dentist
+                        </span>
+                    </div>
+                    <div class="profileHolder">
+                        <img src="../images/kenneth.png" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="sidebar">
+            <img src="../images/logo.png" alt="">
+            <nav>
+                <ul>
+                    <li><a href="Dashboard.html" class="links"><i class="fa-solid fa-house-chimney"></i></a></li>
+                    <li><a href="StaffsMainPage.html" class="links"><i class="fa-solid fa-user-nurse"></i></a></li>
+                    <li><a href="PatientsMainPage.html" class="links"><i class="fa-solid fa-hospital-user"></i></a></li>
+                    <li><a href="ServicesMainPage.html" class="links"><i
+                                class="fa-solid fa-hand-holding-medical"></i></a></li>
+                    <li><a href="" class="links activePage"><i class="fa-solid fa-pills"></i></i></a></li>
+                    <li><a href="AppointmentsMainPage.html" class="links"><i class="fa-solid fa-calendar-check"></i></a>
+                    </li>
+                    <li><a href="ArchivesMainPage.html" class="links"><i class="fa-solid fa-boxes-packing"></i></a></li>
+                    <li><a href="Settings.html" class="links"><i class="fa-solid fa-gear"></i></a></li>
+                </ul>
+            </nav>
+        </div>
+        <div class="mainContainer">
+            <div class="containerHeader">
+                <span class="pageTitle">Medicine</span>
+                <div class="sort">
+                    <div class="searchBar">
+                        <input type="text" placeholder="Search" id="search">
+                        <i class="fa-sharp fa-solid fa-magnifying-glass"></i>
+                    </div>
+                </div>
+            </div>
+            <div id="containerBody">
+
+            </div>
+            <!-- No Data Found Template -->
+            <template id="no-data-found">
+                <div class="no-data-found" >
+                    <img src="../images/No Data Found.png" alt="">
+                </div>
+            </template>           
+            <template id="medsInfo">
+                <div class="medicineInformations">
+                    <div class="patientNamePrescribe">
+                        <span class="medicineTypes">NAME </span>
+                        <span class="clt" id="patientNamePrescribe"></span>
+                        <span style="display: none;" class="clt" id="patientNamePrescribeOriginal"></span>
+                    </div>
+                    <div class="prescribedBy">
+                        <span class="medicineIDS">ISSUED BY</span>
+                        <span class="clt" id="issuedBy"></span>
+                        <span style="display: none;" class="clt" id="issuedByOriginal"></span>
+                    </div>
+                    <div class="dateIssued">
+                        <span class="medicineBrands">DATE ISSUED</span>
+                        <span class="clt" id="medicineBrand"></span>
+                    </div>
+                    <div class="prescribeInfo">
+                        <span class="Expiration">INFO</span>
+                        <span class="clt" id="medicineinfos"></span>
+                        <span class="clt" style="display: none;" id="medicineinfosOriginal"></span>
+                    </div>
+                    <div class="medicineOptions">
+                        <i class="fa-solid fa-file-prescription prescribeMedicine"></i>
+                    </div>
+                    <span style="display: none;" id="patientAge"></span>
+                    <span style="display: none;" id="patientAddress"></span>
+
+                </div>
+            </template>
+            <!-- loader -->
+            <template id="templateMedicineType">
+                <div class="accordion" id="accordionLoader">
+                    <div class="accordionHeader skeleton "><span class="medicineType skeleton1"></span></div>
+                </div>
+            </template>
+
+        </div>
+        <div class="bg hidden" id="bg">
+            <div class="printPage" id="printPage">
+                <header>
+                    <img src="../images/logo.png" alt="">
+                    <div class="clinicName"><span>Pablo De Jesus</span><span>Dental Clinic</span></div>
+                </header>
+                <div class="clinicInfo">
+                    <div class="clinicDoctor">
+                        <div><span>Dr/a. </span><span id="dentistName"></span></div>
+                        <div id="position">Dentist</div>
+                    </div>
+                    <div class="clinicContacts">
+                        <div id="clinicAddress">Dito lang sa malapit</div>
+                        <div id="clinicNumber">+(63) 9123123123</div>
+                    </div>
+                </div>
+                <div class="patientInformation">
+                    <div class="nameAddress">
+                        <div>
+                            <span>Patient's Name : </span>
+                            <span id="patientName"></span>
+                        </div>
+                        <div>
+                            <span>Address : </span>
+                            <span id="patientAddress"></span>
+                        </div>
+                    </div>
+                    <div class="ageDate">
+                        <div>
+                            <span>Age : </span>
+                            <span id="patientAge"></span>
+                        </div>
+                        <div>
+                            <span>Date : </span>
+                            <span id="datePrescribed"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="medicinesPrescribed">
+                    <i class="fa-solid fa-prescription"></i>
+                    <div id="prescribedMedicineContainer">
+                        <span class="medicinesPrescribedInfo"></span>
+                    </div>
+                </div>
+                <footer>
+                    <div class="doctorSignature">
+                        <span>Doctor's Signature : </span>
+                    </div>
+                </footer>
+            </div>
+            <div class="buttonsHolder">
+                <button id="printButton"><i class="fa-solid fa-print"></i><span>Print</span></button>
+                <button id="cancelPrint">Cancel</button>
+            </div>
+        </div>
+    </section>
+</body>
+
+</html>

@@ -1,0 +1,189 @@
+:root{
+    --blue:#0D99FF;
+    --lightgray:#9C9C9C;
+    --darkgray:#414141;
+    --white:#ffffff;        
+    --orange: #FCC865; 
+    --green: #73E977;
+    --red:#fa6363;
+    --smaller:.8vw;
+    --small: 1vw;
+    --medium: 1.2vw;
+    --large: 2.5vw;
+    --larger: 3vw;
+}
+.tableContainer{
+    position: relative;
+    width: 100%;
+    height: 82vh;
+    grid-area: containerBody;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 2.5vh;
+}
+#staffContainerTable{
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    border-collapse: collapse;
+    background-color: #EDECED;
+}
+thead{
+    display: table;
+    width: 100%;
+    height: 7vh;
+    font-size: var(--medium);
+    background-color: var(--white);
+}
+thead tr{
+    color:  var(--darkgray) ;
+}
+.staffTable{
+    width:22%;
+}
+.positionTable{
+    width: 15%;
+}
+.contactTable{
+    width: 15%;
+}
+.emailTable{
+    width: 25%;
+}
+.statusTable{
+    width: 10%;
+}
+.actionsTable{
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+tbody{
+    display: block;
+    width: 100%;
+    max-height: 75vh;
+    overflow-y: scroll;
+}
+tbody::-webkit-scrollbar{
+    display: none;
+}
+tr{
+    display: table;
+    width: 100%;
+    height: 7vh;
+    text-align: center;
+    font-size: var(--small);
+    background-color: var(--white);
+    border: solid 1px rgb(233, 232, 232);
+    border-width: 0 0 1px 0;
+    color: black;
+    transition: all ease .3s;
+    letter-spacing: .02vw;
+}
+#tableBody tr:hover{
+    background-color: rgb(233, 232, 232);
+}
+th, td{
+    width: 100%;
+    height: 100%;
+}
+.numberTablediv{
+    width: 100%; 
+    height: 10vh;
+    animation: show 1s ease-in;   
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.imgHolderNameTable{
+    width: 3vw;    
+    height: 3vw;
+    border-radius: 50%;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.imgHolderNameTable img{
+    flex-shrink: 0;
+    width: 100%;
+}
+#nameTable{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+#staffName{
+    min-width: 10vw;
+    height: 4vh;
+    border-radius: .4vw;
+    text-align: left;
+    padding: .5vh;
+}
+#position{
+    min-width: 10vw;
+    height: 4vh;
+    border-radius: .4vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#contactNumber{
+    min-width: 13vw;
+    height: 4vh;
+    border-radius: .4vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#emailAddresss{
+    min-width: 15vw;
+    height: 4vh;
+    border-radius: .4vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#status{
+    min-width: 6vw;
+    height: 4vh;
+    border-radius:  4vw;
+    font-size: var(--smaller);
+    color: var(--white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#actionsTable{
+    width: fit-content;
+    height: fit-content;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#actionsTable i{
+    margin-right: 1vw;
+    cursor: pointer;
+}
+#actionsTable i:last-child{
+    margin-right: 0;
+}
+.highlight {
+    background-color: lightgray;
+    width: fit-content;
+    height: fit-content;
+    display: inline-flex;   
+}
+.fa-eye{
+    color: var(--green);
+}
+.fa-pen{
+    color: var(--blue);
+}
+.fa-trash{
+    color: var(--red);
+}

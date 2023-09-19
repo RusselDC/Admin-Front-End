@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/admin.css">
+    <link rel="stylesheet" href="../css/medicine.css">
+    <script src="../javascript/Medicine.js"  defer></script>
+    <link rel="website icon" type="png " href="../images/logo.png">
+    <script src="https://kit.fontawesome.com/275edc9f9d.js" crossorigin="anonymous" defer></script>
+    <title>Archive</title>
+</head>
+<body onload="onload()">
+    <section id="main">
+        <div class="header">
+            <div class="headerContainer">
+                <div class="headerContent"> 
+                    <a href="MedicinesMainPage.html" class="headerLink">Available</a> 
+                    <a href="" class="headerLink headerLinkActive">Unavailable</a>                  
+                </div>
+                <div class="profile">
+                    <div class="info">
+                        <span id="name">
+                            Arellano, John Kenneth R.
+                        </span>
+                        <span id="role">
+                            Dentist
+                        </span>
+                    </div>
+                    <div class="profileHolder">
+                        <img src="../images/kenneth.png" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="sidebar">
+            <img src="../images/logo.png" alt="">
+            <nav>
+                <ul>
+                    <li ><a href="Dashboard.html" class="links"><i class="fa-solid fa-house-chimney"></i></a></li>
+                    <li><a href="StaffsMainPage.html" class="links"><i class="fa-solid fa-user-nurse"></i></a></li>
+                    <li><a href="PatientsMainPage.html" class="links"><i class="fa-solid fa-hospital-user"></i></a></li>
+                    <li><a href="ServicesMainPage.html" class="links"><i class="fa-solid fa-hand-holding-medical"></i></a></li>
+                    <li><a href="" class="links activePage"><i class="fa-solid fa-pills"></i></i></a></li>
+                    <li><a href="AppointmentsMainPage.html" class="links"><i class="fa-solid fa-calendar-check"></i></a></li>
+                    <li><a href="ArchivesMainPage.html" class="links"><i class="fa-solid fa-boxes-packing"></i></a></li>
+                    <li><a href="Settings.html" class="links"><i class="fa-solid fa-gear"></i></a></li>
+                </ul>
+            </nav>
+        </div>
+        <div class="mainContainer">
+            <div class="containerHeader">
+                <span class="pageTitle">Medicine</span>
+                <div class="sort">
+                    <div class="searchBar">
+                        <input type="text" placeholder="Search" id="search">
+                        <i class="fa-sharp fa-solid fa-magnifying-glass"></i>
+                    </div>
+                    <button class="sortButton" id="sortButton"><span id="sortText">All</span> <i class="fa-solid fa-caret-down"></i></button>
+                    <button><span>Medicine</span><i class="fa-solid fa-plus "></i></button>
+                    <div class="sortOptions" id="sortOptions">
+                        <span id="allMedicine">All</span>
+                        <span id="stockAvailable">Date & Time</span>
+                    </div>
+                </div>
+            </div>
+            <div id="containerBody">
+                                <!-- Medicine Type Template -->
+                                <div class="accordion">
+                                    <div class="accordionHeader">Analgesic<i class="fa-solid fa-caret-down openMedicines"></i></div>
+                                    <div class="accordionBody">
+                                        <div class="medicineContainer">
+                                            <div class="medicines">
+                                                <div class="medicineName">Ibufrofen<i class="fa-solid fa-caret-down openDescriptions"></i></div>
+                                                <div class="medicineCountAndExpiration">
+                                                    <div class="medicineCount"><span class="total">Total</span><span class="medicineTotal">12</span></div>
+                                                    <div class="medicineExpiration"><span class="Expiration">Expiration</span><span class="medicineExpirationDate">12-23-2025</span></div>
+                                                    <i class="fa-solid fa-pen"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>  
+                                </div> 
+            
+            
+                            <!-- Medicine Only Template  -->
+            
+                                <div class="medicines">
+                                    <div class="medicineName">Ibufrofen<i class="fa-solid fa-caret-down openDescriptions"></i></div>
+                                    <div class="medicineCountAndExpiration">
+                                        <div class="medicineCount"><span class="total">Total</span><span class="medicineTotal">12</span></div>
+                                        <div class="medicineExpiration"><span class="Expiration">Expiration</span><span class="medicineExpirationDate">12-23-2025</span></div>
+                                        <i class="fa-solid fa-pen"></i>
+                                    </div>
+                                </div>
+            </div>
+            
+        </div>
+    </section>
+</body>
+</html>

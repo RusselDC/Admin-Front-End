@@ -1,0 +1,282 @@
+.tableContainer {
+  background-color: #fff;
+  height: 80vh;
+  overflow-y: auto;
+  padding-bottom: 5vh;
+}
+.tableContainer::-webkit-scrollbar {
+  display: none;
+}
+.containerHeader {
+  border-bottom: solid 0.1vw #e2e2e2;
+}
+.patientDetails img {
+  width: 11.5vw;
+  height: 11.5vw;
+  object-fit: cover;
+  border-radius: 50%;
+}
+.patientDetails {
+  padding: 1vw;
+  font-size: var(--medium);
+  display: flex;
+  align-items: center;
+  gap: 1vw;
+  justify-content: space-evenly;
+  color: #5a5a5a;
+}
+.patientDetails .name {
+  font-size: var(--large);
+  font-weight: 600;
+}
+.personal,
+.contact {
+  width: 40%;
+}
+.phone,
+.email,
+.address {
+  display: flex;
+  gap: 1vw;
+}
+
+.phone .label,
+.email .label,
+.address .label {
+  width: 40%;
+  font-weight: 600;
+}
+
+.phone .input,
+.email .input,
+.address .input {
+  width: 50%;
+  text-align: left;
+}
+
+.goback {
+  display: flex;
+  gap: 0.25vw;
+  align-items: center;
+  font-weight: 500;
+  font-family: "Poppins", Arial, Helvetica, sans-serif;
+  padding: 0.5vw 1.5vw;
+  font-size: var(--small);
+  cursor: pointer;
+  box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.25);
+  transition: all 0.3s ease 0s;
+  position: fixed;
+  bottom: 1vw;
+  left: 9vw;
+  border: none;
+  border-radius: 1vw;
+  background-color: #fff;
+  color: rgb(13, 153, 255);
+}
+#printDentalChart {
+  display: flex;
+  gap: 0.25vw;
+  align-items: center;
+  font-weight: 500;
+  font-family: "Poppins", Arial, Helvetica, sans-serif;
+  padding: 0.5vw 1.5vw;
+  font-size: var(--small);
+  cursor: pointer;
+  box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.25);
+  transition: all 0.3s ease 0s;
+  position: fixed;
+  bottom: 1vw;
+  right: 2vw;
+  border: none;
+  border-radius: 1vw;
+  background-color: #fff;
+  color: rgb(13, 153, 255);
+}
+.goback:hover,
+#printDentalChart:hover {
+  transition: all 0.3s ease 0s;
+  background-color: rgb(13, 153, 255);
+  color: #fff;
+}
+/* .dentalChart {
+  padding: 3vh 5vh 5vh 5vh;
+} */
+
+/* dental chart ------------------------------------------------------------*/
+/* .dental-condition {
+  width: 98%;
+  background-color: var(--white);
+  border-radius: 1vh;
+  box-shadow: 0 0.6vh 0.6vh 0 #00000025;
+  padding: 5vh 3vh;
+} */
+#dental-condition {
+  padding: 3vh 5vh 5vh 5vh;
+}
+.patient-details {
+  font-size: 2vh;
+  width: 100%;
+}
+.patient-details div {
+  display: flex;
+  gap: 1vh;
+  align-items: end;
+  width: 100%;
+  margin-bottom: 1vh;
+}
+.patient-details div label {
+  white-space: nowrap;
+  font-weight: 600;
+}
+.patient-details div span {
+  border-bottom: solid 1px #2d2d2d;
+  width: 100%;
+}
+.teeth {
+  width: 100%;
+}
+.teeth .row {
+  display: flex;
+  align-items: center;
+}
+.left .row {
+  justify-content: end;
+}
+.right .row {
+  justify-content: start;
+}
+.left .row label {
+  margin-right: 1vh;
+  font-size: 1.5vw;
+  font-weight: 600;
+}
+.right .row label {
+  margin-left: 1vh;
+  font-size: 1.5vw;
+  font-weight: 600;
+}
+.teeth .upper,
+.teeth .lower {
+  width: 100%;
+}
+.dental-chart {
+  display: flex;
+  align-items: center;
+  gap: 1vw;
+  justify-content: center;
+  margin: 5vh 0;
+}
+.permanent {
+  margin-left: 1vh;
+  font-size: 1.5vw;
+  font-weight: 600;
+  text-align: center;
+  /* writing-mode: vertical-rl; */
+  /* rotate: 180deg; */
+}
+.teeth .lower {
+  border-top: solid 0.25vw #2d2d2d;
+}
+.teeth .upper {
+  border-bottom: solid 0.25vw #2d2d2d;
+}
+.teeth .right {
+  border-left: solid 0.25vw #2d2d2d;
+}
+.teeth .left {
+  border-right: solid 0.25vw #2d2d2d;
+}
+.teeth .left,
+.teeth .right {
+  width: 50%;
+}
+.teeth .upper,
+.teeth .lower {
+  display: flex;
+}
+.row .number {
+  width: 2.5vw;
+  font-size: 1.2vw;
+  text-align: center;
+}
+.right .row.temp label {
+  visibility: hidden;
+}
+.row.temp {
+  justify-content: center;
+}
+.row.temp label {
+  text-align: center;
+}
+.teeth input {
+  width: 2.5vw;
+  height: 2.5vw;
+  outline: none;
+  text-align: center;
+  border: solid 1px #2d2d2d;
+}
+.category {
+  font-weight: 600;
+}
+.mark .icons {
+  text-align: right;
+  font-weight: 600;
+}
+.mark .group {
+  display: flex;
+  gap: 1vh;
+}
+.mark input[type="checkbox"] {
+  margin-right: 1vh;
+}
+p.others {
+  display: flex;
+  gap: 0.5vh;
+}
+p.others span {
+  display: flex;
+  flex-direction: column;
+}
+p.others span input,
+.preriapical input {
+  outline: none;
+  border: none;
+  border-bottom: solid 1px #2d2d2d;
+  text-align: center;
+  width: 10vw;
+  font-size: 1.8vw;
+  width: fit-content;
+}
+.preriapical input {
+  width: fit-content;
+}
+.preap {
+  margin-bottom: 1vh;
+}
+.marks,
+.oat {
+  display: flex;
+  gap: 2vw;
+  width: 100%;
+  justify-content: space-evenly;
+  font-size: 1.2vw;
+}
+.oat {
+  margin-top: 2vw;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.oat .mark {
+  min-width: fit-content;
+}
+.marks .left,
+.marks .right {
+  display: flex;
+  flex-direction: column;
+  gap: 3vh;
+  justify-content: space-evenly;
+}
+input {
+  background: none;
+  font-family: "Poppins", Arial, Helvetica, sans-serif;
+}

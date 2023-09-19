@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/admin.css">
+    <link rel="stylesheet" href="../css/medicine.css">
+    <script src="../javascript/Medicine.js" defer></script>
+    <script src="../javascript/sweetalert2.js" defer></script>
+    <link rel="website icon" type="png " href="../images/logo.png">
+    <script src="https://kit.fontawesome.com/275edc9f9d.js" crossorigin="anonymous" defer></script>
+    <title>Medicine</title>
+</head>
+
+<body onload="onload()">
+    <section id="main">
+        <div class="header">
+            <div class="headerContainer">
+                <div class="headerContent">
+                    <a href="" class="headerLink headerLinkActive">Available</a>
+                    <a href="MedicinesCriticalPage.html" class="headerLink">Critical Stocks</a>
+                    <a href="MedicinesExpirationPage.html" class="headerLink">Expiration</a>
+                    <a href="MedicinesPrescriptionPage.html" class="headerLink">Presc. History</a>
+                </div>
+                <div class="profile">
+                    <div class="info">
+                        <span id="name">
+                            Arellano, John Kenneth R.
+                        </span>
+                        <span id="role">
+                            Dentist
+                        </span>
+                    </div>
+                    <div class="profileHolder">
+                        <img src="../images/kenneth.png" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="sidebar">
+            <img src="../images/logo.png" alt="">
+            <nav>
+                <ul>
+                    <li><a href="Dashboard.html" class="links"><i class="fa-solid fa-house-chimney"></i></a></li>
+                    <li><a href="StaffsMainPage.html" class="links"><i class="fa-solid fa-user-nurse"></i></a></li>
+                    <li><a href="PatientsMainPage.html" class="links"><i class="fa-solid fa-hospital-user"></i></a></li>
+                    <li><a href="ServicesMainPage.html" class="links"><i
+                                class="fa-solid fa-hand-holding-medical"></i></a></li>
+                    <li><a href="" class="links activePage"><i class="fa-solid fa-pills"></i></i></a></li>
+                    <li><a href="AppointmentsMainPage.html" class="links"><i class="fa-solid fa-calendar-check"></i></a>
+                    </li>
+                    <li><a href="ArchivesMainPage.html" class="links"><i class="fa-solid fa-boxes-packing"></i></a></li>
+                    <li><a href="Settings.html" class="links"><i class="fa-solid fa-gear"></i></a></li>
+                </ul>
+            </nav>
+        </div>
+        <div class="mainContainer">
+            <div class="containerHeader">
+                <span class="pageTitle">Medicine</span>
+                <div class="sort">
+                    <div class="searchBar">
+                        <input type="text" placeholder="Search" id="search">
+                        <i class="fa-sharp fa-solid fa-magnifying-glass"></i>
+                    </div>
+                    <button id="addMedicine"><span>Medicine</span><i class="fa-solid fa-plus "></i></button>
+                </div>
+            </div>
+            <div id="containerBody">
+                
+            </div>
+            <!-- No Data Found Template -->
+            <template id="no-data-found">
+                <div class="no-data-found" >
+                    <img src="../images/No Data Found.png" alt="">
+                </div>
+            </template>
+            <!-- Medicine Type Template -->
+            <template id="medicineTypeTemplate">
+                <div class="accordion">
+                    <div class="accordionHeader"><span class="medicineType" id="medicineType"></span><i
+                            class="fa-solid fa-caret-down openMedicines"></i></div>
+                    <div class="accordionBody">
+                        <div class="medicineContainer" id="medicineContainer">
+                        </div>
+                    </div>
+                </div>
+            </template>
+
+            <!-- Medicine Only Template  -->
+            <template id="medicineOnlyTemplate">
+                <div class="medicines ">
+                    <div class="medicineName">
+                        <div class="medicineNameAndType">
+                            <span id="medicineName"></span>
+                        </div>
+                        <i class="fa-solid fa-caret-down openDescriptions"></i>
+                    </div>
+                    <div class="medicineCountAndExpiration" id="medicineCountAndExpiration">
+                    </div>
+                </div>
+            </template>
+
+            <template id="medsInfo">
+                <div class="medicineInformations">
+                    <div class="cltType"><span class="medicineTypes">Type </span><span class="clt"
+                            id="medicineTypes"></span></div>
+                    <div class="medicineID"><span class="medicineIDS">ID</span><span class="clt"
+                            id="medicineID"></span><span style="display: none;" id=medicineIDOriginal></span></div>
+                    <div class="medicineBrandName"><span class="medicineBrands">BRAND</span> <span class="clt"
+                            id="medicineBrand"></span><span style="display: none;" id=medicineBrandOriginal></span>
+                    </div>
+                    <div class="medicineCount"><span class="total">TOTAL</span><span class="clt"
+                            id="medicineTotal"></span></div>
+                    <div style="display: none;">
+                        <span" id="manufacturedDate"></span>
+                    </div>
+                    <div style="display: none;">
+                        <span" id="mgML"></span>
+                    </div>
+                    <div style="display: none;">
+                        <span" id="medicineDosage"></span>
+                    </div>
+                    <div style="display: none;">
+                        <span" id="lowStockValue"></span>
+                    </div>
+                    <div style="display: none;">
+                        <span" id="medicineDescription"></span>
+                    </div>
+                    <div class="medicineExpiration"><span class="Expiration">EXPIRATION</span><span class="clt"
+                            id="medicineExpirationDate"></span></div>
+                    <div class="medicineOptions">
+                        <i class="fa-solid fa-eye viewMedicine"></i>
+                        <i class="fa-solid fa-file-prescription prescribeMedicine"></i>
+                        <i class="fa-solid fa-pen editMedicine"></i>
+                        <i class="fa-solid fa-trash deleteMedicine"></i>
+                    </div>
+                </div>
+            </template>
+            <!-- loader -->
+            <template id="templateMedicineType">
+                <div class="accordion" id="accordionLoader">
+                    <div class="accordionHeader skeleton "><span class="medicineType skeleton1"></span></div>
+                </div>
+            </template>
+
+
+            <!-- Add Medicine -->
+            <div class="medicinesForm" id="addMedicineForm">
+                <form action="" id="addMedicineFormContainer">
+                    <div class="formTitle">Add Medicine</div>
+                    <div class="inputHolder">
+                        <input type="text" class="inputValue" placeholder="Medicine Classification"
+                            id="medicineClassification" autocomplete="off">
+                        <div class="medicineClassificationHolder" id="medicineClassificationHolder">
+                        </div>
+                    </div>
+                    <div class="inputHolder1">
+                        <div class="medicineNameHolder">
+                            <label for="medicineNameAdd" class="labelForm">Medicine Name <span
+                                    class="asterisk">*</span></label>
+                            <input type="text" id="medicineNameAdd" class="inputValue" placeholder="Ex. Ibufrofen"
+                                name="medicineName">
+                        </div>
+                        <div class="medicineIdHolder">
+                            <label for="medicineIDAdd" class="labelForm">Medicine Id <span
+                                    class="asterisk">*</span></label>
+                            <input type="text" id="medicineIDAdd" class="inputValue" placeholder="ADV-1253"
+                                name="medicineID">
+                        </div>
+                    </div>
+                    <div class="inputHolder1">
+                        <div class="medicineBrand">
+                            <label for="medicineBrandName" class="labelForm">Medicine Brand <span
+                                    class="asterisk">*</span></label>
+                            <input type="text" id="medicineBrandName" class="inputValue" placeholder="Ex. Advil PM"
+                                name="medicineBrand">
+                        </div>
+                        <div class="medicineDosage">
+                            <label for="dosage" class="labelForm">Dosage <span class="asterisk">*</span></label>
+                            <div class="dosageContainer">
+                                <input type="text" name="dosage" style="display:none;" value="15" id="dosageValue" />
+                                <input type="number" id="medicineDosage" class=" inputValue" value="15" min="0">
+                                <span class="caretDosage" id="sortCarretDosage"><span id="dosageType">ML</span> <i
+                                        class="fa-solid fa-caret-down sortCarretDosageTypeCaret"></i></span>
+                                <div class="dosageOptions" id="dosageOptions">
+                                    <span>ML</span>
+                                    <span>MG</span>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="inputHolder2">
+                        <div class="medicineHolder">
+                            <label for="medicineTypeHolder" class="labelForm">Type <span class="asterisk">*</span>
+                            </label>
+                            <div class="medicineTypeContainer">
+                                <input type="text" name="medicineType" style="display:none;" value="Tablet"
+                                    id="medicineTypeValue" />
+                                <span class="medicineTypeHolder" id="medicineTypeHolder"><span
+                                        id="medicineTypeName">Tablet</span> <i
+                                        class="fa-solid fa-caret-down sortCarretTypeCaret"></i></span>
+                                <div class="medicineTypeOptions" id="medicineTypeOptions">
+                                    <span>Tablet</span>
+                                    <span>Capsule</span>
+                                    <span>Liquid</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="medicineStocksCount">
+                            <label for="medicineStock" class="labelForm">Stock<span class="asterisk">*</span></label>
+                            <input type="number" id="medicineStock" class="inputValue" min="0" value="30">
+                        </div>
+                        <div class="medicineLowStock">
+                            <label for="medicineLowStock" class="labelForm">Low Stock <span
+                                    class="asterisk">*</span></label>
+                            <input type="number" id="medicineLowStock" class="inputValue" value="20" min="0">
+                        </div>
+                    </div>
+                    <div class="inputHolder">
+                        <label for="medicineDescription" class="labelForm">Description <span
+                                class="asterisk">*</span></label>
+                        <textarea name="" id="medicineDescription" cols="30" rows="3" placeholder="Ex. Pain reliever"
+                            name="medicineDesciption"></textarea>
+                    </div>
+                    <div class="inputHolder2">
+                        <div class="manufacturedDate">
+                            <label for="medicineManufacturedDate" class="labelForm">Manufactured Date <span
+                                    class="asterisk">*</span></label>
+                            <input type="date" id="medicineManufacturedDate">
+                        </div>
+                        <div class="manufacturedDate">
+                            <label for="expirationDate" class="labelForm">Expiration Date <span
+                                    class="asterisk">*</span></label>
+                            <input type="date" id="expirationDate">
+                        </div>
+                    </div>
+                    <div class="buttonForm">
+                        <button id="addMedicineFormCancel" class="cancelButton" type="button">Cancel</button>
+                        <button id="addMedicineFormFormSubmit" class="submitButton" type="button">Save</button>
+                    </div>
+                </form>
+            </div>
+            <!-- Edit Medicine -->
+            <div class="medicinesForm" id="editMedicineForm">
+                <form action="" id="editMedicineFormContainer">
+                    <div class="formTitle">Edit Medicine</div>
+                    <div class="inputHolder">
+                        <input type="text" class="inputValue" placeholder="Medicine Classification"
+                            id="medicineClassificationEdit" autocomplete="off">
+                        <div class="medicineClassificationHolder" id="medicineClassificationHolderEdit">
+                        </div>
+                    </div>
+                    <div class="inputHolder1">
+                        <div class="medicineNameHolder">
+                            <label for="medicineNameEdit" class="labelForm">Medicine Name <span
+                                    class="asterisk">*</span></label>
+                            <input type="text" id="medicineNameEdit" class="inputValue" placeholder="Ex. Ibufrofen"
+                                name="medicineNameEdit">
+                        </div>
+                        <div class="medicineIdHolder">
+                            <label for="medicineIDEdit" class="labelForm">Medicine Id <span
+                                    class="asterisk">*</span></label>
+                            <input type="text" id="medicineIDEdit" class="inputValue" placeholder="ADV-1253"
+                                name="medicineIDEdit">
+                        </div>
+                    </div>
+                    <div class="inputHolder1">
+                        <div class="medicineBrand">
+                            <label for="medicineBrandNameEdit" class="labelForm">Medicine Brand <span
+                                    class="asterisk">*</span></label>
+                            <input type="text" id="medicineBrandNameEdit" class="inputValue" placeholder="Ex. Advil PM"
+                                name="medicineBrand">
+                        </div>
+                        <div class="medicineDosage">
+                            <label for="medicineDosageEdit" class="labelForm">Dosage <span
+                                    class="asterisk">*</span></label>
+                            <div class="dosageContainer">
+                                <input type="text" name="dosage" style="display:none;" id="dosageValueEdit" />
+                                <input type="number" id="medicineDosageEdit" class=" inputValue" value="15" min="0">
+                                <span class="caretDosage" id="sortCarretDosageEdit"><span id="dosageTypeEdit">ML</span>
+                                    <i class="fa-solid fa-caret-down sortCarretDosageTypeCaret"></i></span>
+                                <div class="dosageOptions" id="dosageOptionsEdit">
+                                    <span>ML</span>
+                                    <span>MG</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="inputHolder2">
+                        <div class="medicineHolder">
+                            <label for="medicineTypeHolder" class="labelForm">Type <span class="asterisk">*</span>
+                            </label>
+                            <div class="medicineTypeContainer">
+                                <input type="text" name="medicineType" style="display:none;" value="Tablet"
+                                    id="medicineTypeValueEdit" />
+                                <span class="medicineTypeHolder" id="medicineTypeHolderEdit"><span
+                                        id="medicineTypeNameEdit">Tablet</span> <i
+                                        class="fa-solid fa-caret-down sortCarretTypeCaretEdit"></i></span>
+                                <div class="medicineTypeOptions" id="medicineTypeOptionsEdit">
+                                    <span>Tablet</span>
+                                    <span>Capsule</span>
+                                    <span>Liquid</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="medicineStocksCount">
+                            <label for="medicineStockEdit" class="labelForm">Stock<span
+                                    class="asterisk">*</span></label>
+                            <input type="number" id="medicineStockEdit" class="inputValue" min="0" value="30">
+                        </div>
+                        <div class="medicineLowStock">
+                            <label for="medicineLowStockEdit" class="labelForm">Low Stock <span
+                                    class="asterisk">*</span></label>
+                            <input type="number" id="medicineLowStockEdit" class="inputValue" value="20" min="0">
+                        </div>
+                    </div>
+                    <div class="inputHolder">
+                        <label for="medicineDescriptionEdit" class="labelForm">Description <span
+                                class="asterisk">*</span></label>
+                        <textarea name="" id="medicineDescriptionEdit" cols="30" rows="3"
+                            placeholder="Ex. Pain reliever" name="medicineDesciption"></textarea>
+                    </div>
+                    <div class="inputHolder2">
+                        <div class="manufacturedDate">
+                            <label for="medicineManufacturedDateEdit" class="labelForm">Manufactured Date <span
+                                    class="asterisk">*</span></label>
+                            <input type="date" id="medicineManufacturedDateEdit">
+                        </div>
+                        <div class="manufacturedDate">
+                            <label for="expirationDateEdit" class="labelForm">Expiration Date <span
+                                    class="asterisk">*</span></label>
+                            <input type="date" id="expirationDateEdit">
+                        </div>
+                    </div>
+                    <div class="buttonForm">
+                        <button id="editMedicineFormCancel" class="cancelButton" type="button">Cancel</button>
+                        <button id="editMedicineFormSubmit" class="submitButton" type="button">Save</button>
+                    </div>
+                </form>
+            </div>
+            <!-- Prescribe Medicine -->
+            <div class="medicinesForm" id="prescribeMedicineForm">
+                <form action="" id="prescribeMedicineFormContainer">
+                    <div class="formTitle">Prescribe Medicine</div>
+                    <div class="cloneButtonHolder">
+                        <input type="text" class="inputValue" placeholder="Patient's Name" id="patientsNamePrescribe" name="patientsNamePrescribe"
+                            autocomplete="off">
+                        <div class="searchPatientsName" id="searchPatientsName">
+                        </div>
+                        <button id="cloneButton" type="button" onclick="cloneDiv()"><i
+                                class="fa-solid fa-plus"></i></button>
+                    </div>
+                    <div class="inputHolder1">
+                        <div class="medicineBrand">
+                            <label for="medicineNamePrescribe" class="labelForm">Medicine Name</label>
+                            <input type="text" id="medicineNamePrescribe" class="inputValue" readonly
+                                name="medicineNamePrescribe">
+                        </div>
+                        <div class="medicineDosage">
+                            <label for="medicineDosagePrescribe" class="labelForm">Pieces</label>
+                            <div class="dosageContainer">
+                                <input type="text" id="medicineBrandPrescribe" name="medicineBrandPrescribe" style="display:none;"/>
+                                <input type="text" id="medicineIdPrescribe" name="medicineIdPrescribe" style="display:none;"/>
+                                <input type="number" id="medicineDosagePrescribe" name="medicineTotalPrescribe" class=" inputValue" value="" min="0">
+                                <span class="caretDosage"><span id="dosageTypePrescribe">ML</span></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="addedMedicinePrescription">
+                    </div>
+                    <div class="buttonForm">
+                        <button id="prescribeMedicineFormCancel" class="cancelButton" type="button">Cancel</button>
+                        <button id="prescribeMedicineFormSubmit" class="submitButton" type="button">Prescribe</button>
+                    </div>
+                </form>
+            </div>
+            <!-- add oter medicine -->
+            <div class="inputHolder3 hidden" id="medicinePrescribeClone" disabled>
+
+                <div class="nameAndBrand">
+                    <div class="p1">
+                        <label for="addPresciption" class="labelForm">Medicine Name <span
+                                class="asterisk">*</span></label>
+                        <input type="text" id="addPresciption" class="inputValue" placeholder="Ex. Ibufrofen"
+                            name="addPresciptionName[]">
+                    </div>
+                    <div class="p2">
+                        <label for="addPresciptionBrand" class="labelForm">Medicine Brand <span
+                                class="asterisk">*</span></label>
+                        <input type="text" id="addPresciptionBrand" class="inputValue" placeholder="Ex. Advil"
+                            name="addPresciptionBrand[]">
+                    </div>
+
+                </div>
+                <div class="nameAndBrand">
+                    <div class="p1">
+                        <label for="addPresciptionCount" class="labelForm">Quantity<span
+                                class="asterisk">*</span></label>
+                        <input type="number" id="addPresciptionCount" class="inputValue" name="addPresciptionCount[]"
+                            min="0" value="">
+
+                    </div>
+                    <div class="p2">
+                        <label for="medicineDosagePrescribe" class="labelForm">Dosage <span
+                                class="asterisk">*</span></label>
+                        <div class="dosageContainer">
+                            <input type="text" name="addDosage[]" style="display:none;" id="dosageValuePrescribe"
+                                value="ML" />
+                            <input type="number" id="medicineDosagePrescribe" name="addmedicineDosagePrescribe[]"
+                                class="inputValue" value="" min="0">
+                            <span class="caretDosage" id="sortCarretDosagePrescribe"
+                                onclick="toggleDosageOptions(this)"><span id="dosageTypePrescribe">ML</span> <i
+                                    class="fa-solid fa-caret-down sortCarretDosagePrescribe"></i></span>
+                            <div class="dosageOptions1" id="dosageOptionsPrescribe">
+                                <span>ML</span>
+                                <span>MG</span>
+                            </div>
+                            <div class="cancelMedicinePrescribe"
+                                onclick="removeDiv(this.parentNode.parentNode.parentNode.parentNode)">
+                                <i class="fa-solid fa-xmark"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- patientName Template -->
+            <span class="patientName hidden" id="patientName">John Kenneth R. Arellano</span>
+
+            <!-- View Medicine -->
+            <div class="medicinesForm" id="viewMedicineForm">
+                <form action="">
+                    <div class="formTitle">View Medicine</div>
+                    <div class="inputHolder">
+                        <input type="text" class="inputValue" id="medicineClassificationPrescribe" autocomplete="off"
+                            readonly>
+                    </div>
+                    <div class="inputHolder1">
+                        <div class="medicineNameHolder">
+                            <label for="medicineNameEdit" class="labelForm">Medicine Name</label>
+                            <input type="text" id="medicineNameView" class="inputValue" readonly>
+                        </div>
+                        <div class="medicineIdHolder">
+                            <label for="medicineIDEdit" class="labelForm">Medicine Id</label>
+                            <input type="text" id="medicineIDView" class="inputValue" readonly>
+                        </div>
+                    </div>
+                    <div class="inputHolder1">
+                        <div class="medicineBrand">
+                            <label for="medicineBrandNameView" class="labelForm">Medicine Brand</label>
+                            <input type="text" id="medicineBrandNameView" class="inputValue" readonly>
+                        </div>
+                        <div class="medicineDosage">
+                            <label for="medicineDosageView" class="labelForm">Dosage</label>
+                            <div class="dosageContainer">
+                                <input type="number" id="medicineDosageView" class=" inputValue" readonly>
+                                <span class="caretDosage" id="sortCarretDosage"><span
+                                        id="dosageTypeView">ML</span></span>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="inputHolder2">
+                        <div class="medicineHolder">
+                            <label for="medicineTypeHolderView" class="labelForm">Type</label>
+                            <div class="medicineTypeContainer">
+                                <span class="medicineTypeHolder" id="medicineTypeHolderView"><span
+                                        id="medicineTypeNameView">Tablet</span></span>
+                            </div>
+                        </div>
+                        <div class="medicineStocksCount">
+                            <label for="medicineStockView" class="labelForm">Stock</label>
+                            <input type="number" id="medicineStockView" class="inputValue" readonly>
+                        </div>
+                        <div class="medicineLowStock">
+                            <label for="medicineLowStockView" class="labelForm">Low Stock</label>
+                            <input type="number" id="medicineLowStockView" class="inputValue" readonly>
+                        </div>
+                    </div>
+                    <div class="inputHolder">
+                        <label for="medicineDescriptionView" class="labelForm">Description</label>
+                        <textarea name="" id="medicineDescriptionView" cols="30" rows="3" readonly></textarea>
+                    </div>
+                    <div class="inputHolder2">
+                        <div class="manufacturedDate">
+                            <label for="medicineManufacturedDateView" class="labelForm">Manufactured Date</label>
+                            <input type="date" id="medicineManufacturedDateView" readonly>
+                        </div>
+                        <div class="manufacturedDate">
+                            <label for="expirationDateView" class="labelForm">Expiration Date</label>
+                            <input type="date" id="expirationDateView" readonly>
+                        </div>
+                    </div>
+
+                    <div class="buttonForm">
+                        <button id="viewMedicineFormCancel" class="cancelButton" type="button">Cancel</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+</body>
+
+</html>

@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/admin.css">
+    <link rel="stylesheet" href="../css/staff.css">
+    <script src="../javascript/Staff.js"  defer></script>
+    <link rel="website icon" type="png " href="../images/logo.png">
+    <script src="https://kit.fontawesome.com/275edc9f9d.js" crossorigin="anonymous" defer></script>
+    <title>Staff</title>
+</head>
+<body onload="onload()">
+    <section id="main">
+        <div class="header">
+            <div class="headerContainer">
+                <div class="headerContent">
+                    <a href="" class="headerLink headerLinkActive">Manage</a>
+                    <a href="StaffsLeavePage.html" class="headerLink">Leave</a>
+                    
+                </div>
+                <div class="profile">
+                    <div class="info">
+                        <span id="name">
+                            Arellano, John Kenneth R.
+                        </span>
+                        <span id="role">
+                            Dentist
+                        </span>
+                    </div>
+                    <div class="profileHolder">
+                        <img src="../images/kenneth.png" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="sidebar">
+            <img src="../images/logo.png" alt="">
+            <nav>
+                <ul>
+                    <li ><a href="Dashboard.html" class="links"><i class="fa-solid fa-house-chimney"></i></a></li>
+                    <li><a href="" class="links activePage"><i class="fa-solid fa-user-nurse"></i></a></li>
+                    <li><a href="PatientsMainPage.html" class="links"><i class="fa-solid fa-hospital-user"></i></a></li>
+                    <li><a href="ServicesMainPage.html" class="links"><i class="fa-solid fa-hand-holding-medical"></i></a></li>
+                    <li><a href="MedicinesMainPage.html" class="links"><i class="fa-solid fa-pills"></i></i></a></li>
+                    <li><a href="AppointmentsMainPage.html" class="links"><i class="fa-solid fa-calendar-check"></i></a></li>
+                    <li><a href="ArchivesMainPage.html" class="links"><i class="fa-solid fa-boxes-packing"></i></a></li>
+                    <li><a href="Settings.html" class="links"><i class="fa-solid fa-gear"></i></a></li>
+                </ul>
+            </nav>
+        </div>
+        <div class="mainContainer">
+            <div class="containerHeader">
+                <span class="pageTitle">Staff</span>
+                <div class="sort">
+                    <div class="searchBar">
+                        <input type="text" placeholder="Search" id="search">
+                        <i class="fa-sharp fa-solid fa-magnifying-glass"></i>
+                    </div>
+                    <button class="sortButton" id="sortButton"><span id="sortText">All</span> <i class="fa-solid fa-caret-down"></i></button>
+                    <div class="sortOptions1" id="sortOptions">
+                        <span id="allStaffs">All</span>
+                        <span id="onLeaveStaffs">On leave</span>
+                    </div>
+                </div>
+            </div>
+            <div class="tableContainer">
+                <table id="staffContainerTable">
+                    <thead>
+                        <tr>
+                            <th class="staffTable">Staff</th>
+                            <th class="positionTable">Position</th>
+                            <th class="contactTable">Contact No.</th>
+                            <th class="emailTable">Email</th>
+                            <th class="statusTable">Status</th>
+                            <th class="actionsTable"></th>
+                        </tr>
+                    </thead>
+                    <tbody id="tableBody">
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <!-- table loader template -->
+        <template id="staffTemplateLoader">
+            <tr>
+                <td class="staffTable">
+                    <div id="nameTable" class="numberTablediv">
+                        <div class="imgHolderNameTable skeleton1">
+                            <img src="" alt="">
+                        </div>
+                        <span id="patientNameOriginalValue" style="display: none;"></span>
+                        <span id="staffName" class="skeleton1"></span>
+                    </div>
+                </td>
+                <td class="positionTable">
+                    <div class="numberTablediv"><span id="position" class="skeleton1"></span></div>
+                </td>
+                <td class="contactTable">
+                    <div class="numberTablediv"><span id="contactNumber" class="skeleton1"></span></div>
+                </td>
+                <td class="emailTable">
+                    <div class="numberTablediv"><span id="emailAddresss" class="skeleton1"></span></div>
+                </td>
+                <td class="statusTable">
+                    <div class="numberTablediv"><span id="status" class="skeleton1"></span></div>
+                </td>
+                <td class="actionsTable">
+                </td>
+            </tr>
+        </template>
+
+         <!-- table main template -->
+        <template id="staffTemplate">
+            <tr>
+                <td class="staffTable">
+                    <div id="nameTable" class="numberTablediv">
+                        <div class="imgHolderNameTable">
+                            <img src="../images/" alt="" id="imgStaff">
+                        </div>
+                        <span id="patientNameOriginalValue" style="display: none;"></span>
+                        <span id="staffName">Arellano, John Kenneth R.</span>
+                    </div>
+                </td>
+                <td class="positionTable">
+                    <div class="numberTablediv"><span id="position">Dentist</span></div>
+                </td>
+                <td class="contactTable">
+                    <div class="numberTablediv"><span id="contactNumber">09519077637</span></div>
+                </td>
+                <td class="emailTable">
+                    <div class="numberTablediv"><span id="emailAddresss">arellano.johnkenneth.r@bulsu.edu.ph</span></div>
+                </td>
+                <td class="statusTable">
+                    <div class="numberTablediv"><span id="status">Active</span></div>
+                </td>
+                <td class="actionsTable">
+                    <div class="numberTablediv" id="actionsTable">
+                        <i class="fa-solid fa-eye viewButton"></i> 
+                        <i class="fa-solid fa-pen editButton"></i> 
+                        <i class="fa-solid fa-trash deleteButton"></i>
+                    </div>
+                </td>
+            </tr>
+        </template>
+    </section>
+</body>
+</html>

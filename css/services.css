@@ -1,0 +1,408 @@
+:root{
+    --blue:#0D99FF;
+    --lightgray:#9C9C9C;
+    --darkgray:#414141;
+    --white:#ffffff;        
+    --orange: #FCC865; 
+    --green: #73E977;
+    --red:#fa6363;
+    --smaller:.8vw;
+    --small: 1vw;
+    --medium: 1.2vw;
+    --large: 2.5vw;
+    --larger: 3vw;
+}
+#containerBody{
+    width: 100%;
+    max-height: 82vh;
+    height: fit-content;
+    grid-area: containerBody;
+    display: flex;
+    flex-wrap: wrap;
+    padding: .2vw 0;
+    overflow-y: scroll;
+}
+#containerBody::-webkit-scrollbar{
+    display: none;
+}
+.servicesContainer{
+    width: calc(100%/3);
+    height: 30vh;
+    padding: .2vw;
+}
+.service{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background-color: var(--white);
+    border-radius: .2vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    animation: show linear 1s;
+    -webkit-box-shadow:  0px 0px 5px 0px rgb(199, 199, 199);
+    -moz-box-shadow:  0px 0px 5px 0px rgb(199, 199, 199);
+    box-shadow:  0px 0px 5px 0px rgb(170, 170, 170);
+}
+.serviceHeader{
+    position: relative;
+    width: 95%;
+    height: 5vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.spanHeader{
+    min-width: 20vw;
+    border-radius: .4vw;
+    height: 80%;
+    width: fit-content;
+    color: var(--darkgray);
+    font-size: var(--medium);
+}
+.serviceHeader i{
+    color: var(--lightgray);
+    font-size: var(--small);
+    cursor: pointer;
+    transition: all ease 1s;
+}
+.serviceOptions{
+    position: absolute;
+    background-color: var(--white);
+    right: 0;
+    top: 4.5vh;
+    display: flex;
+    flex-direction: column;
+    border-radius: .2vw;
+    -webkit-box-shadow:  0px 0px 5px 0px rgb(199, 199, 199);
+    -moz-box-shadow:  0px 0px 5px 0px rgb(199, 199, 199);
+    box-shadow:  0px 0px 5px 0px rgb(199, 199, 199);
+    overflow: hidden;
+    animation: show ease-in .2s;
+}
+.serviceOptions span{
+    width: 100%;
+    height: 5vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 1vw;
+    font-size: var(--small);
+    cursor: pointer;
+    transition: all ease .3s;
+    border-radius: 0;
+}
+.span1,.span2,.span3{
+    margin-bottom: .5vh;
+    border-radius: .4vw;
+}
+.span1{
+    width: 100%;
+    height: 3.8vh;
+}
+.span2{
+    width: 90%;
+    height: 3.8vh;
+}
+.span3{
+    width: 80%;
+    height: 3.8vh;
+}
+.serviceOptions span:hover{
+    background-color: rgb(235, 235, 235);
+}
+.serviceHeader i:hover{
+    color: var(--darkgray);
+}
+.serviceBody{
+    width: 97%;
+    display: flex;
+    justify-content: space-between;
+}
+.serviceImgHolder{
+    width: 60%;
+    height: 22vh;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: .4vw;
+}
+.serviceImgHolder img{
+  flex-shrink: 0;
+  width: 100%;
+}
+.serviceBody .serviceInfo{
+    width: 38%;
+    max-height: 22vh;
+    height: fit-content;
+    color: var(--darkgray);
+    font-size: var(--small);
+    overflow-y: scroll;
+}
+
+.serviceBody .serviceInfo::-webkit-scrollbar{
+    display: none;
+}
+.formContainer{
+    position: absolute;
+    left: .5vw;
+    width: 99%;
+    height: 100%;
+    background-color: #ffffff54;
+    backdrop-filter: blur(2px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: show ease-in .2s;
+}
+.formHandler{
+    position: absolute;
+    background-color: var(--white);
+    width: 50vw;
+    height: 60vh;
+    border-radius: .4vw;
+    -webkit-box-shadow:  0px 0px 5px 0px rgb(199, 199, 199);
+    -moz-box-shadow:  0px 0px 5px 0px rgb(199, 199, 199);
+    box-shadow:  0px 0px 5px 0px rgb(199, 199, 199);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+.formTitle{
+    width: 100%;
+    padding: .5vw 0 0 1vw;
+    font-size: 3.5vh;
+    color: var(--darkgray);
+}
+.formBody{
+    flex-grow: 1;
+    width: 100%;
+    padding: .5vw;
+    display: flex;
+    justify-content: space-between;
+}
+.formBody1{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 49.5%;
+    height: 100%;
+    padding: .2vw;
+}
+.imgHolderService{
+    position: relative;
+    width: 100%;
+    height: 25vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: .4vw;
+    overflow: hidden;
+    border: solid 1px lightgray;
+    margin-bottom: 1vh;
+}
+#preview{
+    flex-shrink: 0;
+    width: 100%;
+}
+#uploadImg{
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: 1vh;
+    right: 1vh;
+    border: none;
+    outline: none;
+    width: 2vw;
+    height: 2vw;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: var(--small);
+    color: var(--darkgray);
+    background-color: lightgray;
+    transition: all ease .3s;
+    -webkit-box-shadow:  0px 0px 5px 0px rgb(199, 199, 199);
+    -moz-box-shadow:  0px 0px 5px 0px rgb(199, 199, 199);
+    box-shadow:  0px 0px 5px 0px rgb(199, 199, 199);
+}
+#uploadImg:hover{
+    background-color: var(--lightgray);
+}
+.formLabel{
+    width: 100%;
+    display: flex;
+    color: var(--darkgray);
+    font-size: var(--medium);
+}
+#serviceDescription{
+    width: 100%;
+    resize: none;
+    flex-grow: 1;
+    padding: .5vw;
+    color: var(--darkgray);
+    font-size: var(--small);
+    outline: none;
+    letter-spacing: .01vw;
+    border-radius: .2vw;
+    border: solid 1px lightgray;
+    transition: all ease .3s;
+    font-family: 'Poppins', Arial, Helvetica, sans-serif; 
+}
+#serviceDescription:focus{
+    border-color: var(--green);
+}
+#serviceDescription::-webkit-scrollbar{
+    display: none;
+}
+#serviceDescriptionEdit{
+    width: 100%;
+    resize: none;
+    flex-grow: 1;
+    padding: .5vw;
+    color: var(--darkgray);
+    font-size: var(--small);
+    outline: none;
+    letter-spacing: .01vw;
+    border-radius: .2vw;
+    border: solid 1px lightgray;
+    transition: all ease .3s;
+    font-family: 'Poppins', Arial, Helvetica, sans-serif; 
+}
+#serviceDescriptionEdit:focus{
+    border-color: var(--green);
+}
+#serviceDescriptionEdit::-webkit-scrollbar{
+    display: none;
+}
+.inputHolder{
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: fit-content;
+}
+.servicesLabel{
+    width: 100%;
+    font-size: var(--small);
+    color: var(--darkgray);
+    padding-left: .5vw;
+    margin-top: 11vh;
+
+}
+.formInput{
+    width: 100%;
+    height: 6vh;
+    border-radius: .4vw;
+    outline: none;
+    border: solid 1px lightgray;
+    font-size: var(--small);
+    padding: 0 1vw;
+    color: var(--darkgray);
+    letter-spacing: .01vw;
+    transition: all ease .3s ;
+
+}
+.formInput:focus{
+    border-color: var(--green);
+}
+.buttonContainer{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 7vh;
+    display: flex;
+    align-items: center;
+    justify-content:space-evenly;
+    
+}
+.buttonContainer button{
+    outline: none;
+    border: solid 1px;
+    cursor: pointer;
+    border-radius: .2vw;
+}
+.cancelAction{
+    border-color: var(--red);
+    color: var(--white);
+    background-color: var(--red);
+    transition: all ease .3ss;
+}
+.cancelAction:hover{
+    color: var(--red);
+    background-color: var(--white);
+}
+.saveAction{
+    border-color: var(--green);
+    color: var(--white);
+    background-color: var(--green);
+    transition: all ease .3ss;
+}
+.saveAction:hover{
+    color: var(--green);
+    background-color: white;
+}
+.checkboxes{
+    width: 100%;
+    max-height: 30vh;
+    padding: .5vw 0;
+    display: flex;
+    flex-wrap: wrap;
+    overflow-y: scroll;
+}
+.checkboxes::-webkit-scrollbar{
+    display: none;}
+.checkboxContainer{
+    width: calc(100%/2);
+    height: 5vh;
+    padding: .2vw;
+}
+.checkbox{
+    width: 100%;
+    height: 100%;
+}
+.checkboxLabel{
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    color: rgb(172, 172, 172);
+    font-size: var(--small);
+    border: solid 1px lightgray;
+    border-radius: .2vw;
+    cursor: pointer;
+}
+.checkbox i {
+    margin: 0 .5vw;
+    font-size: var(--smaller);
+}
+.checkbox input:checked ~ .checkboxLabel {
+    color: var(--darkgray);
+    border-color: var(--green);
+}
+.checkbox input:checked ~ .checkboxLabel i {
+    color: var(--green);
+}
+
+  
+.buttonContainer button{
+    height: 6vh;
+    width: 10vw;
+    font-size: var(--small);
+    outline: none;
+    border-radius: .2vw;
+}
+.hidden{
+    display: none;
+}
+.highlight {
+    background-color: lightgray;
+    width: fit-content;
+    height: fit-content;
+    display: inline-flex;
+    
+}

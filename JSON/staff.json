@@ -1,0 +1,21 @@
+{
+    "employees": [
+      {
+        "staffName": "John Doe",
+        "position": "Manager",
+        "email": "john.doe@example.com",
+        "status": "active",
+        "contactNumber": "123-456-7890",
+        "imgSource": "noProfile.png"
+      },
+      {
+        "staffName": "Jane Smith",
+        "position": "Developer",
+        "email": "jane.smith@example.com",
+        "status": "inactive",
+        "contactNumber": "987-654-3210",
+        "imgSource": "noProfile.png"
+      }
+    ]
+  }
+  

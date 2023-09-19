@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="website icon"
+      type="png "
+      href="../images/logo.png" />
+    <script
+      src="https://kit.fontawesome.com/275edc9f9d.js"
+      crossorigin="anonymous"
+      defer></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+
+    <title>Patient</title>
+    <link
+      rel="stylesheet"
+      href="../css/admin.css" />
+    <link
+      rel="stylesheet"
+      href="../css/patientHealthHistory.css" />
+  </head>
+  <body>
+    <section id="main">
+      <div class="header">
+        <div class="headerContainer">
+          <div class="headerContent">
+            <a
+              href=""
+              class="headerLink headerLinkActive"
+              >Patient's List</a
+            >
+          </div>
+          <div class="profile">
+            <div class="info">
+              <span id="name"> Arellano, John Kenneth R. </span>
+              <span id="role"> Dentist </span>
+            </div>
+            <div class="profileHolder">
+              <img
+                src="../images/kenneth.png"
+                alt="" />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="sidebar">
+        <img
+          src="../images/logo.png"
+          alt="" />
+        <nav>
+          <ul>
+            <li>
+              <a
+                href="Dashboard.html"
+                class="links"
+                ><i class="fa-solid fa-house-chimney"></i
+              ></a>
+            </li>
+            <li>
+              <a
+                href="StaffsMainPage.html"
+                class="links"
+                ><i class="fa-solid fa-user-nurse"></i
+              ></a>
+            </li>
+            <li>
+              <a
+                href="PatientsMainPage.html"
+                class="links activePage"
+                ><i class="fa-solid fa-hospital-user"></i
+              ></a>
+            </li>
+            <li>
+              <a
+                href="ServicesMainPage.html"
+                class="links"
+                ><i class="fa-solid fa-hand-holding-medical"></i
+              ></a>
+            </li>
+            <li>
+              <a
+                href="MedicinesMainPage.html"
+                class="links"
+                ><i class="fa-solid fa-pills"></i
+              ></a>
+            </li>
+            <li>
+              <a
+                href="AppointmentsMainPage.html"
+                class="links"
+                ><i class="fa-solid fa-calendar-check"></i
+              ></a>
+            </li>
+            <li>
+              <a
+                href="ArchivesMainPage.html"
+                class="links"
+                ><i class="fa-solid fa-boxes-packing"></i
+              ></a>
+            </li>
+            <li>
+              <a
+                href="Settings.html"
+                class="links"
+                ><i class="fa-solid fa-gear"></i
+              ></a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+      <div class="mainContainer">
+        <div class="containerHeader">
+          <span class="pageTitle">Patient / View Health History</span>
+          <div class="sort">
+            <!-- <button class="sortButton" id="sortButton">
+              <span id="sortText">All</span>
+              <i class="fa-solid fa-caret-down"></i>
+            </button> -->
+            <div
+              class="sortOptions1"
+              id="sortOptions">
+              <span id="allPatients">All</span>
+              <span id="activePatient">Active</span>
+            </div>
+          </div>
+        </div>
+        <div class="tableContainer">
+          <form
+            action=""
+            class="healthHistory">
+            <div class="form-body">
+              <div class="patientDetails">
+                <div class="img">
+                  <img
+                    src="https://scontent.fmnl8-2.fna.fbcdn.net/v/t39.30808-6/339447930_135159019351903_1046511947275515845_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=a2f6c7&_nc_eui2=AeGAje-ygXRm9aUR3vMir4ID4fjG2UBT1EDh-MbZQFPUQABEqoYuXpCCWtWWSrWTsaXeu6EFFmYKwMrN3FGzIIeV&_nc_ohc=KHnPfYezRKAAX83n7e2&_nc_ht=scontent.fmnl8-2.fna&oh=00_AfBFmVWyj5F7lthwPxiWuu9rnEd_Oh8HsQbjExEemQyk7A&oe=650C3B77"
+                    alt="" />
+                </div>
+                <div class="personal">
+                  <div class="name">Santos, Nicole Salamat</div>
+                  <div class="dflex">
+                    <div>
+                      <div class="sex">Female</div>
+                      <div class="age"><span>20</span> years old</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="contact">
+                  <div class="phone">
+                    <div class="label">Contact #:</div>
+                    <div class="input">0950 254 2168</div>
+                  </div>
+                  <div class="email">
+                    <div class="label">Email Address:</div>
+                    <div class="input">nicole.santos.s@bulsu.edu.ph</div>
+                  </div>
+                  <div class="address">
+                    <div class="label">Address:</div>
+                    <div class="input">Paombong, Bulacan</div>
+                  </div>
+                </div>
+              </div>
+              <div class="dental-visit">
+                <div class="when">
+                  <label for="when">When was your last dental visit?</label>
+                  <div>
+                    <input
+                      type="text"
+                      name="when"
+                      id="when"
+                      disabled="disabled"
+                      value="September 1, 2023" />
+                  </div>
+                </div>
+                <div class="where">
+                  <label for="where">Where was your last dental visit?</label>
+                  <div>
+                    <input
+                      type="text"
+                      name="where"
+                      id="where"
+                      disabled="disabled"
+                      value="Pablo de Jesus Dental Clinic" />
+                  </div>
+                </div>
+              </div>
+              <label for="what"
+                >What was the name of your previous dentist?</label
+              >
+              <div class="indent">
+                <input
+                  type="text"
+                  name="what"
+                  id="what"
+                  disabled="disabled"
+                  value="Pablo de Jesus" />
+              </div>
+              <label for="medications"
+                >Are you taking any medications? If yes, please specify.</label
+              >
+              <div class="indent">
+                <input
+                  type="text"
+                  name="medications"
+                  id="medications"
+                  disabled="disabled"
+                  value="No." />
+              </div>
+
+              <div class="radiobutton-questions">
+                <p>Do you have asthma?</p>
+                <label>
+                  <input
+                    type="radio"
+                    name="asthma"
+                    value="yes"
+                    onchange="changeColor('asthma')" />
+                  <span id="asthmaYes"
+                    ><svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="25"
+                      height="25"
+                      viewBox="0 0 48 48">
+                      <rect
+                        x="0"
+                        y="0"
+                        width="48"
+                        height="48"
+                        fill="none"
+                        stroke="none" />
+                      <g
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-linejoin="round"
+                        stroke-width="4">
+                        <path
+                          d="M24 44a19.937 19.937 0 0 0 14.142-5.858A19.937 19.937 0 0 0 44 24a19.938 19.938 0 0 0-5.858-14.142A19.937 19.937 0 0 0 24 4A19.938 19.938 0 0 0 9.858 9.858A19.938 19.938 0 0 0 4 24a19.937 19.937 0 0 0 5.858 14.142A19.938 19.938 0 0 0 24 44Z" />
+                        <path
+                          stroke-linecap="round"
+                          d="m16 24l6 6l12-12" />
+                      </g></svg
+                  ></span>
+                </label>
+                <label>
+                  <input
+                    type="radio"
+                    name="asthma"
+                    value="no"
+                    onchange="changeColor('asthma')" />
+                  <span id="asthmaNo">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="25"
+                      height="25"
+                      viewBox="0 0 16 16">
+                      <rect
+                        x="0"
+                        y="0"
+                        width="16"
+                        height="16"
+                        fill="none"
+                        stroke="none" />
+                      <g
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="1.5">
+                        <path d="m10.25 5.75l-4.5 4.5m0-4.5l4.5 4.5" />
+                        <circle
+                          cx="8"
+                          cy="8"
+                          r="6.25" />
+                      </g></svg
+                  ></span>
+                </label>
+              </div>
+              <div class="radiobutton-questions">
+                <p>Do you have a history of any cardiac disease?</p>
+
+                <label>
+                  <input
+                    type="radio"
+                    name="cardiac"
+                    value="yes"
+                    onchange="changeColor('cardiac')" />
+                  <span id="cardiacYes"
+                    ><svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="25"
+                      height="25"
+                      viewBox="0 0 48 48">
+                      <rect
+                        x="0"
+                        y="0"
+                        width="48"
+                        height="48"
+                        fill="none"
+                        stroke="none" />
+                      <g
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-linejoin="round"
+                        stroke-width="4">
+                        <path
+                          d="M24 44a19.937 19.937 0 0 0 14.142-5.858A19.937 19.937 0 0 0 44 24a19.938 19.938 0 0 0-5.858-14.142A19.937 19.937 0 0 0 24 4A19.938 19.938 0 0 0 9.858 9.858A19.938 19.938 0 0 0 4 24a19.937 19.937 0 0 0 5.858 14.142A19.938 19.938 0 0 0 24 44Z" />
+                        <path
+                          stroke-linecap="round"
+                          d="m16 24l6 6l12-12" />
+                      </g></svg
+                  ></span>
+                </label>
+                <label>
+                  <input
+                    type="radio"
+                    name="cardiac"
+                    value="no"
+                    onchange="changeColor('cardiac')" />
+                  <span id="cardiacNo">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="25"
+                      height="25"
+                      viewBox="0 0 16 16">
+                      <rect
+                        x="0"
+                        y="0"
+                        width="16"
+                        height="16"
+                        fill="none"
+                        stroke="none" />
+                      <g
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="1.5">
+                        <path d="m10.25 5.75l-4.5 4.5m0-4.5l4.5 4.5" />
+                        <circle
+                          cx="8"
+                          cy="8"
+                          r="6.25" />
+                      </g></svg
+                  ></span>
+                </label>
+              </div>
+              <div class="radiobutton-questions">
+                <p>Do you have hypertension?</p>
+
+                <label>
+                  <input
+                    type="radio"
+                    name="hypertension"
+                    value="yes"
+                    onchange="changeColor('hypertension')" />
+                  <span id="hypertensionYes"
+                    ><svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="25"
+                      height="25"
+                      viewBox="0 0 48 48">
+                      <rect
+                        x="0"
+                        y="0"
+                        width="48"
+                        height="48"
+                        fill="none"
+                        stroke="none" />
+                      <g
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-linejoin="round"
+                        stroke-width="4">
+                        <path
+                          d="M24 44a19.937 19.937 0 0 0 14.142-5.858A19.937 19.937 0 0 0 44 24a19.938 19.938 0 0 0-5.858-14.142A19.937 19.937 0 0 0 24 4A19.938 19.938 0 0 0 9.858 9.858A19.938 19.938 0 0 0 4 24a19.937 19.937 0 0 0 5.858 14.142A19.938 19.938 0 0 0 24 44Z" />
+                        <path
+                          stroke-linecap="round"
+                          d="m16 24l6 6l12-12" />
+                      </g></svg
+                  ></span>
+                </label>
+                <label>
+                  <input
+                    type="radio"
+                    name="hypertension"
+                    value="no"
+                    onchange="changeColor('hypertension')" />
+                  <span id="hypertensionNo">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="25"
+                      height="25"
+                      viewBox="0 0 16 16">
+                      <rect
+                        x="0"
+                        y="0"
+                        width="16"
+                        height="16"
+                        fill="none"
+                        stroke="none" />
+                      <g
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="1.5">
+                        <path d="m10.25 5.75l-4.5 4.5m0-4.5l4.5 4.5" />
+                        <circle
+                          cx="8"
+                          cy="8"
+                          r="6.25" />
+                      </g></svg
+                  ></span>
+                </label>
+              </div>
+              <div class="radiobutton-questions">
+                <p>Do you have epilepsy?</p>
+
+                <label>
+                  <input
+                    type="radio"
+                    name="epilepsy"
+                    value="yes"
+                    onchange="changeColor('epilepsy')" />
+                  <span id="epilepsyYes"
+                    ><svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="25"
+                      height="25"
+                      viewBox="0 0 48 48">
+                      <rect
+                        x="0"
+                        y="0"
+                        width="48"
+                        height="48"
+                        fill="none"
+                        stroke="none" />
+                      <g
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-linejoin="round"
+                        stroke-width="4">
+                        <path
+                          d="M24 44a19.937 19.937 0 0 0 14.142-5.858A19.937 19.937 0 0 0 44 24a19.938 19.938 0 0 0-5.858-14.142A19.937 19.937 0 0 0 24 4A19.938 19.938 0 0 0 9.858 9.858A19.938 19.938 0 0 0 4 24a19.937 19.937 0 0 0 5.858 14.142A19.938 19.938 0 0 0 24 44Z" />
+                        <path
+                          stroke-linecap="round"
+                          d="m16 24l6 6l12-12" />
+                      </g></svg
+                  ></span>
+                </label>
+                <label>
+                  <input
+                    type="radio"
+                    name="epilepsy"
+                    value="no"
+                    onchange="changeColor('epilepsy')" />
+                  <span id="epilepsyNo">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="25"
+                      height="25"
+                      viewBox="0 0 16 16">
+                      <rect
+                        x="0"
+                        y="0"
+                        width="16"
+                        height="16"
+                        fill="none"
+                        stroke="none" />
+                      <g
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="1.5">
+                        <path d="m10.25 5.75l-4.5 4.5m0-4.5l4.5 4.5" />
+                        <circle
+                          cx="8"
+                          cy="8"
+                          r="6.25" />
+                      </g>
+                    </svg>
+                  </span>
+                </label>
+              </div>
+              <div class="radiobutton-questions">
+                <p>Do you have cancer?</p>
+
+                <label>
+                  <input
+                    type="radio"
+                    name="cancer"
+                    value="yes"
+                    onchange="changeColor('cancer')" />
+                  <span id="cancerYes"
+                    ><svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="25"
+                      height="25"
+                      viewBox="0 0 48 48">
+                      <rect
+                        x="0"
+                        y="0"
+                        width="48"
+                        height="48"
+                        fill="none"
+                        stroke="none" />
+                      <g
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-linejoin="round"
+                        stroke-width="4">
+                        <path
+                          d="M24 44a19.937 19.937 0 0 0 14.142-5.858A19.937 19.937 0 0 0 44 24a19.938 19.938 0 0 0-5.858-14.142A19.937 19.937 0 0 0 24 4A19.938 19.938 0 0 0 9.858 9.858A19.938 19.938 0 0 0 4 24a19.937 19.937 0 0 0 5.858 14.142A19.938 19.938 0 0 0 24 44Z" />
+                        <path
+                          stroke-linecap="round"
+                          d="m16 24l6 6l12-12" />
+                      </g></svg
+                  ></span>
+                </label>
+                <label>
+                  <input
+                    type="radio"
+                    name="cancer"
+                    value="no"
+                    onchange="changeColor('cancer')" />
+                  <span id="cancerNo">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="25"
+                      height="25"
+                      viewBox="0 0 16 16">
+                      <rect
+                        x="0"
+                        y="0"
+                        width="16"
+                        height="16"
+                        fill="none"
+                        stroke="none" />
+                      <g
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="1.5">
+                        <path d="m10.25 5.75l-4.5 4.5m0-4.5l4.5 4.5" />
+                        <circle
+                          cx="8"
+                          cy="8"
+                          r="6.25" />
+                      </g></svg
+                  ></span>
+                </label>
+              </div>
+              <div class="radiobutton-questions">
+                <p>Do you have diabetes?</p>
+
+                <label>
+                  <input
+                    type="radio"
+                    name="diabetes"
+                    value="yes"
+                    onchange="changeColor('diabetes')" />
+                  <span id="diabetesYes"
+                    ><svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="25"
+                      height="25"
+                      viewBox="0 0 48 48">
+                      <rect
+                        x="0"
+                        y="0"
+                        width="48"
+                        height="48"
+                        fill="none"
+                        stroke="none" />
+                      <g
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-linejoin="round"
+                        stroke-width="4">
+                        <path
+                          d="M24 44a19.937 19.937 0 0 0 14.142-5.858A19.937 19.937 0 0 0 44 24a19.938 19.938 0 0 0-5.858-14.142A19.937 19.937 0 0 0 24 4A19.938 19.938 0 0 0 9.858 9.858A19.938 19.938 0 0 0 4 24a19.937 19.937 0 0 0 5.858 14.142A19.938 19.938 0 0 0 24 44Z" />
+                        <path
+                          stroke-linecap="round"
+                          d="m16 24l6 6l12-12" />
+                      </g></svg
+                  ></span>
+                </label>
+                <label>
+                  <input
+                    type="radio"
+                    name="diabetes"
+                    value="no"
+                    onchange="changeColor('diabetes')" />
+                  <span id="diabetesNo">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="25"
+                      height="25"
+                      viewBox="0 0 16 16">
+                      <rect
+                        x="0"
+                        y="0"
+                        width="16"
+                        height="16"
+                        fill="none"
+                        stroke="none" />
+                      <g
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="1.5">
+                        <path d="m10.25 5.75l-4.5 4.5m0-4.5l4.5 4.5" />
+                        <circle
+                          cx="8"
+                          cy="8"
+                          r="6.25" />
+                      </g></svg
+                  ></span>
+                </label>
+              </div>
+              <div class="radiobutton-questions last">
+                <p>Are you suffering from a psychiatric disorder?</p>
+
+                <label>
+                  <input
+                    type="radio"
+                    name="psychiatric"
+                    value="yes"
+                    onchange="changeColor('psychiatric')" />
+                  <span id="psychiatricYes"
+                    ><svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="25"
+                      height="25"
+                      viewBox="0 0 48 48">
+                      <rect
+                        x="0"
+                        y="0"
+                        width="48"
+                        height="48"
+                        fill="none"
+                        stroke="none" />
+                      <g
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-linejoin="round"
+                        stroke-width="4">
+                        <path
+                          d="M24 44a19.937 19.937 0 0 0 14.142-5.858A19.937 19.937 0 0 0 44 24a19.938 19.938 0 0 0-5.858-14.142A19.937 19.937 0 0 0 24 4A19.938 19.938 0 0 0 9.858 9.858A19.938 19.938 0 0 0 4 24a19.937 19.937 0 0 0 5.858 14.142A19.938 19.938 0 0 0 24 44Z" />
+                        <path
+                          stroke-linecap="round"
+                          d="m16 24l6 6l12-12" />
+                      </g></svg
+                  ></span>
+                </label>
+                <label>
+                  <input
+                    type="radio"
+                    name="psychiatric"
+                    value="no"
+                    onchange="changeColor('psychiatric')" />
+                  <span id="psychiatricNo">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="25"
+                      height="25"
+                      viewBox="0 0 16 16">
+                      <rect
+                        x="0"
+                        y="0"
+                        width="16"
+                        height="16"
+                        fill="none"
+                        stroke="none" />
+                      <g
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="1.5">
+                        <path d="m10.25 5.75l-4.5 4.5m0-4.5l4.5 4.5" />
+                        <circle
+                          cx="8"
+                          cy="8"
+                          r="6.25" />
+                      </g></svg
+                  ></span>
+                </label>
+              </div>
+              <label for="others">Others, please specify.</label>
+              <div class="indent">
+                <input
+                  type="text"
+                  name="others"
+                  disabled="disabled"
+                  value="takot sa dugo"
+                  id="others" />
+              </div>
+            </div>
+            <div class="form-footer">
+              <button class="submit">
+                <i class="fa-solid fa-floppy-disk"></i>Submit
+              </button>
+              <div
+                id="generatePDF"
+                class="print">
+                <i class="fa-solid fa-file-pdf"></i>Generate PDF
+              </div>
+            </div>
+          </form>
+          <a
+            href="./PatientViewPatient.html"
+            class="goback">
+            <i class="fa-solid fa-chevron-left"></i>Go Back
+          </a>
+        </div>
+      </div>
+    </section>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <script src="../javascript/radioButtons.js"></script>
+    <script src="../javascript/printHealthHistory.js"></script>
+  </body>
+</html>

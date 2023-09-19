@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+    <link rel="website icon" type="png " href="../images/logo.png">
+    <title>One Time Pin</title>
+    <style>
+        *{  
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body{
+            font-family: 'Montserrat', sans-serif;
+            color: #414141;
+        }   
+        #main{
+            width: 100vw;
+            height: 100vh;
+            display:flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #0D99FF;
+        }
+        .otpContainer{
+            width: 40vw;
+            height: 80vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background-color: #fff;
+            border-radius: .4vw;
+            padding: 0 1vw;
+            -webkit-box-shadow: 0px 0px 15px 10px rgba(0,0,0,0.29);
+            -moz-box-shadow: 0px 0px 15px 10px rgba(0,0,0,0.29);
+            box-shadow: 0px 0px 15px 10px rgba(0,0,0,0.29);
+        }
+        .otpContainer img{
+            width: 7vw;
+            transition: all ease .3s;
+            margin-bottom: 5vh;
+        }
+        #t1,#t2,#t3,#t4{
+            width: 100%;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+        #t1{
+            height: 5vh;
+            font-size: 3.5vh;
+            font-weight: 600;
+        }
+        #t2{
+            height: 6vh;
+            font-size: 2.5vh;
+        }
+        #t3{
+            height: 4vh;
+            font-size: 6vh;
+            letter-spacing: .5vw;
+            font-weight: 600;
+        }
+        #t4{
+            height: 4vh;
+            font-size: 2.5vh;
+            color: #fa6363;
+        }
+    </style>
+</head>
+<body>
+    <section id="main">
+        <div class="otpContainer">
+            <img src="../images/secure-data.png" alt="">
+            <span id="t1">Here is your One-Time Password (OTP)</span><br>
+            <span id="t2">to reset your password</span><br><br>
+            <span id="t3">aeqe12</span><br><br><br><br>
+            <span id="t4">Valid for 10 minutes only</span>
+        </div>
+    </section>
+</body>
+</html>

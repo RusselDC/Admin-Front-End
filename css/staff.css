@@ -1,14 +1,14 @@
 :root{
-    --blue:#0D99FF;
-    --lightgray:#9C9C9C;
-    --darkgray:#414141;
+    --blue:#2196F3;
+    --lightgray:#BDBDBD;
+    --darkgray:#424242;
     --white:#ffffff;        
-    --orange: #FCC865; 
-    --green: #73E977;
-    --red:#fa6363;
-    --smaller:.8vw;
-    --small: 1vw;
-    --medium: 1.2vw;
+    --orange: #FFCC80; 
+    --green: #66BB6A;
+    --red:#EF5350;
+    --smaller:.6vw;
+    --small: .8vw;
+    --medium: 1vw;
     --large: 2.5vw;
     --larger: 3vw;
 }
@@ -69,7 +69,7 @@ tbody{
 tbody::-webkit-scrollbar{
     display: none;
 }
-tr{
+.tableRow{
     display: table;
     width: 100%;
     height: 7vh;
@@ -79,7 +79,6 @@ tr{
     border: solid 1px rgb(233, 232, 232);
     border-width: 0 0 1px 0;
     color: black;
-    transition: all ease .3s;
     letter-spacing: .02vw;
 }
 #tableBody tr:hover{
@@ -92,7 +91,7 @@ th, td{
 .numberTablediv{
     width: 100%; 
     height: 10vh;
-    animation: show 1s ease-in;   
+    animation: show .3s ease-in;   
     display: flex;
     align-items: center;
     justify-content: center;
@@ -186,4 +185,646 @@ th, td{
 }
 .fa-trash{
     color: var(--red);
+}
+.formContainer{
+    z-index: 100;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backdrop-filter:blur(2px);
+    background: rgba(211, 211, 211, 0.082);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.progressTracker{
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 10%;
+    height: 100%;
+}
+.stage{
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: fit-content;
+    width: fit-content;
+}
+#line1{
+    border-radius:1vh 1vh 0 0 ;
+}
+.line{
+    position: relative;
+    width: .5vw;
+    height: 15vh;
+    overflow: hidden;
+    background: var(--lightgray);
+}
+.line.completed{
+    position: relative;
+    width: .5vw;
+    height: 15vh;
+    overflow: hidden;
+    transition: all ease 1s;
+}
+.line.completed::before{
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: var(--green);
+    animation: progressTracker 1s;
+    
+}
+.fa-circle-check,.fa-circle-xmark{
+    font-size: 3.8vh;
+    color: var(--lightgray);
+    z-index: 1;
+    transition: all ease .3s;
+}
+.fa-circle-check.completedIcon{
+    font-size: 3.8vh;
+    animation: colorChange 100ms ease-in forwards;
+}
+.formHandler{
+    position: absolute;
+    display: flex;
+    align-items: center;
+    width: 70vw;
+    height: 80vh;
+}
+.forms{
+    position: relative;
+    height: 100%;
+    width: 90%;
+    background-color: var(--white);
+    box-shadow: 0px 0px 1px rgba(3, 7, 18, 0.08),
+    0px 0px 4px rgba(3, 7, 18, 0.06),
+    0px 1px 9px rgba(3, 7, 18, 0.05),
+    0px 2px 15px rgba(3, 7, 18, 0.03),
+    0px 3px 24px rgba(3, 7, 18, 0.02);
+    border-radius: .4vw;
+    transition: all ease .3s;
+}
+.formSection {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding-top: 10vh;
+    animation: showFormPart 1s forwards;
+}
+.formSection.hidden {
+    animation: hideFormPart 1s forwards;
+}
+#formSection2{
+    padding-top: 0 !important;
+    justify-content: center;
+}
+.buttonContainer{
+    position: absolute;
+    top: 0;
+    width: 95%;
+    height: 10vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    justify-content: space-between;
+}
+.buttonContainer i{
+    font-size: 3vh;
+    color: var(--darkgray);
+    cursor: pointer;
+    transition: all ease .5s;
+}
+.buttonContainer i:hover{
+    color: var(--darkgray);
+}
+.buttonContainer span{
+    font-size: 3.2vh;
+    color: var(--darkgray);
+    transition: all ease .3s;
+}
+.nameContainer{
+    position: relative;
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-bottom: 3vh;
+}
+.nameContainer1{
+    position: relative;
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 3vh;
+    padding: 0 2vw;
+}
+.input1{
+    width: 18vw;
+    height: 10vh;
+    position: relative;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    border-radius: .4vw;
+}
+.formLabel{
+    padding-left: .5vw;
+    display: flex;
+    width: 100%;
+    color: var(--darkgray);
+    font-size: var(--medium);
+}
+.formLabelPreview{
+    padding-left: .5vw;
+    display: flex;
+    width: 100%;
+    color: var(--darkgray);
+    font-size: var(--medium);
+}
+.asterisk{
+    color: var(--red);
+}
+.inputField{
+    width: 17vw;
+    height: 5vh;
+    outline: none;
+    border: solid 1px rgb(243, 243, 243);
+    padding: 0 1vw;
+    border-radius: .4vw;
+    letter-spacing: .01vw;
+    transition: all ease .3s;
+    color: var(--darkgray);
+    text-align: center;
+    font-size: var(--small);
+    box-shadow: 0px 0px 1px rgba(3, 7, 18, 0.08),
+    0px 0px 4px rgba(3, 7, 18, 0.06),
+    0px 1px 9px rgba(3, 7, 18, 0.05),
+    0px 2px 15px rgba(3, 7, 18, 0.03),
+    0px 3px 24px rgba(3, 7, 18, 0.02);
+}
+.inputPreview{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 38.5vw;
+    height: 5vh;
+    border: solid 1px rgb(243, 243, 243);
+    border-radius: .4vw;
+    color: var(--darkgray);
+    text-align: center;
+    font-size: var(--medium);
+    box-shadow: 0px 0px 1px rgba(3, 7, 18, 0.08),
+    0px 0px 4px rgba(3, 7, 18, 0.06),
+    0px 1px 9px rgba(3, 7, 18, 0.05),
+    0px 2px 15px rgba(3, 7, 18, 0.03),
+    0px 3px 24px rgba(3, 7, 18, 0.02);
+    background-color: var(--white);
+}
+.inputPreview1{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 18vw;
+    height: 5vh;
+    border: solid 1px rgb(243, 243, 243);
+    border-radius: .4vw;
+    color: var(--darkgray);
+    text-align: center;
+    font-size: var(--medium);
+    box-shadow: 0px 0px 1px rgba(3, 7, 18, 0.08),
+    0px 0px 4px rgba(3, 7, 18, 0.06),
+    0px 1px 9px rgba(3, 7, 18, 0.05),
+    0px 2px 15px rgba(3, 7, 18, 0.03),
+    0px 3px 24px rgba(3, 7, 18, 0.02);
+    background-color: var(--white);
+}
+.inputField:focus,.inputField:hover {
+    border-color: none !important;
+    box-shadow: none;
+}
+.input2{
+    width: 18vw;
+    height: 10vh;
+    position: relative;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+.input3{
+    width: fit-content;
+    height: 10vh;
+    position: relative;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+.input4{
+    width: fit-content;
+    height: 12vw;
+    position: relative;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+.addressPicker{
+    width: 17vw;
+    height: 5vh;
+    outline: none;
+    border: solid 1px rgb(243, 243, 243);;
+    border-radius: .4vw;
+    letter-spacing: .01vw;
+    transition: all ease .3s;
+    color: var(--darkgray);
+    text-align: center;
+    font-size: var(--small);
+    box-shadow: 0px 0px 1px rgba(3, 7, 18, 0.08),
+    0px 0px 4px rgba(3, 7, 18, 0.06),
+    0px 1px 9px rgba(3, 7, 18, 0.05),
+    0px 2px 15px rgba(3, 7, 18, 0.03),
+    0px 3px 24px rgba(3, 7, 18, 0.02);
+}
+#selectStatus,#selectPosition,#selectProvince{
+    position: relative;
+    width: 17vw;
+    height: 5vh;
+    border-radius: .4vw;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 1vw;
+    border: solid 1px rgb(243, 243, 243);
+    color: var(--darkgray);
+    cursor: pointer;
+    background-color: var(--white);
+    box-shadow: 0px 0px 1px rgba(3, 7, 18, 0.08),
+    0px 0px 4px rgba(3, 7, 18, 0.06),
+    0px 1px 9px rgba(3, 7, 18, 0.05),
+    0px 2px 15px rgba(3, 7, 18, 0.03),
+    0px 3px 24px rgba(3, 7, 18, 0.02);
+    transition: all ease .3s;
+}
+#selectStatus:hover,#selectPosition:hover{
+    border-color: none !important;
+    box-shadow: none;
+}
+.statusOption,.positionOption{
+    position: absolute;
+    width: 94%;
+    height: fit-content;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    visibility: hidden;
+    opacity: 0;
+    transition: all ease .3s ;
+}
+.clinicOption{
+    position: absolute;
+    width: 94%;
+    height: fit-content;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    transition: all ease .3s ;
+    top: 9.5vh;
+}
+.statusOption{
+    bottom: 6.5vh;
+}
+.positionOption{
+    top: 9.5vh;
+}
+
+.statusOption span,.positionOption span{
+    position: relative;
+    width: 100%;
+    height: 5vh;
+    margin-bottom: 1px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--darkgray);
+    transition: all ease .3s;
+    cursor: pointer;
+    background-color: var(--blue);
+    color: var(--white);
+    border-radius: .2vw;
+}
+.clinicsName{
+    position: relative;
+    width: 100%;
+    height: 5vh;
+    margin-bottom: 1px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--darkgray);
+    transition: all ease .3s;
+    cursor: pointer;
+    background-color: var(--blue);
+    color: var(--white);
+    border-radius: .2vw;
+    z-index: 100;
+}
+.clinicsName .highlight {
+    background-color: var(--lightgray);
+    color:var(--white);
+}
+.statusOption span:hover,.positionOption span:hover{
+    background-color: lightgray;
+    color: var(--darkgray);
+}
+#statusType,#positionType,#clinicName{
+    font-size: var(--small);
+    color: var(--lightgray);
+}
+.imageInput {
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: .5vw;
+    margin-bottom: 3vh;
+}
+.imgHolderStaff{
+    position: relative;
+    width: 12vw;
+    height: 12vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius:1vw 1vw 50% 50%;
+    overflow: hidden;
+    border: solid 1px lightgray;
+    margin:0 4vh 0 0 ;
+    background-color: var(--white);
+}
+#preview{
+    position: relative;
+    flex-shrink: 0;
+    width: 100%;
+}
+#uploadImg{
+    position: absolute;
+    z-index: 5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: 1vh;
+    right: 1vh;
+    border: none;
+    outline: none;
+    width: 2vw;
+    height: 2vw;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: var(--small);
+    color: var(--darkgray);
+    background-color: lightgray;
+    transition: all ease .3s;
+    box-shadow: 0px 0px 1px rgba(3, 7, 18, 0.08),
+    0px 0px 4px rgba(3, 7, 18, 0.06),
+    0px 1px 9px rgba(3, 7, 18, 0.05),
+    0px 2px 15px rgba(3, 7, 18, 0.03),
+    0px 3px 24px rgba(3, 7, 18, 0.02);
+}
+#uploadImg:hover{
+    background-color: var(--lightgray);
+}
+.errorPrompt{
+    position: absolute;
+    bottom: -.5vh;
+    color: var(--red);
+    font-size: var(--smaller);
+}
+.showElement{
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+#hiddenButton{
+    color: white !important;
+    cursor: default !important;
+}
+#positionCaret,#statusCaret{
+    transition: all ease .3s;
+}
+.confirmButton{
+    width: 100%;
+    height: 10vh;
+    position: absolute;
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: flex-end;
+    padding: 0 2vw 2vw 0;
+}
+.confirmButton button{
+    width: 10vw;
+    height: 7vh;
+    outline: none;
+    border: solid 1px var(--green);
+    border-radius: .2vw;
+    color: var(--white);
+    background-color: var(--green);
+    cursor: pointer;
+    transition: all ease .3s ;
+    font-size: var(--small);
+}
+.confirmButton button:hover{
+    background:var(--white);
+    color: var(--green);
+}
+.cancel{
+    width: 100%;
+    height: 10vh;
+    position: absolute;
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: flex-end;
+    padding: 0 2vw 1vw 0;
+}
+.cancel button{
+    width: 10vw;
+    height: 7vh;
+    outline: none;
+    border: solid 1px var(--red);
+    border-radius: .2vw;
+    color: var(--white);
+    background-color: var(--red);
+    cursor: pointer;
+    transition: all ease .3s ;
+    font-size: var(--small);
+}
+.cancel button:hover{
+    background:var(--white);
+    color: var(--red);
+}
+#viewStaffDetails{
+    width: 60vw;
+    flex-direction: column;
+    background-color: var(--white);
+    border-radius: .4vw;
+    box-shadow: 0px 0px 1px rgba(3, 7, 18, 0.08),
+    0px 0px 4px rgba(3, 7, 18, 0.06),
+    0px 1px 9px rgba(3, 7, 18, 0.05),
+    0px 2px 15px rgba(3, 7, 18, 0.03),
+    0px 3px 24px rgba(3, 7, 18, 0.02);
+    padding: 4vh 1vw;
+}
+#statusController{
+    width: 13vw;
+    height: 13vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: lightgray;
+    border-radius:50% ;
+    margin-right: 2vw;
+    box-shadow:  0px 0px 9px 0px rgb(194, 194, 194);
+}
+.imgViewForm{
+    width: 12vw;
+    height: 12vw;
+    overflow: hidden;
+    background-color: var(--white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50% ;
+}
+.imgViewForm img{
+    flex-shrink: 0;
+    width: 100%;
+}
+.view1{
+    position: relative;
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 2vh;
+}
+.view5{
+    position: relative;
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-bottom: 2vh;
+}
+.view3{
+    position: relative;
+    width: 18vw;
+    height: fit-content;
+    margin-bottom: 2vh;
+    display: flex;
+    flex-direction: column;
+}
+.view4{
+    position: relative;
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2vh;
+    padding: 0 .8vw;
+}
+.view6{
+    position: relative;
+    width: 37.2vw;
+    height: fit-content;
+    margin-bottom: 2vh;
+    display: flex;
+    flex-direction: column;
+}
+.viewLabel{
+    width: 100%;
+    font-size: var(--small);
+}
+.viewDetails{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: inherit;
+    height: 5vh;
+    border-radius: .4vw;
+    letter-spacing: .01vw;
+    transition: all ease .3s;
+    color: var(--darkgray);
+    font-size: var(--small);
+    box-shadow: 0px 0px 1px rgba(3, 7, 18, 0.08),
+    0px 0px 4px rgba(3, 7, 18, 0.06),
+    0px 1px 9px rgba(3, 7, 18, 0.05),
+    0px 2px 15px rgba(3, 7, 18, 0.03),
+    0px 3px 24px rgba(3, 7, 18, 0.02);
+    margin-top: .5vh;
+    background: white;
+}
+.shake{
+    animation: error 0.5s;
+}
+@keyframes error{
+    25%{transform: translateX(-4px);}
+    50%{transform: translateX(4px);}
+    75%{transform: translateX(-4px);}
+}
+@keyframes progressTracker {
+    0%{
+        transform: translateY(-100%);
+    }
+    100% {
+     transform: translateY(0%);
+    }
+}
+@keyframes colorChange {
+    0% {
+        color: var(--lightgray); }
+    100% {
+     color: var(--green);
+    }
+}
+@keyframes showFormPart {
+    0% {
+        opacity: 0;}
+    100% {
+        opacity: 1;
+    }
+}
+@keyframes hideFormPart {
+    0% {
+        opacity: 1;}
+    100% {
+        opacity: 0;
+    }
+}
+.hidden{
+    display: none;
+}
+.pop-up{
+    opacity: 1;
+    transform: scale(1);
+    transition: opacity 0.5s, transform 0.5s;
 }

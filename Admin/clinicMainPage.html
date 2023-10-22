@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="theme-color" content="#2196F3">
+    <meta name="theme-color" content="#2196F3">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/admin.css">
+    <link rel="stylesheet" href="../css/clinic.css">
+    <script src="../javascript/clinic.js" defer></script>
+    <script src="../javascript/addressDropdown.js" defer></script>
+    <script src="../javascript/sweetalert2.js" defer></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.0/jquery.js"></script>
+    <script src="https://f001.backblazeb2.com/file/buonzz-assets/jquery.ph-locations-v1.0.0.js"></script>
+    <link rel="website icon" type="png " href="../images/logo.png">
+    <script src="https://kit.fontawesome.com/275edc9f9d.js" crossorigin="anonymous" defer></script>
+    <title>Clinic</title>
+</head>
+
+<body onload="onload()">
+    <section id="main">
+        <div class="header">
+            <div class="headerContainer">
+                <div class="headerContent">
+                    <a href="" class="headerLink headerLinkActive">All</a>
+                </div>
+                <span class="notificationHolder">
+                    <div class="notificationContainer hidden">
+                        <div class="notifications">
+                            <div class="searchNotification">
+                                <input type="text" name="" id="searchNotification" autocomplete="off" spellcheck="false"
+                                    placeholder="Search notification">
+                                <i class="fa-solid fa-magnifying-glass"></i>
+                            </div>
+                            <div class="allNotification" id="allNotification">
+                            </div>
+                        </div>
+                        <div class="triangle"></div>
+                    </div>
+                    <i class="fa-solid fa-bell bellUI" onclick="viewNotificationContainer(event)">
+                        <div class="notification-dot"></div>
+                    </i>
+                </span>
+                <div class="holder">
+                    <div class="profile" id="profileExpand">
+                        <div class="info">
+                            <span id="name">
+                                Welcome, John Kenneth
+                            </span>
+                            <span id="role">
+                                Dentist
+                            </span>
+                        </div>
+                        <div class="profileHolder">
+                            <img src="../images/noProfile.png" alt="">
+                        </div>
+                    </div>
+                    <div class="logoutHolder hidden" id="logoutHolder">
+                        <span class="logoutOpt"><a href="Settings.html"><i
+                                    class="fa-solid fa-gear"></i>Settings</a></span>
+                        <span class="logoutOpt"><span id="logOutButton"><i
+                                    class="fa-solid fa-right-from-bracket"></i>Log out</span></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        //update the sidebar
+        <div class="sidebar">
+            <img src="../images/logo.png" alt="">
+            <nav>
+                <ul>
+                    <li>
+                        <a href="Dashboard.html" class="links" data-tooltip="Dashboard">
+                            <i class="fa-solid fa-house-chimney"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="" class="links activePage" data-tooltip="Clinic">
+                            <i class="fa-solid fa-house-medical-flag"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="StaffsMainPage.html" class="links" data-tooltip="Staff">
+                            <i class="fa-solid fa-user-nurse"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="PatientsMainPage.html" class="links" data-tooltip="Patients">
+                            <i class="fa-solid fa-hospital-user"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="ServicesMainPage.html" class="links" data-tooltip="Services">
+                            <i class="fa-solid fa-hand-holding-medical"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="MedicinesMainPage.html" class="links" data-tooltip="Medicines">
+                            <i class="fa-solid fa-pills"></i></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="AppointmentsMainPage.html" class="links" data-tooltip="Appointments">
+                            <i class="fa-solid fa-calendar-check"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="ArchivesMainPage.html" class="links" data-tooltip="Archives">
+                            <i class="fa-solid fa-boxes-packing"></i>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+        <div class="mainContainer">
+            <div class="containerHeader">
+                <span class="pageTitle">Clinic</span>
+                <div class="sort">
+                    <div class="searchBar">
+                        <input autocomplete="off" placeholder="Search" id="search" spellcheck="false">
+                        <i class="fa-sharp fa-solid fa-magnifying-glass"></i>
+                    </div>
+                    <button id="addClinic" onclick="showForm()"><span>Clinic</span><i
+                            class="fa-solid fa-plus "></i></button>
+                </div>
+            </div>
+            <div class="containerBody " id="containerBody">
+            </div>
+            <div class="viewClinicInfos hidden" id="viewClinicInfos">
+                <div class="clinicInfoNavBar">
+                    <ul>
+                        <li class="activeNavBar">Staff</li>
+                        <li class="">Services</li>
+                        <li class="">Appointments</li>
+                        <li class="">About</li>
+                        <div class="actionsNav">
+                            <div class="searchBoxes">
+                                <div class="searchInputs hidden">
+                                    <input autocomplete="off" id="searchStaff" placeholder="Search staff"
+                                        class="searchBox">
+                                    <i class="fa-sharp fa-solid fa-magnifying-glass"></i>
+                                </div>
+                                <div class="searchInputs hidden">
+                                    <input autocomplete="off" id="searchServices" placeholder="Search services"
+                                        class="searchBox">
+                                    <i class="fa-sharp fa-solid fa-magnifying-glass"></i>
+                                </div>
+                                <div class="searchInputs hidden">
+                                    <input autocomplete="off" id="searchAppointment" placeholder="Search appointment"
+                                        class="searchBox">
+                                    <i class="fa-sharp fa-solid fa-magnifying-glass"></i>
+                                </div>
+                            </div>
+                            <i class="fa-solid fa-xmark" id="closeButton"></i>
+                        </div>
+                    </ul>
+                </div>
+                <!-- staffContainer -->
+                <div class="clinicInformations " id="ci1">
+
+                </div>
+                <!-- servicesContainer -->
+                <div class="clinicInformations hidden" id="ci2">
+
+                </div>
+                <!-- appointments container -->
+                <div class="clinicInformations hidden" id="ci3">
+                    <table id="tableAppointments">
+                        <thead>
+                            <tr>
+                                <th class="nameColumn">Name</th>
+                                <th class="serviceColumn">Service</th>
+                                <th class="statusColumn">Status</th>
+                                <th class="dateColumn">Date</th>
+                                <th class="timeColumn">Time</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tableBody">
+                        </tbody>
+                    </table>
+                </div>
+                <!-- clinic info -->
+                <div class="clinicInformations hidden" id="ci4">
+                    <div class="informations">
+                        <div class="basicInfos">
+                            <span id="clinicNameAbout">Pablo De Jesus</span>
+                            <div class="clinicImages">
+                                <div class="image1">
+                                    <img src="../images/logo.png" alt="" id="image1">
+                                </div>
+                                <img src="../images/clinicPlaceholder.png" alt="" id="image2">
+                            </div>
+                            <div class="descriptionContainer">
+                                <span>Description</span>
+                                <span id="clinicDescriptionAbout">Lorem ipsum dolor sit amet consectetur adipisicing
+                                    elit. Fugit impedit totam eveniet deleniti id unde corrupti aspernatur, possimus
+                                    perferendis modi aperiam quia est accusamus repellat? Nostrum iste tempore minus
+                                    neque?</span>
+                            </div>
+                        </div>
+                        <div class="basicInfos1">
+                            <div class="countContainer">
+                                <div class="counter">
+                                    <i class="fa-solid fa-user-nurse"></i>
+                                    <span class="counterValue" id="staffCount">6</span>
+                                    <span class="counterLabel">Staff</span>
+                                </div>
+                                <div class="counter">
+                                    <i class="fa-solid fa-hand-holding-medical"></i>
+                                    <span class="counterValue" id="servicesCount">23</span>
+                                    <span class="counterLabel">Services</span>
+                                </div>
+                                <div class="counter">
+                                    <i class="fa-solid fa-calendar-check"></i>
+                                    <span class="counterValue" id="appointmentsCount">18</span>
+                                    <span class="counterLabel">Appointments</span>
+                                </div>
+                            </div>
+                            <div class="otherInformation">
+                                <div class="otherInformations">
+                                    <div class="otherInfo">
+                                        <div class="infoLabel">Contact Number</div>
+                                        <div class="contactNumbers" id="contactNumberContainer">
+                                        </div>
+                                    </div>
+                                    <div class="otherInfo">
+                                        <div class="infoLabel">Email</div>
+                                        <div class="infoHolderAbout">
+                                            <i class="fa-solid fa-envelope aboutIcons"></i>
+                                            <span class="infoAboutValue"
+                                                id="emailAbout">johnkenneth.arellano.r@bulsu.edu.ph</span>
+                                        </div>
+                                    </div>
+                                    <div class="otherInfo">
+                                        <div class="infoLabel">Location</div>
+                                        <div class="infoHolderAbout">
+                                            <i class="fa-solid fa-location-dot aboutIcons"></i>
+                                            <span class="infoAboutValue"
+                                                id="locationAbout">johnkenneth.arellano.r@bulsu.edu.ph</span>
+                                        </div>
+                                    </div>
+                                    <div class="otherInfo">
+                                        <div class="infoLabel">Facebook</div>
+                                        <div class="infoHolderAbout">
+                                            <i class="fa-solid fa-location-dot aboutIcons"></i>
+                                            <span class="infoAboutValue"
+                                                id="facebookLink">johnkenneth.arellano.r@bulsu.edu.ph</span>
+                                            <i class="fa-solid fa-copy " id="copyButton" onclick="copyLink()"></i>
+                                            <audio src="../sounds/confirm.mp3" id="confirmSound"></audio>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- No data Found -->
+            <template id="no-data-found">
+                <div class="no-data-found">
+                    <img src="../images/No Data Found.png" alt="" class="shake">
+                </div>
+            </template>
+
+            <!-- Loader Template every clinic -->
+            <template id="templateLoader">
+                <div class="clinicContainer">
+                    <div class="clinic">
+                        <div class="clinicImageHolder skeleton">
+                            <img src="" alt="">
+                        </div>
+                        <div class="clinicInfos">
+                            <div class="clinicNameDescriptions">
+                                <div class="span1 skeleton1"></div>
+                                <div class="span1 skeleton1"></div>
+                                <div class="span1 skeleton1"></div>
+                                <div class="span2 skeleton1"></div>
+                            </div>
+                            <div class="clinicStaffandServices">
+                                <div class="span1 skeleton1">
+                                    <span class="countStaffandServices"></span>
+                                    <span class="label"></span>
+                                </div>
+                                <div class="span1 skeleton1">
+                                    <span class="countStaffandServices"></span>
+                                    <span class="label"></span>
+                                </div>
+                            </div>
+                            <div class="clinicLocation">
+                                <span class="skeleton1"></span>
+                            </div>
+                            <div class="templateOptions">
+                                <span class="span1 skeleton1"></span>
+                                <span class="span1 skeleton1"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </template>
+            <!-- Main Template for every clinic -->
+            <template id="mainTemplate">
+                <div class="clinicContainer">
+                    <div class="clinic">
+                        <div class="clinicImageHolder">
+                            <img src="../images/clinicPlaceholder.png" alt="" id="clinicImage">
+                        </div>
+                        <div class="clinicInfos">
+                            <div class="clinicNameDescriptions">
+                                <span style="display: none;" id="clinicNameOriginal"></span>
+                                <span class="clinicName" id="clinicName">Pablo De Jesus</span>
+                                <span class="clinicDescription" id="clinicDescription">Lorem ipsum dolor sit amet
+                                    consectetur adipisicing elit. Delectus, reprehenderit.</span>
+                            </div>
+                            <div class="clinicStaffandServices">
+                                <div class="count">
+                                    <span class="countStaffandServices" id="clinicStaffCount">12</span>
+                                    <span class="label">Staff</span>
+                                </div>
+                                <div class="count">
+                                    <span class="countStaffandServices" id="clinicServicesCount">54</span>
+                                    <span class="label">Services</span>
+                                </div>
+                            </div>
+                            <div class="clinicLocation">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span id="clinicAddress">Baliuag, Bulacan</span>
+                            </div>
+                            <div class="templateOptions">
+                                <span id="clinicId" style="display: none;"></span>
+                                <button class="viewButton">View more</button>
+                                <button class="deleteButton" onclick="deleteClinic(event)"><i
+                                        class="fa-solid fa-trash"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </template>
+
+            <!-- Loader Template every staff -->
+            <template id="staffTemplateLoader">
+                <div class="staffInitialSize ">
+                    <div class="staffViewHolder ">
+                        <div class="staffImgHolder2 skeleton1"></div>
+                        <span id="staffName" class="skeleton1"></span>
+                        <span id="staffPosition" class="skeleton1"></span>
+                        <span id="staffEmail" class="skeleton1"></span>
+                        <span id="staffNumber" class="skeleton1"></span>
+                    </div>
+                </div>
+            </template>
+            <!-- Main Template for every staff -->
+            <template id="staffTemplateMain">
+                <div class="staffInitialSize">
+                    <div class="staffViewHolder">
+                        <div class="staffImgHolder1">
+                            <div class="staffImgHolder">
+                                <img src="../images/noProfile.png" alt="" id="staffImgHolder">
+                            </div>
+                        </div>
+                        <span id="staffName"></span>
+                        <span id="staffPosition"></span>
+                        <span id="staffEmail"></span>
+                        <span id="staffNumber"></span>
+                    </div>
+                </div>
+            </template>
+
+            <!-- Loader Template every services -->
+            <template id="serviceTemplateLoader">
+                <div class="serviceInitialSize">
+                    <div class="serviceViewHolder">
+                        <span class="serviceName skeleton1" id="serviceName"></span>
+                        <div class="serviceImage skeleton1">
+                        </div>
+                    </div>
+                </div>
+            </template>
+            <!-- Main Template for every services -->
+            <template id="serviceTemplateMain">
+                <div class="serviceInitialSize">
+                    <div class="serviceViewHolder">
+                        <span class="serviceName" id="serviceName"></span>
+                        <div class="serviceImage">
+                            <img src="../images/1.jpeg" alt="" id="serviceImage">
+                        </div>
+                    </div>
+                </div>
+            </template>
+
+            <!-- Loader Template every appointment -->
+            <template id="appointmentTemplateLoader">
+                <tr class="tableRow">
+                    <td class="nameAndImageColumn">
+                        <div class="imgHolderPatient skeleton1">
+                        </div>
+                        <span id="patientName" class="skeleton1"></span>
+                    </td>
+                    <td class="serviceColumn">
+                        <div class="tableDiv"><span id="patientServicesAvailed" class="skeleton1"></span></div>
+                    </td>
+                    <td class="statusColumn">
+                        <div class="tableDiv"><span class="appointmentAccepted skeleton1"
+                                id="patientAppointmentStatus"></span></div>
+                    </td>
+                    <td class="dateColumn">
+                        <div class="tableDiv"><span id="appointmentDate" class="skeleton1"></span></div>
+                    </td>
+                    <td class="timeColumn">
+                        <div class="tableDiv"><span id="appointmentTime" class="skeleton1"></span></div>
+                    </td>
+                </tr>
+            </template>
+            <!-- Main Template for every appointment -->
+            <template id="appointmentTemplateMain">
+                <tr class="tableRow">
+                    <td class="nameAndImageColumn">
+                        <div class="imgHolderPatient">
+                            <img src="../images/paps.jpg" alt="" id="appointmentImage">
+                        </div>
+                        <span id="patientName"></span>
+                    </td>
+                    <td class="serviceColumn">
+                        <div class="tableDiv"><span id="patientServicesAvailed"></span><span id="originalServices"
+                                style="display: none;"></span></div>
+                    </td>
+                    <td class="statusColumn">
+                        <div class="tableDiv">
+                            <spanspan# class="appointmentAccepted" id="patientAppointmentStatus">
+                                </spanspan#< /div>
+                    </td>
+                    <td class="dateColumn">
+                        <div class="tableDiv"><span id="appointmentDate"></span></div>
+                    </td>
+                    <td class="timeColumn">
+                        <div class="tableDiv"><span id="appointmentTime"></span></div>
+                    </td>
+                </tr>
+            </template>
+            <template id="contactNumberTemplate">
+                <div class="contactNumber">
+                    <i class="fa-solid fa-phone aboutIcons"></i>
+                    <span class="infoAboutValue" id="numberAbout"></span>
+                </div>
+            </template>
+        </div>
+        <div class="formBg hidden" id="formBg">
+            <form action="" id="addClinicForm">
+                <i class="fa-solid fa-xmark" id="closeForm"></i>
+                <div class="formContainer ">
+                    <div class="logoAndImageAdd">
+                        <div class="inputHolder2">
+                            <span class="formLabel1">Clinic image <span class="asterisk">*</span></span>
+                            <div class="clinicImageHolderAdd" ondrop="handleDrop(event)"
+                                ondragover="handleDragOver(event)">
+                                <label for="addClinicImage" class="clinicImageAdd"><i
+                                        class="fa-solid fa-plus"></i></label>
+                                <img src="../images/clinicPlaceholder.png" alt="" id="preview">
+                                <input type="file" name="addClinicImage" id="addClinicImage" style="display: none;"
+                                    onchange="previewImage(event)">
+                            </div>
+                        </div>
+                        <div class="inputHolder3">
+                            <span class="formLabel1">Logo <span class="asterisk">*</span></span>
+                            <div class="logoHolder" ondrop="handleDrop1(event)" ondragover="handleDragOver(event)">
+                                <label for="addLogo" class="cameraLogo"><i class="fa-solid fa-plus"></i></label>
+                                <img src="../images/logo.png" alt="" id="preview1">
+                                <input type="file" name="addLogo" id="addLogo" style="display: none;"
+                                    onchange="previewImage1(event)">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="inputHolder">
+                        <label for="clinicNameAdd" class="formLabel">Clinic name <span class="asterisk">*</span></label>
+                        <input autocomplete="off" class="formInput" placeholder="Clinic name" id="clinicNameAdd">
+                        <span class="errorMessage"></span>
+                    </div>
+                    <div class="inputHolder">
+                        <label for="facebookLinkAdd" class="formLabel">Facebook link</label>
+                        <input autocomplete="off" class="formInput" placeholder="https://www.facebook.com/clinicpage"
+                            id="facebookLinkAdd">
+                        <span class="errorMessage"></span>
+                    </div>
+                    <div class="inputHolder1">
+                        <label for="clinicDescriptionAdd" class="formLabel">Description <span
+                                class="asterisk">*</span></label>
+                        <textarea name="clinicDescription" id="clinicDescriptionAdd" class="formInputTextArea"
+                            placeholder="This is a modern healthcare clinic providing quality services.">This is a modern healthcare clinic providing quality services.</textarea>
+                        <span class="errorMessage"></span>
+                    </div>
+                </div>
+                <div class="formContainer ">
+                    <div class="inputHolder">
+                        <label for="numberAdd" class="formLabel">Contact number <span class="asterisk">*</span></label>
+                        <input autocomplete="off" class="formInput" placeholder="9123123123" id="numberAdd"
+                            maxlength="10" name="numberClinic">
+                        <span class="errorMessage"></span>
+                    </div>
+                    <div class="inputHolder">
+                        <label for="emailAdd" class="formLabel">Email <span class="asterisk">*</span></label>
+                        <input autocomplete="off" class="formInput" placeholder="clinic@example.com" id="emailAdd"
+                            name="emailAdd">
+                        <span class="errorMessage"></span>
+                    </div>
+                    <div class="inputHolder">
+                        <label for="province" class="formLabel">Province <span class="asterisk">*</span></label>
+                        <input autocomplete="off" style="display: none;" name="province" id="provinceInput">
+                        <select id="province" class="formInput" onchange="showValue(this,provinceInput)">
+                            <option value="" selected class="formInput">Select province first</option>
+                        </select>
+                        <span class="errorMessage"></span>
+                    </div>
+                    <div class="inputHolder">
+                        <label for="city" class="formLabel">City <span class="asterisk">*</span></label>
+                        <input autocomplete="off" style="display: none;" name="city" id="cityInput">
+                        <select id="city" class="formInput" onchange="showValue(this,cityInput)">
+                            <option value="" selected class="formInput">Select province first</option>
+                        </select>
+                        <span class="errorMessage"></span>
+                    </div>
+                    <div class="inputHolder">
+                        <label for="barangay" class="formLabel">Barangay <span class="asterisk">*</span></label>
+                        <input autocomplete="off" style="display: none;" name="barangay" id="barangayInput">
+                        <select id="barangay" class="formInput" onchange="showValue(this,barangayInput)">
+                            <option value="" selected class="formInput">Select province first</option>
+                        </select>
+                        <span class="errorMessage"></span>
+                    </div>
+                    <div class="buttonsAddForm">
+                        <button type="button" onclick="validateClinicInfo()" class="nextButton">Next</button>
+                    </div>
+                </div>
+                <div class="formContainer1 hidden">
+                    <div class="profileContainer">
+                        <div class="inputHolder1">
+                            <label for="addAdminPicture" class="clinicImageAdd"><i class="fa-solid fa-plus"></i></label>
+                            <div class="adminImageHolderAdd" ondrop="handleDrop2(event)"
+                                ondragover="handleDragOver(event)">
+                                <img src="../images/noProfile.png" alt="" id="preview2">
+                                <input type="file" name="addAdminPicture" id="addAdminPicture" style="display: none;"
+                                    onchange="previewImage2(event)">
+                            </div>
+                        </div>
+                        <div class="nameHolderInput">
+                            <label for="firstNameAdd" class="formLabel">First name <span
+                                    class="asterisk">*</span></label>
+                            <input autocomplete="off" class="formInput" placeholder="First name" id="firstNameAdd"
+                                name="firstNameAdd">
+                            <span class="errorMessage"></span>
+                        </div>
+                        <div class="nameHolderInput">
+                            <label for="lastNameAdd" class="formLabel">Last name <span class="asterisk">*</span></label>
+                            <input autocomplete="off" class="formInput" placeholder="Last name" id="lastNameAdd"
+                                name="lastNameAdd">
+                            <span class="errorMessage"></span>
+                        </div>
+                        <div class="nameHolderInput">
+                            <label for="middleNameAdd" class="formLabel">Middle name</label>
+                            <input autocomplete="off" class="formInput" placeholder="Middle name" id="middleNameAdd"
+                                name="middleNameAdd">
+                            <span class="errorMessage"></span>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="formContainer2 hidden">
+
+                    <div class="nameHolder">
+                        <div class="genderHolder">
+                            <span for="selectSex" class="formLabel">Sex <span class="asterisk">*</span></span>
+                            <input autocomplete="off" style="display: none;" id="sex" name="sex">
+                            <div class="sexInput" id="selectSex" onclick="selectSex()"><span id="selectedSex">Select
+                                    sex</span> <i class="fa-solid fa-caret-down"></i></div>
+                            <div class="sexOptions hidden">
+                                <span>Male</span>
+                                <span>Female</span>
+                            </div>
+                            <span class="errorMessage"></span>
+                        </div>
+                        <div class="nameHolderInput">
+                            <label for="religionAdd" class="formLabel">Religion <span class="asterisk">*</span></label>
+                            <input autocomplete="off" class="formInput" placeholder="Religion" id="religionAdd"
+                                name="religion">
+                            <span class="errorMessage"></span>
+                        </div>
+                    </div>
+                    <div class="nameHolder">
+                        <div class="nameHolderInput">
+                            <label for="birthdayAdd " class="formLabel">Birthdate <span
+                                    class="asterisk">*</span></label>
+                            <input type="date" class="formInput" id="birthdayAdd" name="birthdayAdd">
+                            <span class="errorMessage"></span>
+                        </div>
+                        <div class="nameHolderInput">
+                            <label for="ageAdd" class="formLabel">Age <span class="asterisk">*</span></label>
+                            <input autocomplete="off" class="formInput" placeholder="0" id="ageAdd" name="ageAdd"
+                                readonly>
+                            <span class="errorMessage"></span>
+                        </div>
+                    </div>
+                    <div class="nameHolder">
+                        <div class="nameHolderInput">
+                            <label for="emailAddAdmin" class="formLabel">Email <span class="asterisk">*</span></label>
+                            <input autocomplete="off" class="formInput" placeholder="admin@example.com"
+                                id="emailAddAdmin" name="emailAddAdmin">
+                            <span class="errorMessage"></span>
+                        </div>
+                        <div class="nameHolderInput">
+                            <label for="numberAdmin" class="formLabel">Contact number <span
+                                    class="asterisk">*</span></label>
+                            <input autocomplete="off" class="formInput" placeholder="9123123123" id="numberAdmin"
+                                maxlength="10" name="numberAdmin">
+                            <span class="errorMessage"></span>
+                        </div>
+                    </div>
+                    <div class="nameHolder">
+                        <div class="nameHolderInput">
+                            <label for="provinceAdmin" class="formLabel">Province <span
+                                    class="asterisk">*</span></label>
+                            <input autocomplete="off" style="display: none;" name="provinceAdmin"
+                                id="provinceInputAdmin">
+                            <select id="provinceAdmin" class="formInput" onchange="showValue(this,provinceInputAdmin)">
+                                <option value="" selected class="formInput">Select province first</option>
+                            </select>
+                            <span class="errorMessage"></span>
+                        </div>
+                        <div class="nameHolderInput">
+                            <label for="cityAdmin" class="formLabel">City <span class="asterisk">*</span></label>
+                            <input autocomplete="off" style="display: none;" name="cityAdmin" id="cityInputAdmin">
+                            <select id="cityAdmin" class="formInput" onchange="showValue(this,cityInputAdmin)">
+                                <option value="" selected class="formInput">Select province first</option>
+                            </select>
+                            <span class="errorMessage"></span>
+                        </div>
+                    </div>
+                    <div class="nameHolder">
+                        <div class="nameHolderInput">
+                            <label for="barangayAdmin" class="formLabel">Barangay <span
+                                    class="asterisk">*</span></label>
+                            <input autocomplete="off" style="display: none;" name="barangayAdmin"
+                                id="barangayInputAdmin">
+                            <select id="barangayAdmin" class="formInput" onchange="showValue(this,barangayInputAdmin)">
+                                <option value="" selected class="formInput">Select province first</option>
+                            </select>
+                            <span class="errorMessage"></span>
+                        </div>
+                        <div class="nameHolderInput">
+                            <label for="houseNumberAndStreet" class="formLabel">Street & House number</label>
+                            <input autocomplete="off" class="formInput" placeholder="#123 Sitio gitna"
+                                id="houseNumberAndStreet" name="houseNumberAndStreet">
+                            <span class="errorMessage"></span>
+                        </div>
+                    </div>
+                    <div class="buttonsAddForm">
+                        <button type="button" onclick="backButton()" class="backButton">Back</button>
+                        <button type="button" onclick="valdidateClinicAdmin()" class="nextButton">Submit</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <!-- No data Found -->
+        <template id="no-notifications">
+            <div class="no-notification">
+                <img src="../images/No Data Found.png" alt="" class="shake">
+            </div>
+        </template>
+        <!--notification loader-->
+        <template id="notificationLoader">
+            <div class="notif" onclick="viewNotification(event)">
+                <div class="imgHolderNotif skeleton1">
+                </div>
+                <div class="notificationContent">
+                    <span class="notificationTitle skeleton1" id="notificationTitle"> </span>
+                    <span class="notificationMessage skeleton1" id="notificationMessage"></span>
+                </div>
+            </div>
+        </template>
+        <!--notification main template-->
+        <template id="notificationMainTemplate">
+            <div class="notif" onclick="viewNotification(event)">
+                <div class="imgHolderNotif">
+                    <img src="../images/logo.png" alt="" id="imgNotif">
+                </div>
+                <div class="notificationContent">
+                    <span class="notificationTitle " id="notificationTitle"> </span>
+                    <span class="notificationMessage " id="notificationMessage"></span>
+                    <span style="display: none;" id="urlRedirect"></span>
+                </div>
+            </div>
+        </template>
+    </section>
+</body>
+
+</html>

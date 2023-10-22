@@ -1,0 +1,16 @@
+{
+    "clinicInfo": {
+      "image": "clinicPlaceholder.png",
+      "logo": "logo.png",
+      "clinicName": "Pablo De Jesus",
+      "description": "This is a modern healthcare clinic providing quality services.",
+      "staffCount": 10,
+      "servicesCount": 20,
+      "appointmentsCount": 100,
+      "contactNumbers": ["9876543210", "9123456789"],
+      "email": "clinic@example.com",
+      "location": "123 Main Street, Cityville",
+      "facebookLink": "https://www.facebook.com/clinicpage"
+    }
+}
+  

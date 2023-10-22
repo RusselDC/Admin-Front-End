@@ -1,15 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
+    <meta name="theme-color" content="#2196F3">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/admin.css">
     <link rel="stylesheet" href="../css/staff.css">
-    <script src="../javascript/Staff.js"  defer></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.0/jquery.js"></script>
+    <script src="https://f001.backblazeb2.com/file/buonzz-assets/jquery.ph-locations-v1.0.0.js"></script>
+    <script src="../javascript/Staff.js" defer></script>
+    <script src="../javascript/addressDropdown.js" defer></script>
+    <script src="../javascript/sweetalert2.js" defer></script>
     <link rel="website icon" type="png " href="../images/logo.png">
     <script src="https://kit.fontawesome.com/275edc9f9d.js" crossorigin="anonymous" defer></script>
     <title>Staff</title>
 </head>
+
 <body onload="onload()">
     <section id="main">
         <div class="header">
@@ -17,19 +24,43 @@
                 <div class="headerContent">
                     <a href="" class="headerLink headerLinkActive">Manage</a>
                     <a href="StaffsLeavePage.html" class="headerLink">Leave</a>
-                    
                 </div>
-                <div class="profile">
-                    <div class="info">
-                        <span id="name">
-                            Arellano, John Kenneth R.
-                        </span>
-                        <span id="role">
-                            Dentist
-                        </span>
+                <span class="notificationHolder">
+                    <div class="notificationContainer hidden">
+                        <div class="notifications">
+                            <div class="searchNotification">
+                                <input type="text" name="" id="searchNotification" autocomplete="off" spellcheck="false"
+                                    placeholder="Search notification">
+                                <i class="fa-solid fa-magnifying-glass"></i>
+                            </div>
+                            <div class="allNotification" id="allNotification">
+                            </div>
+                        </div>
+                        <div class="triangle"></div>
                     </div>
-                    <div class="profileHolder">
-                        <img src="../images/kenneth.png" alt="">
+                    <i class="fa-solid fa-bell bellUI" onclick="viewNotificationContainer(event)">
+                        <div class="notification-dot"></div>
+                    </i>
+                </span>
+                <div class="holder">
+                    <div class="profile" id="profileExpand">
+                        <div class="info">
+                            <span id="name">
+                                Welcome, John Kenneth
+                            </span>
+                            <span id="role">
+                                Dentist
+                            </span>
+                        </div>
+                        <div class="profileHolder">
+                            <img src="../images/noProfile.png" alt="">
+                        </div>
+                    </div>
+                    <div class="logoutHolder hidden" id="logoutHolder">
+                        <span class="logoutOpt"><a href="Settings.html"><i
+                                    class="fa-solid fa-gear"></i>Settings</a></span>
+                        <span class="logoutOpt"><span id="logOutButton"><i
+                                    class="fa-solid fa-right-from-bracket"></i>Log out</span></span>
                     </div>
                 </div>
             </div>
@@ -38,14 +69,46 @@
             <img src="../images/logo.png" alt="">
             <nav>
                 <ul>
-                    <li ><a href="Dashboard.html" class="links"><i class="fa-solid fa-house-chimney"></i></a></li>
-                    <li><a href="" class="links activePage"><i class="fa-solid fa-user-nurse"></i></a></li>
-                    <li><a href="PatientsMainPage.html" class="links"><i class="fa-solid fa-hospital-user"></i></a></li>
-                    <li><a href="ServicesMainPage.html" class="links"><i class="fa-solid fa-hand-holding-medical"></i></a></li>
-                    <li><a href="MedicinesMainPage.html" class="links"><i class="fa-solid fa-pills"></i></i></a></li>
-                    <li><a href="AppointmentsMainPage.html" class="links"><i class="fa-solid fa-calendar-check"></i></a></li>
-                    <li><a href="ArchivesMainPage.html" class="links"><i class="fa-solid fa-boxes-packing"></i></a></li>
-                    <li><a href="Settings.html" class="links"><i class="fa-solid fa-gear"></i></a></li>
+                    <li>
+                        <a href="Dashboard.html" class="links" data-tooltip="Dashboard">
+                            <i class="fa-solid fa-house-chimney"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="clinicMainPage.html" class="links" data-tooltip="Clinic">
+                            <i class="fa-solid fa-house-medical-flag"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="StaffsMainPage.html" class="links activePage" data-tooltip="Staff">
+                            <i class="fa-solid fa-user-nurse"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="PatientsMainPage.html" class="links" data-tooltip="Patients">
+                            <i class="fa-solid fa-hospital-user"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="ServicesMainPage.html" class="links" data-tooltip="Services">
+                            <i class="fa-solid fa-hand-holding-medical"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="MedicinesMainPage.html" class="links" data-tooltip="Medicines">
+                            <i class="fa-solid fa-pills"></i></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="AppointmentsMainPage.html" class="links" data-tooltip="Appointments">
+                            <i class="fa-solid fa-calendar-check"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="ArchivesMainPage.html" class="links" data-tooltip="Archives">
+                            <i class="fa-solid fa-boxes-packing"></i>
+                        </a>
+                    </li>
                 </ul>
             </nav>
         </div>
@@ -54,14 +117,17 @@
                 <span class="pageTitle">Staff</span>
                 <div class="sort">
                     <div class="searchBar">
-                        <input type="text" placeholder="Search" id="search">
+                        <input autocomplete="off" placeholder="Search" id="search" spellcheck="false"
+                            autocomplete="off">
                         <i class="fa-sharp fa-solid fa-magnifying-glass"></i>
                     </div>
-                    <button class="sortButton" id="sortButton"><span id="sortText">All</span> <i class="fa-solid fa-caret-down"></i></button>
-                    <div class="sortOptions1" id="sortOptions">
+                    <button class="sortButton" id="sortButton"><span id="sortText">All</span> <i
+                            class="fa-solid fa-caret-down"></i></button>
+                    <div class="sortOptions2" id="sortOptions">
                         <span id="allStaffs">All</span>
                         <span id="onLeaveStaffs">On leave</span>
                     </div>
+                    <button id="addStaff"><span>Staff</span><i class="fa-solid fa-plus "></i></button>
                 </div>
             </div>
             <div class="tableContainer">
@@ -83,7 +149,7 @@
         </div>
         <!-- table loader template -->
         <template id="staffTemplateLoader">
-            <tr>
+            <tr class="tableRow">
                 <td class="staffTable">
                     <div id="nameTable" class="numberTablediv">
                         <div class="imgHolderNameTable skeleton1">
@@ -110,39 +176,369 @@
             </tr>
         </template>
 
-         <!-- table main template -->
+        <!-- table main template -->
         <template id="staffTemplate">
-            <tr>
+            <tr class="tableRow">
                 <td class="staffTable">
                     <div id="nameTable" class="numberTablediv">
                         <div class="imgHolderNameTable">
                             <img src="../images/" alt="" id="imgStaff">
                         </div>
                         <span id="patientNameOriginalValue" style="display: none;"></span>
-                        <span id="staffName">Arellano, John Kenneth R.</span>
+                        <span id="staffName"></span>
                     </div>
                 </td>
                 <td class="positionTable">
-                    <div class="numberTablediv"><span id="position">Dentist</span></div>
+                    <div class="numberTablediv"><span id="position"></span></div>
                 </td>
                 <td class="contactTable">
-                    <div class="numberTablediv"><span id="contactNumber">09519077637</span></div>
+                    <div class="numberTablediv"><span id="contactNumber"></span></div>
                 </td>
                 <td class="emailTable">
-                    <div class="numberTablediv"><span id="emailAddresss">arellano.johnkenneth.r@bulsu.edu.ph</span></div>
+                    <div class="numberTablediv"><span id="emailAddresss"></span></div>
                 </td>
                 <td class="statusTable">
-                    <div class="numberTablediv"><span id="status">Active</span></div>
+                    <span id="imgSourceFetch" style="display: none;"></span>
+                    <span id="religionFetch" style="display: none;"></span>
+                    <span id="birthdayFetch" style="display: none;"></span>
+                    <span id="ageFetch" style="display: none;"></span>
+                    <span id="civilStatusFetch" style="display: none;"></span>
+                    <span id="addressFetch" style="display: none;"></span>
+                    <span id="dateHiredFetch" style="display: none;"></span>
+                    <div class="numberTablediv"><span id="status"></span></div>
                 </td>
                 <td class="actionsTable">
                     <div class="numberTablediv" id="actionsTable">
-                        <i class="fa-solid fa-eye viewButton"></i> 
-                        <i class="fa-solid fa-pen editButton"></i> 
+                        <i class="fa-solid fa-eye viewButton"></i>
                         <i class="fa-solid fa-trash deleteButton"></i>
                     </div>
                 </td>
             </tr>
         </template>
+        <!-- No Data Found Template -->
+        <template id="no-data-found">
+            <div class="no-data-found">
+                <img src="../images/No Data Found.png" alt="" class="shake">
+            </div>
+        </template>
+
+        <div class="formContainer hidden" id="formContainer">
+
+            <form class="formHandler hidden" action="" id="addStaffForm">
+                <div class="progressTracker">
+                    <div class="stage">
+                        <div class="line" id="line1"></div>
+                        <i class="fa-solid fa-circle-xmark" id="fa-circle-check1"></i>
+                    </div>
+                    <div class="stage">
+                        <div class="line" id="line2"></div>
+                        <i class="fa-solid fa-circle-xmark" id="fa-circle-check2"></i>
+                    </div>
+                </div>
+                <div class="forms">
+                    <div class="formSection" id="formSection1">
+                        <div class="buttonContainer">
+                            <i class="fa-solid fa-xmark" id="cancelButton1"></i>
+                            <span>Personal Details</span>
+                            <i class="fa-solid fa-angles-right" id="nextButton1"></i>
+                        </div>
+                        <div class="imageInput">
+                            <div class="imgHolderStaff" id="dropArea" ondrop="handleDrop(event)"
+                                ondragover="handleDragOver(event)">
+                                <label for="fileInput" id="uploadImg"><i class="fa-solid fa-camera"></i></label>
+                                <input type="file" id="fileInput" onchange="previewImage(event)">
+                                <img id="preview" src="../images/noProfile.png" alt="">
+                            </div>
+                            <div class="input4">
+                                <div class="input2">
+                                    <input autocomplete="off" name="position" id="choosePosition"
+                                        style="display: none;">
+                                    <span class="formLabel">Position <div class="asterisk"> *</div></span>
+                                    <span id="selectPosition"><span id="positionType">Select Position</span><i
+                                            class="fa-solid fa-caret-down" id="positionCaret"></i></span>
+                                    <span class="errorPrompt"></span>
+                                    <div class="positionOption" id="positionOption">
+                                        <span>Staff</span>
+                                        <span>Dentist</span>
+                                        <span>Admin</span>
+                                    </div>
+                                </div>
+                                <div class="input2">
+                                    <span class="formLabel">Choose clinic <div class="asterisk"> *</div></span>
+                                    <input autocomplete="off" placeholder="Ex. Pablo De Jesus" name="clinicAsigned"
+                                        id="clinicAsigned" class="inputField" autocomplete="off">
+                                    <span class="errorPrompt"></span>
+                                    <div class="clinicOption" id="clinicOption">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="nameContainer">
+                            <div class="input1">
+                                <label for="firstName" class="formLabel">First Name <div class="asterisk"> *</div>
+                                    </label>
+                                <input autocomplete="off" placeholder="Ex. Juan" name="firstName" id="firstName"
+                                    class="inputField" autocomplete="off">
+                                <span class="errorPrompt"></span>
+                            </div>
+                            <div class="input1">
+                                <label for="lastName" class="formLabel">Last Name <div class="asterisk"> *</div></label>
+                                <input autocomplete="off" placeholder="Ex. Dela Cruz" name="lastName" id="lastName"
+                                    class="inputField" autocomplete="off">
+                                <span class="errorPrompt"></span>
+                            </div>
+                            <div class="input1">
+                                <label for="middleName" class="formLabel">Middle Name</label>
+                                <input autocomplete="off" placeholder="Ex. Dela Cruz" name="middleName" id="middleName"
+                                    class="inputField" autocomplete="off">
+                                <span class="errorPrompt"></span>
+                            </div>
+                        </div>
+                        <div class="nameContainer">
+                            <div class="input1">
+                                <label for="religion" class="formLabel">Religion <div class="asterisk"> *</div></label>
+                                <input autocomplete="off" placeholder="Ex. Catholic" name="religion" id="religion"
+                                    class="inputField" autocomplete="off">
+                                <span class="errorPrompt"></span>
+                            </div>
+                            <div class="input1">
+                                <label for="birthday" class="formLabel">Birthday <div class="asterisk"> *</div></label>
+                                <input type="date" placeholder="Ex. Dela Cruz" name="birthday" id="birthday"
+                                    class="inputField" autocomplete="off">
+                                <span class="errorPrompt"></span>
+                            </div>
+                            <div class="input1">
+                                <label for="age" class="formLabel">Age</label>
+                                <input autocomplete="off" id="age" class="inputField" name="age" value=0 readonly>
+                                <span class="errorPrompt"></span>
+                            </div>
+                        </div>
+                        <div class="nameContainer">
+                            <div class="input2">
+                                <input autocomplete="off" name="civilStatus" id="chooseStatus" style="display: none;">
+                                <span class="formLabel">Civil Status <div class="asterisk"> *</div></span>
+                                <span id="selectStatus"><span id="statusType">Select Status</span><i
+                                        class="fa-solid fa-caret-down" id="statusCaret"></i></span>
+                                <span class="errorPrompt"></span>
+                                <div class="statusOption" id="statusOption">
+                                    <span>Single</span>
+                                    <span>Married</span>
+                                    <span>Divorced</span>
+                                </div>
+                            </div>
+                            <div class="input1">
+                                <label for="phoneNumber" class="formLabel">Contact # <div class="asterisk"> *</div>
+                                    </label>
+                                <input autocomplete="off" placeholder="Ex. 912312312" name="phoneNumber"
+                                    id="phoneNumber" class="inputField" maxlength="10" autocomplete="off">
+                                <span class="errorPrompt"></span>
+                            </div>
+                            <div class="input1">
+                                <label for="email" class="formLabel">Email <div class="asterisk"> *</div></label>
+                                <input autocomplete="off" placeholder="Ex. juandelacruz@gmail.com" name="email"
+                                    id="email" class="inputField" autocomplete="off">
+                                <span class="errorPrompt"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="formSection hidden" id="formSection2">
+                        <div class="buttonContainer">
+                            <i class="fa-solid fa-angles-left" id="cancelButton2"></i>
+                            <span>Address</span>
+                            <i class="fa-solid fa-angles-right" id="hiddenButton"></i>
+                        </div>
+                        <div class="nameContainer">
+                            <div class="input2">
+                                <span class="formLabel">Province <div class="asterisk"> *</div></span>
+                                <input autocomplete="off" style="display: none;" name="province" id="provinceInput">
+                                <select id="province" class="addressPicker" onchange="showValue(this,provinceInput)">
+                                </select>
+                                <span class="errorPrompt"></span>
+                            </div>
+                        </div>
+                        <div class="nameContainer">
+                            <div class="input2">
+                                <span class="formLabel">City <div class="asterisk"> *</div></span>
+                                <input autocomplete="off" style="display: none;" name="city" id="cityInput">
+                                <select id="city" class="addressPicker" onchange="showValue(this,cityInput)">
+                                    <option value="" selected class="defaultVal">Select province first</option>
+                                </select>
+                                <span class="errorPrompt"></span>
+                            </div>
+                        </div>
+                        <div class="nameContainer">
+                            <div class="input2">
+                                <span class="formLabel">Barangay <div class="asterisk"> *</div></span>
+                                <input autocomplete="off" style="display: none;" name="barangay" id="barangayInput">
+                                <select id="barangay" class="addressPicker" onchange="showValue(this,barangayInput)">
+                                    <option value="" selected class="defaultVal">Select city first</option>
+                                </select>
+                                <span class="errorPrompt"></span>
+                            </div>
+                        </div>
+                        <div class="nameContainer">
+                            <div class="input2">
+                                <span class="formLabel">House # & Street <div class="asterisk"> *</div></span>
+                                <input autocomplete="off" placeholder="Ex. 123 Sitio Gitna" id="houseNumberStreet"
+                                    class="inputField" value="">
+                                <span class="errorPrompt"></span>
+                            </div>
+                        </div>
+                        <div class="confirmButton">
+                            <button type="submit" id="confirmAdd" onclick="return addStaff()">CONFIRM</button>
+                        </div>
+
+                    </div>
+                    <!-- <div class="formSection hidden" id="formSection3">
+                        <div class="buttonContainer">
+                            <i class="fa-solid fa-angles-left" id="cancelButton3"></i>
+                            <span>Confirm details</span>
+                            <i class="fa-solid fa-angles-right" id="hiddenButton"></i>
+                        </div>
+                        <div class="nameContainer1">
+                            <div class="input3">                              
+                                <span class="formLabelPreview">Full name</span>
+                                <span class="inputPreview" id="namePreview"></span>
+                            </div>
+                            <div class="input2">                              
+                                <span class="formLabel">Position</span>
+                                <span class="inputPreview1" id="positionPreview"></span>
+                            </div>
+                        </div>
+                        <div class="nameContainer1">
+                            <div class="input2">                              
+                                <span class="formLabel">Religion</span>
+                                <span class="inputPreview1" id="religionPreview"></span>
+                            </div>
+                            <div class="input2">                              
+                                <span class="formLabel">Birthday</span>
+                                <span class="inputPreview1" id="birthdayPreview"></span>
+                            </div>
+                            <div class="input2">                              
+                                <span class="formLabel">Age</span>
+                                <span class="inputPreview1" id="agePreview"></span>
+                            </div>
+                        </div>
+                        <div class="nameContainer1">
+                            <div class="input2">                              
+                                <span class="formLabel">Civil status</span>
+                                <span class="inputPreview1" id="csPreview"></span>
+                            </div>
+                            <div class="input2">                              
+                                <span class="formLabel">Contact #</span>
+                                <span class="inputPreview1" id="contactPreview"></span>
+                            </div>
+                            <div class="input2">                              
+                                <span class="formLabel">Email</span>
+                                <span class="inputPreview1" id="emailPreview"></span>
+                            </div>
+                        </div>
+                        <div class="nameContainer1">
+                            <div class="input3">                              
+                                <span class="formLabelPreview">Address</span>
+                                <span class="inputPreview" id="addressPreview"></span>
+                            </div>
+                            <div class="input2">                              
+                                <span class="formLabel">Clinic</span>
+                                <span class="inputPreview1" id="clinicPlace"></span>
+                            </div>
+                        </div>
+
+                    </div> -->
+                </div>
+            </form>
+            <div class="formHandler hidden" id="viewStaffDetails">
+                <div class="view1">
+                    <div id="statusController">
+                        <div class="imgViewForm">
+                            <img src="../images/noProfile.png" alt="" id="viewImg">
+                        </div>
+                    </div>
+                    <div class="view2">
+                        <div class="view3">
+                            <span class="viewLabel">Name</span>
+                            <span class="viewDetails" id="viewName">Arellano, John Kenneth R.</span>
+                        </div>
+                        <div class="view3">
+                            <span class="viewLabel">Position</span>
+                            <span class="viewDetails" id="viewPosition">Dentist</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="view5">
+                    <div class="view3">
+                        <span class="viewLabel">Religion</span>
+                        <span class="viewDetails" id="viewReligion">addadasd.</span>
+                    </div>
+                    <div class="view3">
+                        <span class="viewLabel">Birthday</span>
+                        <span class="viewDetails" id="viewBirthday">12-32-1231</span>
+                    </div>
+                    <div class="view3">
+                        <span class="viewLabel">Age</span>
+                        <span class="viewDetails" id="viewAge">21</span>
+                    </div>
+                </div>
+                <div class="view5">
+                    <div class="view3">
+                        <span class="viewLabel">Civil Status</span>
+                        <span class="viewDetails" id="viewCivilStatus">Single</span>
+                    </div>
+                    <div class="view3">
+                        <span class="viewLabel">Contact #</span>
+                        <span class="viewDetails" id="viewContact">1231231231</span>
+                    </div>
+                    <div class="view3">
+                        <span class="viewLabel">Email</span>
+                        <span class="viewDetails" id="viewEmail">add@asdas.dasd</span>
+                    </div>
+                </div>
+                <div class="view4">
+                    <div class="view6">
+                        <span class="viewLabel">Address</span>
+                        <span class="viewDetails" id="viewAddress">add@asdas.dasasdasdadsad</span>
+                    </div>
+                    <div class="view3">
+                        <span class="viewLabel">Date hired</span>
+                        <span class="viewDetails" id="viewDateHired">add@asdasad</span>
+                    </div>
+                </div>
+                <div class="cancel">
+                    <button type="button" id="cancelView">Cancel</button>
+                </div>
+            </div>
+        </div>
+        <!-- No data Found -->
+        <template id="no-notifications">
+            <div class="no-notification">
+                <img src="../images/No Data Found.png" alt="" class="shake">
+            </div>
+        </template>
+        <!--notification loader-->
+        <template id="notificationLoader">
+            <div class="notif" onclick="viewNotification(event)">
+                <div class="imgHolderNotif skeleton1">
+                </div>
+                <div class="notificationContent">
+                    <span class="notificationTitle skeleton1" id="notificationTitle"> </span>
+                    <span class="notificationMessage skeleton1" id="notificationMessage"></span>
+                </div>
+            </div>
+        </template>
+        <!--notification main template-->
+        <template id="notificationMainTemplate">
+            <div class="notif" onclick="viewNotification(event)">
+                <div class="imgHolderNotif">
+                    <img src="../images/logo.png" alt="" id="imgNotif">
+                </div>
+                <div class="notificationContent">
+                    <span class="notificationTitle " id="notificationTitle"> </span>
+                    <span class="notificationMessage " id="notificationMessage"></span>
+                    <span style="display: none;" id="urlRedirect"></span>
+                </div>
+            </div>
+        </template>
     </section>
 </body>
+
 </html>

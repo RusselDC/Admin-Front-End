@@ -1,14 +1,14 @@
 :root{
-    --blue:#0D99FF;
-    --lightgray:#9C9C9C;
-    --darkgray:#414141;
+    --blue:#2196F3;
+    --lightgray:#BDBDBD;
+    --darkgray:#424242;
     --white:#ffffff;        
-    --orange: #FCC865; 
-    --green: #73E977;
-    --red:#fa6363;
-    --smaller:.8vw;
-    --small: 1vw;
-    --medium: 1.2vw;
+    --orange: #FFCC80; 
+    --green: #66BB6A;
+    --red:#EF5350;
+    --smaller:.6vw;
+    --small: .8vw;
+    --medium: 1vw;
     --large: 2.5vw;
     --larger: 3vw;
 }
@@ -290,9 +290,11 @@
     width: 40vw;
     height: 100%;
     background-color: var(--white);
-    -webkit-box-shadow: 0px 0px 9px 0px rgba(156,156,156,1);
-    -moz-box-shadow: 0px 0px 9px 0px rgba(156,156,156,1);
-    box-shadow: 0px 0px 9px 0px rgba(156,156,156,1);
+    box-shadow: 0px 0px 1px rgba(3, 7, 18, 0.08),
+    0px 0px 4px rgba(3, 7, 18, 0.06),
+    0px 1px 9px rgba(3, 7, 18, 0.05),
+    0px 2px 15px rgba(3, 7, 18, 0.03),
+    0px 3px 24px rgba(3, 7, 18, 0.02);
     opacity: 0;
     visibility: hidden;
     animation: slide-left .5s ease-in; 
@@ -463,14 +465,14 @@
     width: 100%;
 }
 .inputValue:focus{
-    border-color: var(--green);
+    border-color: var(--blue);
 }
 .medicineBrand{
     width: 50%;
     height: fit-content;
 }
 .medicineDosage{
-    padding-top: .5vh;
+    padding-top: 1vh;
     width: 48%;
     height: fit-content;
     display: flex;
@@ -603,7 +605,7 @@
     transition: all ease .3s;
 }
 .inputHolder textarea:focus{
-    border: solid 1px var(--green);
+    border: solid 1px var(--blue);
 }
 .manufacturedDate {
     width: 48%;
@@ -623,7 +625,7 @@
     transition: all ease .3s;
 }
 .manufacturedDate input[type = "date"]:focus{
-    border: solid 1px var(--green);
+    border: solid 1px var(--blue);
 }
 .buttonForm{
     position: absolute;
@@ -733,9 +735,11 @@
     justify-content: center;
     z-index: 20;
     border-radius: .4vw;
-    -webkit-box-shadow: 0px 0px 9px 0px rgba(156,156,156,1);
-    -moz-box-shadow: 0px 0px 9px 0px rgba(156,156,156,1);
-    box-shadow: 0px 0px 9px 0px rgba(156,156,156,1);
+    box-shadow: 0px 0px 1px rgba(3, 7, 18, 0.08),
+    0px 0px 4px rgba(3, 7, 18, 0.06),
+    0px 1px 9px rgba(3, 7, 18, 0.05),
+    0px 2px 15px rgba(3, 7, 18, 0.03),
+    0px 3px 24px rgba(3, 7, 18, 0.02);
 }
 .medicineClassificationHolder{
     position: absolute;
@@ -748,9 +752,11 @@
     justify-content: center;
     z-index: 20;
     border-radius: .4vw;
-    -webkit-box-shadow: 0px 0px 9px 0px rgba(156,156,156,1);
-    -moz-box-shadow: 0px 0px 9px 0px rgba(156,156,156,1);
-    box-shadow: 0px 0px 9px 0px rgba(156,156,156,1);
+    box-shadow: 0px 0px 1px rgba(3, 7, 18, 0.08),
+    0px 0px 4px rgba(3, 7, 18, 0.06),
+    0px 1px 9px rgba(3, 7, 18, 0.05),
+    0px 2px 15px rgba(3, 7, 18, 0.03),
+    0px 3px 24px rgba(3, 7, 18, 0.02);
 }
 .patientName{
     width: 100%;
@@ -797,23 +803,26 @@
     color:var(--darkgray);
 }
 .bg{
+    z-index: 100;
     position: absolute;
     display: flex;
     align-items: center;
     justify-content: center;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.26);
-    backdrop-filter: blur(4px);
+    backdrop-filter:blur(2px);
+    background: rgba(211, 211, 211, 0.082);
 }
 .printPage{
     position: relative;
     width: 40vw;
     height: 90vh;
     background-color: var(--white);
-    -webkit-box-shadow: 0px 0px 9px 0px rgba(156,156,156,1);
-    -moz-box-shadow: 0px 0px 9px 0px rgba(156,156,156,1);
-    box-shadow: 0px 0px 9px 0px rgba(156,156,156,1);
+    box-shadow: 0px 0px 1px rgba(3, 7, 18, 0.08),
+    0px 0px 4px rgba(3, 7, 18, 0.06),
+    0px 1px 9px rgba(3, 7, 18, 0.05),
+    0px 2px 15px rgba(3, 7, 18, 0.03),
+    0px 3px 24px rgba(3, 7, 18, 0.02);
     border-radius: .4vw;
     padding: 1vw;
 }
@@ -954,7 +963,7 @@
     color: var(--darkgray);
 }
 .buttonsHolder{
-    right: 18%;
+    right: 20%;
     position: absolute;
     width: fit-content;
     height: 20vh;
@@ -964,14 +973,15 @@
     justify-content: space-evenly;
 }
 .buttonsHolder button{
-    width: 10vw;
+    width: 8vw;
     height: 7vh;
     outline: none;
     border: none;
     border-radius: .4vw;
     font-size: var(--small);  
     cursor: pointer;  
-    letter-spacing: .1vw;
+    letter-spacing: .05vw;
+    font-family: 'Poppins', Arial, Helvetica, sans-serif; 
 }
 .buttonsHolder button i{
     margin-right: .5vw;
@@ -997,9 +1007,6 @@
     color: var(--red);
     background-color: var(--white);
     border: solid 1px var(--red);
-}
-.hidden{
-    display: none;
 }
 
 .showElement1{
@@ -1081,6 +1088,11 @@
         display: none;
     }
 }
+.pop-up{
+    opacity: 1;
+    transform: scale(1);
+    transition: opacity 0.5s, transform 0.5s;
+}
 @keyframes slide-down{
     0%{
         transform: translateY(-5vh);
@@ -1109,4 +1121,7 @@
     100%{
         transform: translateY(20vw);
     }
+}
+.hidden{
+    display: none;
 }

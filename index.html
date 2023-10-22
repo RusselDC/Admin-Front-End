@@ -1,23 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
+    <meta name="theme-color" content="#2196F3">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="website icon" type="png " href="../images/logo.png">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/responsiveLandingPage.css">
-    <script src="javascript/script.js" defer></script>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/responsiveLandingPage.css">
+    <script src="../javascript/script.js" defer></script>
     <script src="javascript/sweetalert2.js" defer></script>
     <script src="https://kit.fontawesome.com/275edc9f9d.js" crossorigin="anonymous" defer></script>
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
     <script src="https://www.google.com/recaptcha/api.js?render=v3_site_key"></script>
     <title>Pablo De Jesus</title>
 </head>
+
 <body onload="load()">
     <section id="home">
         <div class="cookieHolder">
-            <span>We use cookies on this website o provide yoou with the best user experience, By clicking "Accept" you consent to the user of Cookies.</span>
+            <span>We use cookies on this website o provide you with the best user experience, By clicking "Accept" you
+                consent to the use of Cookies.</span>
             <div class="acceptCookie">
                 <button>Accept</button>
             </div>
@@ -30,218 +34,278 @@
             <div></div>
             <span><img src="../images/logo.png" alt=""></span>
         </div>  -->
-        <header class="header show">
+        <header class="header">
             <img src="../images/logo.png" alt="" class="animateLeft">
-        <div id="navBar">
-            <nav class="animateRight">
-                <ul>
-                    <li><a href="#home" class="links activeSection">Home</a></li>
-                    <li><a href="#services" class="links">Services</a></li>
-                    <li><a href="#aboutUs" class="links">About Us</a></li>
-                    <li><a href="#contactUs" class="links">Contact Us</a></li>
+            <div id="navBar">
+                <nav class="animateRight">
+                    <span class="navBarCheck" id="navBarCheck">
+                        <i class="fa-solid fa-bars"></i>
+                    </span>
+                    <ul class="ul">
+                        <li><a href="#home" class="links">Home</a></li>
+                        <li><a href="#clinics" class="links activeSection">Clinics</a></li>
+                        <li><a href="#services" class="links">Services</a></li>
+                        <li><a href="#aboutUs" class="links">About Us</a></li>
+                        <li><a href="#contactUs" class="links">Contact Us</a></li>
+                    </ul>
                     <button id="login">Log In</button>
                     <div class="role">
                         <span id="user">User</span>
                         <span id="admin">Admin</span>
+                    </div>                    
+                </nav>
+            </div>
+        </header>
+        <div id="main">
+            <span id="text1" class="animateLeft">Get Quick</span>
+            <span id="text2" class="animateLeft">Dental Services</span>
+            <span id="text3" class="animateLeft">Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            </span>
+            <div class="choice">
+                <button id="register" class="animateLeft">Register</button>
+                <button id="bookButton" class="animateLeft">Book Now</button>
+            </div>
+            <div class="totalContainer">
+                <div class="totalHolder animateLeft">
+                    <div class="totalAndIcon">
+                        <i class="fa-solid fa-plus"></i>
+                        <span id="totalPatient">23</span>
                     </div>
-                </ul>
-            </nav>
+                    <div class="totalHolderLabel">Total patients</div>
+                </div>
+                <div class="totalHolder animateLeft">
+                    <div class="totalAndIcon">
+                        <i class="fa-solid fa-plus"></i>
+                        <span id="totalClinic">23</span>
+                    </div>
+                    <div class="totalHolderLabel">Total clinics</div>
+                </div>
+                <div class="totalHolder animateLeft">
+                    <div class="totalAndIcon">
+                        <i class="fa-solid fa-plus"></i>
+                        <span id="totalDentist">23</span>
+                    </div>
+                    <div class="totalHolderLabel">Total dentist</div>
+                </div>
+            </div>
         </div>
-    </header>
-    <div id="main">
-        <span id="text1" class="animateLeft">Get Quick</span>
-        <span id="text2" class="animateLeft">Dental Services</span>
-        <span id="text3" class="animateLeft">Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
-            sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+        <!-- <div id="pictureHolder">
+            <div id="pictureHolder1">
+                <img src="../images/Doctor.png" alt="" id="doctor" class="animateRight">
+                </div>
+            </div>
+        </div> -->
+        <div class="container" id="container">
+            <div class="form-container sign-in-container">
+                <form action="#" onsubmit="return validateLogIn()" autocomplete="off">
+                    <img src="../images/logo.png" alt="" class="logo">
+                    <h1>Log In</h1>
+                    <div class="inputContent">
+                        <label for="usernameLogIn">Email</label>
+                        <input spellcheck="false" type="text" id="usernameLogIn" placeholder="email@email.com"
+                            class="input" autocomplete="off"><i class="fa-solid fa-circle-check check"
+                            style="display: none;"></i><i class="fas fa-exclamation-circle"></i>
+                        <div class="errorMessage"></div>
+                    </div>
+                    <div class="inputContent">
+                        <label for="passwordLogIn">Password</label>
+                        <input spellcheck="false" type="password" id="passwordLogIn" placeholder="Password"
+                            class="input" autocomplete="off"><i class="fa-solid fa-circle-check check"
+                            style="display: none;"></i><i class="fas fa-exclamation-circle"></i>
+                        <div class="errorMessage"></div>
+                    </div>
+                    <div class="forgot">
+                        <label class="container1">
+                            <input type="checkbox">
+                            <!-- <span class="checkmark"></span> -->
+                            <i class="fa-solid fa-square-check checkmark"></i>
+                            <span id="remember">Remember me</span>
+                        </label>
+                        <a href="http://127.0.0.1:5500/forgotPassword/forgotPasswordUser.html" id="forgotLink">Forgot
+                            Password?</a>
+                    </div>
+                    <div class="buttonContainer">
+                        <button type="submit" class="btn">Log In</button>
+                        <button type="submit" class="googleBtn">CONTINUE WITH <img src="./images/google.png"
+                                alt=""></button>
+                    </div>
+
+                </form>
+            </div>
+            <div class="form-container sign-up-container">
+                <form action="" autocomplete="off" id="userSignUp">
+                    <h1>Sign Up</h1>
+                    <div class="inputContent">
+                        <label for="username">Email</label>
+                        <input autocomplete="off" id="username" placeholder="email@email.com" autocomplete="off"
+                            class="input"><i class="fa-solid fa-circle-check check"></i><i
+                            class="fas fa-exclamation-circle"></i>
+                        <div class="errorMessage"></div>
+                    </div>
+                    <div class="inputContent ">
+                        <label for="password">Password</label>
+                        <input type="password" id="password" placeholder="Choose strong password" autocomplete="off"
+                            class="input"><i class="fa-solid fa-circle-check check"></i><i
+                            class="fas fa-exclamation-circle"></i>
+                        <div class="errorMessage"></div>
+                    </div>
+                    <div class="inputContent ">
+                        <label for="confirmPassword">Confirm Password</label>
+                        <input type="password" id="confirmPassword" placeholder="Confirm Password" autocomplete="off"
+                            class="input"><i class="fa-solid fa-circle-check check"></i><i
+                            class="fas fa-exclamation-circle"></i>
+                        <div class="errorMessage"></div>
+                    </div>
+                    <div class="terms">
+                        <input type="checkbox">
+                        <!-- <span class="checkmark"></span> -->
+                        <i class="fa-solid fa-square-check checkmark1" id="check"></i>
+                        <span id="termsAndConditions">I agree to <span id="showTerms">Terms and Conditions</span></span>
+                    </div>
+                    <div class="optionsGrp">
+                        <button type="button" class="btnMain" onclick="validateSignUp()">CREATE MY ACCOUNT</button>
+                        <span>or</span> <i class="fab fa-facebook fb"></i> <img src="./images/google.png" alt="">
+                    </div>
+                </form>
+            </div>
+
+            <div class="overlay-container">
+                <div class="overlay">
+                    <div class="overlay-panel overlay-left">
+                        <span><i class="fa-solid fa-xmark"></i> </span>
+                        <h1>Already have an Account?</h1>
+                        <p>To keep connected with us please login with your account here!</p>
+                        <button class="ghost btn" id="loginForm">Log In</button>
+                    </div>
+                    <div class="overlay-panel overlay-right">
+                        <span><i class="fa-solid fa-xmark"></i> </span>
+                        <h1>Create your Account</h1>
+                        <p>Enter your personal details and start your journey with us!</p>
+                        <button class="ghost btn" id="signUpForm">Sign Up</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="containerAdmin" id="containerAdmin">
+            <div class="form-container sign-in-container">
+                <form action="#" onsubmit="return validateLogInAdmin()" autocomplete="off">
+                    <img src="../images/logo.png" alt="" class="logo">
+                    <h1>Log In</h1>
+                    <div class="inputContent">
+                        <label for="usernameLogIn">Email</label>
+                        <input autocomplete="off" id="usernameLogInAdmin" placeholder="email@email.com" class="input"
+                            autocomplete="off"><i class="fa-solid fa-circle-check check" style="display: none;"></i><i
+                            class="fas fa-exclamation-circle"></i>
+                        <div class="errorMessage"></div>
+                    </div>
+                    <div class="inputContent">
+                        <label for="passwordLogIn">Password</label>
+                        <input type="password" id="passwordLogInAdmin" placeholder="Password" class="input"
+                            autocomplete="off"><i class="fa-solid fa-circle-check check" style="display: none;"></i><i
+                            class="fas fa-exclamation-circle"></i>
+                        <div class="errorMessage"></div>
+                    </div>
+                    <div class="forgot">
+                        <label class="container1">
+                            <input type="checkbox">
+                            <!-- <span class="checkmark"></span> -->
+                            <i class="fa-solid fa-square-check checkmark"></i>
+                            <span id="rememberAdmin">Remember me</span>
+                        </label>
+                        <a href="http://127.0.0.1:5500/forgotPassword/forgotPasswordAdmin.html"
+                            id="forgotPassword">Forgot Password?</a>
+                    </div>
+                    <div class="buttonContainer">
+                        <button type="submit" class="btn">Log In</button>
+                        <button type="submit" class="googleBtn">CONTINUE WITH <img src="./images/google.png"
+                                alt=""></button>
+                    </div>
+                </form>
+            </div>
+            <div class="overlay-container">
+                <div class="overlay">
+                    <div class="overlay-panel overlay-right">
+                        <span><i class="fa-solid fa-xmark"></i> </span>
+                        <h1>Welcome back!</h1>
+                        <p>Patients were waiting for you!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="containerOTP right-panel-active" id="containerOTP">
+            <div class="form-container sign-up-container">
+                <form action="#" autocomplete="off">
+                    <img src="../images/logo.png" alt="" class="logo">
+                    <div class="otpHold">
+                        <span id="otpText">An OTP has been sent to</span>
+                        <span id="otpEmail"></span>
+                    </div>
+                    <div class="inputContent">
+                        <input autocomplete="off" id="inputOTP" placeholder="Enter OTP" autocomplete="off" class="input"
+                            maxlength="6"><i class="fa-solid fa-circle-check check"></i><i
+                            class="fas fa-exclamation-circle"></i>
+                        <div class="errorMessage"></div>
+                    </div>
+                    <div class="resendOTP">
+                        <span id="otpText2">Didn't receive OTP?</span>
+                        <span id="resendOTP">Resend OTP</span>
+                    </div>
+                    <button type="button" id="verifyEmail">VERIFY</button>
+                    <button type="button" id="editEmail">Edit email</button>
+                </form>
+            </div>
+            <div class="overlay-container">
+                <div class="overlay">
+                    <div class="overlay-panel overlay-left">
+                        <h1>One Step Away!</h1>
+                        <p>Validate your email to register</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="termsHolder">
+            <span>Terms and Conditions <i class="fa-solid fa-x" id="termsClose"></i></span>
+            <div class="termsConditions">
+                Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                Delectus rem placeat illo, consequatur porro quos odit dolorum natus facere accusamus
+                aliquid incidunt deserunt quam quis enim molestiae nesciunt at consequuntur.
+                Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                Delectus rem placeat illo, consequatur porro quos odit dolorum natus facere accusamus
+                aliquid incidunt deserunt quam quis enim molestiae nesciunt at consequuntur.
+                Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                Delectus rem placeat illo, consequatur porro quos odit dolorum natus facere accusamus
+                aliquid incidunt deserunt quam quis enim molestiae nesciunt at consequuntur.
+                Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                Delectus rem placeat illo, consequatur porro quos odit dolorum natus facere accusamus
+                aliquid incidunt deserunt quam quis enim molestiae nesciunt at consequuntur.
+                Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                Delectus rem placeat illo, consequatur porro quos odit dolorum natus facere accusamus
+                aliquid incidunt deserunt quam quis enim molestiae nesciunt at consequuntur.
+            </div>
+            <div class="termsCheckbox">
+                <input type="checkbox">
+                <!-- <span class="checkmark"></span> -->
+                <i class="fa-solid fa-square-check checkmark2" id="check1"></i>
+                <span id="termsAndConditions1">By checking this box you confirm that you have read the Terms and
+                    Conditions of Pablo De Jesus Dental Centre </span>
+            </div>
+        </div>
+    </section>
+    <section id="clinics">
+        <span id="clinicTitle">
+            <span>Clinics available </span>
+            <div class="searchBar">
+                <button type="button">Nearby clinics</button>
+                <input autocomplete="off" placeholder="Search" id="search" spellcheck="false">
+                <i class="fa-sharp fa-solid fa-magnifying-glass"></i>
+            </div>
         </span>
-        <div class="choice"> <button id="register" class="animateLeft" >Register</button><button id="bookButton" class="animateLeft">Book Now</button></div></div>
-       
-    </div>
-    <div id="pictureHolder">
-        <div id="pictureHolder1">
-            <img src="images/Doctor.png" alt="" id="doctor" class="animateRight">
-            <div id="exp" class="animateRight"><i class="fa-solid fa-circle-check check"></i>10+ years of experience</div>
+        <div class="clinicsContainer" id="clinicsContainer">
+
+
         </div>
-    
-    </div>
-    <div class="container" id="container">
-        <div class="form-container sign-in-container">
-            <form action="#" onsubmit="return validateLogIn()" autocomplete="off">
-                <img src="images/logo.png" alt="" class="logo">
-                <h1>Log In</h1>
-                <div class="inputContent"> 
-                    <label for="usernameLogIn">Email</label>      
-                    <input type="text" id="usernameLogIn" placeholder="email@email.com" class="input" autocomplete="off"><i class="fa-solid fa-circle-check check" style="display: none;"></i><i class="fas fa-exclamation-circle"></i>
-                    <div class="errorMessage"></div>
-                </div>
-                <div class="inputContent"> 
-                    <label for="passwordLogIn">Password</label>  
-                    <input type="password" id="passwordLogIn" placeholder="Password" class="input" autocomplete="off"><i class="fa-solid fa-circle-check check" style="display: none;"></i><i class="fas fa-exclamation-circle"></i>
-                    <div class="errorMessage"></div>
-                </div>
-                <div class="forgot">
-                    <label class="container1">
-                        <input type="checkbox">
-                        <!-- <span class="checkmark"></span> -->
-                        <i class="fa-solid fa-square-check checkmark"></i>
-                        <span id="remember">Remember me</span>
-                    </label>
-                    <a href="http://127.0.0.1:5500/forgotPassword/forgotPasswordUser.html" id="forgotLink">Forgot Password?</a>
-                </div>
-                <button type="submit" class="btn">Log In</button>
-            </form>
-        </div>
-        <div class="form-container sign-up-container">
-            <form action="GET.PHP"autocomplete="off" id="userSignUp">
-                <h1>Sign Up</h1>
-                <div class="inputContent">
-                    <label for="username">Email</label>       
-                    <input type="text" id="username" placeholder="email@email.com" autocomplete="off" class="input"><i class="fa-solid fa-circle-check check"></i><i class="fas fa-exclamation-circle"></i>
-                    <div class="errorMessage"></div>
-                </div>
-                <div class="inputContent ">  
-                    <label for="password">Password</label> 
-                    <input type="password" id="password" placeholder="Choose strong password" autocomplete="off" class="input"><i class="fa-solid fa-circle-check check"></i><i class="fas fa-exclamation-circle"></i>
-                    <div class="errorMessage"></div>
-                </div>
-                <div class="inputContent ">  
-                    <label for="confirmPassword">Confirm Password</label> 
-                    <input type="password" id="confirmPassword" placeholder="Confirm Password" autocomplete="off" class="input"><i class="fa-solid fa-circle-check check"></i><i class="fas fa-exclamation-circle"></i>
-                    <div class="errorMessage"></div>
-                </div>
-                <div class="terms"> 
-                    <input type="checkbox">
-                    <!-- <span class="checkmark"></span> -->
-                    <i class="fa-solid fa-square-check checkmark1" id="check"></i>
-                    <span id="termsAndConditions">I agree to <span id="showTerms">Terms and Conditions</span></span>
-                </div>
-               <div class="optionsGrp">
-                <button type="button" class="btnMain" onclick="validateSignUp()" >CREATE MY ACCOUNT</button>
-                <span>or</span>  <i class="fab fa-facebook fb"></i> <img src="images/google.png" alt="">
-            </div>
-            </form>
-        </div>
-        
-        <div class="overlay-container">
-            <div class="overlay">
-                <div class="overlay-panel overlay-left">
-                    <span ><i class="fa-solid fa-xmark"></i> </span>
-                    <h1>Already have an Account?</h1>
-                    <p>To keep connected with us please login with your account here!</p>
-                    <button class="ghost btn" id="loginForm" >Log In</button>
-                </div>
-                <div class="overlay-panel overlay-right">
-                    <span><i class="fa-solid fa-xmark"></i> </span>
-                    <h1>Create your Account</h1>
-                    <p>Enter your personal details and start your journey with us!</p>
-                    <button class="ghost btn" id="signUpForm" >Sign Up</button>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="containerAdmin" id="containerAdmin">
-        <div class="form-container sign-in-container">
-            <form action="#" onsubmit="return validateLogInAdmin()" autocomplete="off">
-                <img src="images/logo.png" alt="" class="logo">
-                <h1>Log In</h1>
-                <div class="inputContent"> 
-                    <label for="usernameLogIn">Email</label>      
-                    <input type="text" id="usernameLogInAdmin" placeholder="email@email.com" class="input" autocomplete="off"><i class="fa-solid fa-circle-check check" style="display: none;"></i><i class="fas fa-exclamation-circle"></i>
-                    <div class="errorMessage"></div>
-                </div>
-                <div class="inputContent"> 
-                    <label for="passwordLogIn">Password</label>  
-                    <input type="password" id="passwordLogInAdmin" placeholder="Password" class="input" autocomplete="off"><i class="fa-solid fa-circle-check check" style="display: none;"></i><i class="fas fa-exclamation-circle"></i>
-                    <div class="errorMessage"></div>
-                </div>
-                <div class="forgot">
-                    <label class="container1">
-                        <input type="checkbox">
-                        <!-- <span class="checkmark"></span> -->
-                        <i class="fa-solid fa-square-check checkmark"></i>
-                        <span id="rememberAdmin">Remember me</span>
-                    </label>
-                    <a href="http://127.0.0.1:5500/forgotPassword/forgotPasswordAdmin.html" id="forgotPassword">Forgot Password?</a>
-                </div>
-                <button type="submit" class="btn">Log In</button>
-            </form>
-        </div>
-    <div class="overlay-container">
-        <div class="overlay">
-            <div class="overlay-panel overlay-right">
-                <span><i class="fa-solid fa-xmark"></i> </span>
-                <h1>Welcome back!</h1>
-                <p>Patients were waiting for you!</p>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="containerOTP right-panel-active" id="containerOTP">
-    <div class="form-container sign-up-container">
-        <form action="#" autocomplete="off">
-            <img src="images/logo.png" alt="" class="logo">
-            <div class="otpHold">
-                <span id="otpText">An OTP has been sent to</span>
-                <span id="otpEmail"></span>
-            </div>
-            <div class="inputContent">    
-                <input type="text" id="inputOTP" placeholder="Enter OTP" autocomplete="off" class="input" maxlength="6"><i class="fa-solid fa-circle-check check"></i><i class="fas fa-exclamation-circle"></i>
-                <div class="errorMessage"></div>
-            </div>
-            <div class="resendOTP">
-                <span id="otpText2">Didn't receive OTP?</span>
-                <span id="resendOTP">Resend OTP</span>
-            </div>
-            <button type="button" id="verifyEmail">VERIFY</button>
-            <button type="button" id="editEmail">Edit email</button>
-        </form>
-    </div>
-    <div class="overlay-container">
-        <div class="overlay">
-            <div class="overlay-panel overlay-left">
-                <h1>One Step Away!</h1>
-                <p>Validate your email to register</p>
-            </div>
-        </div>
-    </div>
-</div>
-
-
-
-
-
-
-
-
-
-
-    <div class="termsHolder">
-        <span>Terms and Conditions <i class="fa-solid fa-x" id="termsClose"></i></span>
-        <div class="termsConditions">
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-            Delectus rem placeat illo, consequatur porro quos odit dolorum natus facere accusamus
-            aliquid incidunt deserunt quam quis enim molestiae nesciunt at consequuntur.
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-            Delectus rem placeat illo, consequatur porro quos odit dolorum natus facere accusamus
-            aliquid incidunt deserunt quam quis enim molestiae nesciunt at consequuntur.
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-            Delectus rem placeat illo, consequatur porro quos odit dolorum natus facere accusamus
-            aliquid incidunt deserunt quam quis enim molestiae nesciunt at consequuntur.
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-            Delectus rem placeat illo, consequatur porro quos odit dolorum natus facere accusamus
-            aliquid incidunt deserunt quam quis enim molestiae nesciunt at consequuntur.
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-            Delectus rem placeat illo, consequatur porro quos odit dolorum natus facere accusamus
-            aliquid incidunt deserunt quam quis enim molestiae nesciunt at consequuntur.
-        </div>
-        <div class="termsCheckbox"> 
-            <input type="checkbox">
-            <!-- <span class="checkmark"></span> -->
-            <i class="fa-solid fa-square-check checkmark2" id="check1"></i>
-            <span id="termsAndConditions1">By checking this box you confirm that you have read the Terms and Conditions of Pablo De Jesus Dental Centre  </span>
-        </div>
-    </div>
     </section>
     <section id="services">
         <div class="weDo">
@@ -249,40 +313,45 @@
             <span id="t2" class="animateLeft">WE PROVIDE SERVICES</span>
             <div id="t3"></div>
         </div>
-        <div class="image-slider">
+        <!-- <div class="image-slider">
             <div class="slide activeSlide">
-                <img src="images/1.jpeg" alt="">
+                <img src="../images/1.jpeg" alt="">
                 <div class="image-info">
                     <h2>Dental Cleaning</h2>
-                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Impedit necessitatibus aliquid architecto quo cumque odit, eum incidunt sapiente reprehenderit. </p>
+                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Impedit necessitatibus aliquid
+                        architecto quo cumque odit, eum incidunt sapiente reprehenderit. </p>
                 </div>
             </div>
             <div class="slide">
-                <img src="images/2.jpeg" alt="">
+                <img src="../images/2.jpeg" alt="">
                 <div class="image-info">
                     <h2>Dental Cleaning</h2>
-                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Impedit necessitatibus aliquid architecto quo cumque odit, eum incidunt sapiente reprehenderit. </p>
+                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Impedit necessitatibus aliquid
+                        architecto quo cumque odit, eum incidunt sapiente reprehenderit. </p>
                 </div>
             </div>
             <div class="slide">
-                <img src="images/3.jpeg" alt="">
+                <img src="../images/3.jpeg" alt="">
                 <div class="image-info">
                     <h2>Dental Cleaning</h2>
-                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Impedit necessitatibus aliquid architecto quo cumque odit, eum incidunt sapiente reprehenderit. </p>
+                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Impedit necessitatibus aliquid
+                        architecto quo cumque odit, eum incidunt sapiente reprehenderit. </p>
                 </div>
             </div>
             <div class="slide">
-                <img src="images/4.jpeg" alt="">
+                <img src="../images/4.jpeg" alt="">
                 <div class="image-info">
                     <h2>Dental Cleaningg</h2>
-                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Impedit necessitatibus aliquid architecto quo cumque odit, eum incidunt sapiente reprehenderit. </p>
+                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Impedit necessitatibus aliquid
+                        architecto quo cumque odit, eum incidunt sapiente reprehenderit. </p>
                 </div>
             </div>
             <div class="slide">
-                <img src="images/5.jpeg" alt="">
+                <img src="../images/5.jpeg" alt="">
                 <div class="image-info">
                     <h2>Oral Prophylaxis</h2>
-                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Impedit necessitatibus aliquid architecto quo cumque odit, eum incidunt sapiente reprehenderit. </p>
+                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Impedit necessitatibus aliquid
+                        architecto quo cumque odit, eum incidunt sapiente reprehenderit. </p>
                 </div>
             </div>
             <div class="imgNavigation">
@@ -292,31 +361,134 @@
                 <div class="imgBtn"></div>
                 <div class="imgBtn"></div>
             </div>
-        </div>
+        </div> -->
         <!-- <div class="announcements">
             <div class="anTitle">Announcement</div>
             <div class="announcement">
 
             </div>
         </div> -->
+        <div class="servicesContainer">
+            <div class="servicesInitial">
+                <div class="servicesEach">
+                    <i class="fa-solid fa-calendar-days"></i>
+                    <div class="servicesTitleandDescription">
+                        <div class="servicesTitleandDescriptionBG"></div>
+                        <div class="servicesTitle">Appointment</div>
+                        <div class="servicesDescription">Online appointment</div>
+                    </div>
+                </div>
+            </div>
+            <div class="servicesInitial">
+                <div class="servicesEach">
+                    <i class="fa-solid fa-calendar-days"></i>
+                    <div class="servicesTitleandDescription">
+                        <div class="servicesTitleandDescriptionBG"></div>
+                        <div class="servicesTitle">Appointment</div>
+                        <div class="servicesDescription">Online appointment</div>
+                    </div>
+                </div>
+            </div>
+            <div class="servicesInitial">
+                <div class="servicesEach">
+                    <i class="fa-solid fa-calendar-days"></i>
+                    <div class="servicesTitleandDescription">
+                        <div class="servicesTitleandDescriptionBG"></div>
+                        <div class="servicesTitle">Appointment</div>
+                        <div class="servicesDescription">Online appointment</div>
+                    </div>
+                </div>
+            </div>
+            <div class="servicesInitial">
+                <div class="servicesEach">
+                    <i class="fa-solid fa-calendar-days"></i>
+                    <div class="servicesTitleandDescription">
+                        <div class="servicesTitleandDescriptionBG"></div>
+                        <div class="servicesTitle">Appointment</div>
+                        <div class="servicesDescription">Online appointment</div>
+                    </div>
+                </div>
+            </div>
+            <div class="servicesInitial">
+                <div class="servicesEach">
+                    <i class="fa-solid fa-calendar-days"></i>
+                    <div class="servicesTitleandDescription">
+                        <div class="servicesTitleandDescriptionBG"></div>
+                        <div class="servicesTitle">Appointment</div>
+                        <div class="servicesDescription">Online appointment</div>
+                    </div>
+                </div>
+            </div>
+            <div class="servicesInitial">
+                <div class="servicesEach">
+                    <i class="fa-solid fa-calendar-days"></i>
+                    <div class="servicesTitleandDescription">
+                        <div class="servicesTitleandDescriptionBG"></div>
+                        <div class="servicesTitle">Appointment</div>
+                        <div class="servicesDescription">Online appointment</div>
+                    </div>
+                </div>
+            </div>
+            <div class="servicesInitial">
+                <div class="servicesEach">
+                    <i class="fa-solid fa-calendar-days"></i>
+                    <div class="servicesTitleandDescription">
+                        <div class="servicesTitleandDescriptionBG"></div>
+                        <div class="servicesTitle">Appointment</div>
+                        <div class="servicesDescription">Online appointment</div>
+                    </div>
+                </div>
+            </div>
+            <div class="servicesInitial">
+                <div class="servicesEach">
+                    <i class="fa-solid fa-calendar-days"></i>
+                    <div class="servicesTitleandDescription">
+                        <div class="servicesTitleandDescriptionBG"></div>
+                        <div class="servicesTitle">Appointment</div>
+                        <div class="servicesDescription">Online appointment</div>
+                    </div>
+                </div>
+            </div>
+            <div class="servicesInitial">
+                <div class="servicesEach">
+                    <i class="fa-solid fa-calendar-days"></i>
+                    <div class="servicesTitleandDescription">
+                        <div class="servicesTitleandDescriptionBG"></div>
+                        <div class="servicesTitle">Appointment</div>
+                        <div class="servicesDescription">Online appointment</div>
+                    </div>
+                </div>
+            </div>
+            <div class="servicesInitial">
+                <div class="servicesEach">
+                    <i class="fa-solid fa-calendar-days"></i>
+                    <div class="servicesTitleandDescription">
+                        <div class="servicesTitleandDescriptionBG"></div>
+                        <div class="servicesTitle">Appointment</div>
+                        <div class="servicesDescription">Online appointment</div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
     <section id="aboutUs">
         <div class="aboutUsContainer">
             <div class="aboutUsTitle">
-                <span id="aboutUsText1"  class="animateRight">
-                    Meet our highly skilled dentist and friendly staff
+                <span id="aboutUsText1" class="animateRight">
+                    Meet our skilled research team
                 </span>
                 <span id="aboutUsText2" class="animateLeft">
-                    Dedicated to providing professional and exceptional dental care.
+                    Dedicated to providing professional and exceptional research services.
                 </span>
                 <span id="aboutUsText2">
 
                 </span>
             </div>
-            <div class="personnel ">
-                <div class="personnelContainer animateLeft">
+            <div class="personnel" id="personnel">
+                <div class="personContainer">
+                    <div class="personnelContainer animateLeft">
                         <div class="imgContainer">
-                            <img src="images/Kenneth.png" alt="">
+                            <img src="../images/noProfile.png" alt="">
                         </div>
                         <div class="personnelRole">
                             Dentist
@@ -324,76 +496,74 @@
                         <div class="personnelName">
                             Arellano, John Kenneth R.
                         </div>
-                </div>
-                <div class="personnelContainer animateLeft">
-                    <div class="imgContainer">
-                        <img src="images/Kenneth.png" alt="">
                     </div>
-                    <div class="personnelRole">
-                        Dentist
+                </div>
+                <div class="personContainer">
+                    <div class="personnelContainer animateLeft">
+                        <div class="imgContainer">
+                            <img src="../images/noProfile.png" alt="">
+                        </div>
+                        <div class="personnelRole">
+                            Dentist
+                        </div>
+                        <div class="personnelName">
+                            Arellano, John Kenneth R.
+                        </div>
                     </div>
-                    <div class="personnelName">
-                        Arellano, John Kenneth R.
+                </div>
+                <div class="personContainer">
+                    <div class="personnelContainer animateLeft">
+                        <div class="imgContainer">
+                            <img src="../images/noProfile.png" alt="">
+                        </div>
+                        <div class="personnelRole">
+                            Dentist
+                        </div>
+                        <div class="personnelName">
+                            Arellano, John Kenneth R.
+                        </div>
                     </div>
-            </div>
-            <div class="personnelContainer animateLeft">
-                <div class="imgContainer">
-                    <img src=".images/Kenneth.png" alt="">
                 </div>
-                <div class="personnelRole">
-                    Dentist
+                <div class="personContainer">
+                    <div class="personnelContainer animateLeft">
+                        <div class="imgContainer">
+                            <img src="../images/noProfile.png" alt="">
+                        </div>
+                        <div class="personnelRole">
+                            Dentist
+                        </div>
+                        <div class="personnelName">
+                            Arellano, John Kenneth R.
+                        </div>
+                    </div>
                 </div>
-                <div class="personnelName">
-                    Arellano, John Kenneth R.
+                <div class="personContainer">
+                    <div class="personnelContainer animateLeft">
+                        <div class="imgContainer">
+                            <img src="../images/noProfile.png" alt="">
+                        </div>
+                        <div class="personnelRole">
+                            Dentist
+                        </div>
+                        <div class="personnelName">
+                            Arellano, John Kenneth R.
+                        </div>
+                    </div>
                 </div>
-        </div>
-        <div class="personnelContainer animateLeft">
-            <div class="imgContainer">
-                <img src="images/Kenneth.png" alt="">
+                <div class="personContainer">
+                    <div class="personnelContainer animateLeft">
+                        <div class="imgContainer">
+                            <img src="../images/noProfile.png" alt="">
+                        </div>
+                        <div class="personnelRole">
+                            Dentist
+                        </div>
+                        <div class="personnelName">
+                            Arellano, John Kenneth R.
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="personnelRole">
-                Dentist
-            </div>
-            <div class="personnelName">
-                Arellano, John Kenneth R.
-            </div>
-        </div>
-        <div class="personnelContainer animateLeft">
-            <div class="imgContainer">
-                <img src="images/Kenneth.png" alt="">
-            </div>
-            <div class="personnelRole">
-                Dentist
-            </div>
-            <div class="personnelName">
-                Arellano, John Kenneth R.
-            </div>
-        </div>
-        <div class="personnelContainer animateLeft">
-            <div class="imgContainer">
-                <img src="images/Kenneth.png" alt="">
-            </div>
-            <div class="personnelRole">
-                Dentist
-            </div>
-            <div class="personnelName">
-                Arellano, John Kenneth R.
-            </div>
-        </div>
-        <div class="personnelContainer animateLeft">
-            <div class="imgContainer">
-                <img src="images/Kenneth.png" alt="">
-            </div>
-            <div class="personnelRole">
-                Dentist
-            </div>
-            <div class="personnelName">
-                Arellano, John Kenneth R.
-            </div>
-        </div>
-
-   
-        </div>
         </div>
     </section>
     <section id="contactUs">
@@ -404,19 +574,19 @@
             <div class="contactForm animateRight">
                 <form action="">
                     <div id="contactFormTitle" class="animateRight">We're waiting for you</div>
-                    <div class="input animateRight">       
-                        <input type="text" id="name" required placeholder="Name" autocomplete="off">
+                    <div class="input animateRight">
+                        <input autocomplete="off" id="name" required placeholder="Name" autocomplete="off">
                         <label for="name">Full Name</label>
                     </div>
-                    <div class="input animateRight">   
-                        <input type="text" id="number" required placeholder="Contact Number" autocomplete="off">
+                    <div class="input animateRight">
+                        <input autocomplete="off" id="number" required placeholder="Contact Number" autocomplete="off">
                         <label for="number">Number</label>
                     </div>
-                    <div class="input animateRight">       
-                        <input type="text" id="email" required placeholder="Email" autocomplete="off">
+                    <div class="input animateRight">
+                        <input autocomplete="off" id="email" required placeholder="Email" autocomplete="off">
                         <label for="email">Email</label>
                     </div>
-                    <div class="input animateRight">       
+                    <div class="input animateRight">
                         <textarea id="messae" cols="4" rows="10" placeholder="Enter Message" required></textarea>
                     </div>
                     <button type="submit" class="animateRight">Send Message</button>
@@ -463,5 +633,39 @@
             </div>
         </div> -->
     </section>
+    <!-- clinicLoader -->
+    <template id="clinicLoaderTemplate">
+        <div class="clinicHolder">
+            <div class="clinic">
+                <div class="imageHolderClinic skeleton1">
+                </div>
+                <span class="clinicName skeleton1"><span id="clinicName"></span></span>
+                <span class="locationHolder skeleton1">
+                </span>
+            </div>
+        </div>
+    </template>
+    <!-- clinicMainTemplate -->
+    <template id="clinicMainTemplate">
+        <div class="clinicHolder">
+            <div class="clinic">
+                <div class="imageHolderClinic">
+                    <img src="./images/1.jpeg" alt="" id="clinicImage">
+                </div>
+                <span class="clinicName"><span id="clinicName"></span></span>
+                <span class="locationHolder">
+                    <i class="fa-solid fa-location-dot"></i>
+                    <span id="location"></span>
+                </span>
+            </div>
+        </div>
+    </template>
+    <!-- No data Found -->
+    <template id="no-data-found">
+        <div class="no-data-found">
+            <img src="../images/No Data Found.png" alt="" class="shake">
+        </div>
+    </template>
 </body>
+
 </html>

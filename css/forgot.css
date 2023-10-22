@@ -8,16 +8,16 @@
     box-sizing: border-box;
 }
 :root{
-    --blue:#0D99FF;
-    --lightgray:#9C9C9C;
-    --darkgray:#414141;
+    --blue:#2196F3;
+    --lightgray:#BDBDBD;
+    --darkgray:#424242;
     --white:#ffffff;        
-    --orange: #FCC865; 
-    --green: #73E977;
-    --red:#fa6363;
-    --smaller:.8vw;
-    --small: 1vw;
-    --medium: 1.2vw;
+    --orange: #FFCC80; 
+    --green: #66BB6A;
+    --red:#EF5350;
+    --smaller:.6vw;
+    --small: .8vw;
+    --medium: 1vw;
     --large: 2.5vw;
     --larger: 3vw;
 }
@@ -124,8 +124,9 @@ body::-webkit-scrollbar{
     justify-content: center;
 }
 #doctor{
-    margin-left: 2vw;
+    margin-left: 5vw;
     width: 25vw;
+    object-fit: fit;
 }
 .check{
     color: var(--green);
@@ -479,4 +480,7 @@ body::-webkit-scrollbar{
     100%{
         opacity: 1;
     }
+}
+.hidden{
+    display: none;
 }

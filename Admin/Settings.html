@@ -1,34 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
+    <meta name="theme-color" content="#2196F3">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/admin.css">
-    <script src="../javascript/Settings.js"  defer></script>
+    <link rel="stylesheet" href="../css/settings.css">
+    <script src="../javascript/Settings.js" defer></script>
+    <script src="../javascript/sweetalert2.js" defer></script>
     <link rel="website icon" type="png " href="../images/logo.png">
     <script src="https://kit.fontawesome.com/275edc9f9d.js" crossorigin="anonymous" defer></script>
     <title>Settings</title>
 </head>
+
 <body onload="onload()">
     <section id="main">
         <div class="header">
             <div class="headerContainer">
                 <div class="headerContent">
-                    <a href="" class="headerLink headerLinkActive">Account</a> 
+                    <a href="" class="headerLink headerLinkActive">Account</a>
                     <a href="SettingsSystem.html" class="headerLink">System</a>
-                 
                 </div>
-                <div class="profile">
-                    <div class="info">
-                        <span id="name">
-                            Arellano, John Kenneth R.
-                        </span>
-                        <span id="role">
-                            Dentist
-                        </span>
+                <span class="notificationHolder">
+                    <div class="notificationContainer hidden">
+                        <div class="notifications">
+                            <div class="searchNotification">
+                                <input type="text" name="" id="searchNotification" autocomplete="off" spellcheck="false"
+                                    placeholder="Search notification">
+                                <i class="fa-solid fa-magnifying-glass"></i>
+                            </div>
+                            <div class="allNotification" id="allNotification">
+                            </div>
+                        </div>
+                        <div class="triangle"></div>
                     </div>
-                    <div class="profileHolder">
-                        <img src="../images/kenneth.png" alt="">
+                    <i class="fa-solid fa-bell bellUI" onclick="viewNotificationContainer(event)">
+                        <div class="notification-dot"></div>
+                    </i>
+                </span>
+                <div class="holder">
+                    <div class="profile" id="profileExpand">
+                        <div class="info">
+                            <span id="name">
+                                Welcome, John Kenneth
+                            </span>
+                            <span id="role">
+                                Dentist
+                            </span>
+                        </div>
+                        <div class="profileHolder">
+                            <img src="../images/noProfile.png" alt="">
+                        </div>
+                    </div>
+                    <div class="logoutHolder hidden" id="logoutHolder">
+                        <span class="logoutOpt"><a href="Settings.html"><i
+                                    class="fa-solid fa-gear"></i>Settings</a></span>
+                        <span class="logoutOpt"><span id="logOutButton"><i
+                                    class="fa-solid fa-right-from-bracket"></i>Log out</span></span>
                     </div>
                 </div>
             </div>
@@ -37,14 +66,46 @@
             <img src="../images/logo.png" alt="">
             <nav>
                 <ul>
-                    <li ><a href="Dashboard.html" class="links"><i class="fa-solid fa-house-chimney"></i></a></li>
-                    <li><a href="StaffsMainPage.html" class="links"><i class="fa-solid fa-user-nurse"></i></a></li>
-                    <li><a href="PatientsMainPage.html" class="links"><i class="fa-solid fa-hospital-user"></i></a></li>
-                    <li><a href="ServicesMainPage.html" class="links"><i class="fa-solid fa-hand-holding-medical"></i></a></li>
-                    <li><a href="MedicinesMainPage.html" class="links"><i class="fa-solid fa-pills"></i></i></a></li>
-                    <li><a href="AppointmentsMainPage.html" class="links"><i class="fa-solid fa-calendar-check"></i></a></li>
-                    <li><a href="ArchivesMainPage.html" class="links"><i class="fa-solid fa-boxes-packing"></i></a></li>
-                    <li><a href="" class="links activePage"><i class="fa-solid fa-gear"></i></a></li>
+                    <li>
+                        <a href="Dashboard.html" class="links" data-tooltip="Dashboard">
+                            <i class="fa-solid fa-house-chimney"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="clinicMainPage.html" class="links" data-tooltip="Clinic">
+                            <i class="fa-solid fa-house-medical-flag"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="StaffsMainPage.html" class="links" data-tooltip="Staff">
+                            <i class="fa-solid fa-user-nurse"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="PatientsMainPage.html" class="links" data-tooltip="Patients">
+                            <i class="fa-solid fa-hospital-user"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="ServicesMainPage.html" class="links" data-tooltip="Services">
+                            <i class="fa-solid fa-hand-holding-medical"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="MedicinesMainPage.html" class="links" data-tooltip="Medicines">
+                            <i class="fa-solid fa-pills"></i></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="AppointmentsMainPage.html" class="links" data-tooltip="Appointments">
+                            <i class="fa-solid fa-calendar-check"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="ArchivesMainPage.html" class="links" data-tooltip="Archives">
+                            <i class="fa-solid fa-boxes-packing"></i>
+                        </a>
+                    </li>
                 </ul>
             </nav>
         </div>
@@ -52,7 +113,137 @@
             <div class="containerHeader">
                 <span class="pageTitle">Settings</span>
             </div>
+            <div class="containerBody">
+                <div id="editDetailsForm">
+                    <div class="leftSide">
+                        <span class="namePreview" id="namePreview">John Kenneth Arellano</span>
+                        <div class="previewPosition">Dentist</div>
+
+                        <!-- form for update pic only -->
+                        <form action="" id="updatePhotoForm">
+                            <div class="imgHolderStaff" id="dropArea" ondrop="handleDrop(event)"
+                                ondragover="handleDragOver(event)">
+                                <label for="fileInput" id="uploadImg"><i class="fa-solid fa-camera"></i></label>
+                                <input type="file" id="fileInput" onchange="previewImage(event)">
+                                <img id="preview" src="../images/noProfile.png" alt="">
+                            </div>
+                            <div class="uploadPhoto">
+                                <button type="button" id="updatePhoto">Update avatar</button>
+                            </div>
+                        </form>
+
+                        <div class="imgPromtMessage">
+                            Upload a new avatar. Larger image will be resized automatically. <br><br>
+                            <span> Maximum upload size is <span class="highlight">5 MB</span></span>
+                        </div>
+                        <div class="joinDate">Member since <span id="dateJoined">August 12, 2023</span></div>
+                    </div>
+                    <div class="rightSide">
+                        <div class="settingsNavBar">
+                            <span class="navButtons active" id="navButton">Basic</span>
+                            <span class="navButtons" id="navButton1">Others</span>
+                        </div>
+                        <form action="" class="formContainer" id="form1">
+                            <div class="inputsContainer">
+                                <div class="input">
+                                    <label for="firstName" class="formLabel">First name </label>
+                                    <input autocomplete="off" class="inputField" id="firstName"
+                                        placeholder="Enter first name">
+                                    <span class="errorMessage"></span>
+                                </div>
+                                <div class="input">
+                                    <label for="lastName" class="formLabel">Last name </label>
+                                    <input autocomplete="off" class="inputField" id="lastName"
+                                        placeholder="Enter last name">
+                                    <span class="errorMessage"></span>
+                                </div>
+                                <div class="input">
+                                    <label for="middleName" class="formLabel">Middle name</label>
+                                    <input autocomplete="off" class="inputField" id="middleName"
+                                        placeholder="Enter middle name">
+                                    <span class="errorMessage"></span>
+                                </div>
+                            </div>
+                            <div class="inputsContainer">
+                                <div class="input">
+                                    <label for="oldPassword" class="formLabel">Old password</label>
+                                    <input type="password" class="passwordField" id="oldPassword"
+                                        placeholder="Enter old password">
+                                    <i class="fa-solid fa-eye eye hidden" id="open"></i>
+                                    <i class="fa-solid fa-eye-slash eye hidden" id="close"></i>
+                                    <span class="errorMessage"></span>
+                                </div>
+                                <div class="input">
+                                    <label for="newPassword" class="formLabel">New password</label>
+                                    <input type="password" class="passwordField" id="newPassword"
+                                        placeholder="Enter old password first">
+                                    <i class="fa-solid fa-eye eye hidden" id="open"></i>
+                                    <i class="fa-solid fa-eye-slash eye hidden" id="close"></i>
+                                    <span class="errorMessage"></span>
+                                </div>
+                                <div class="input">
+                                    <label for="confirmPassword" class="formLabel">Confirm password</label>
+                                    <input type="password" class="passwordField" id="confirmPassword"
+                                        placeholder="Enter old password first">
+                                    <i class="fa-solid fa-eye eye hidden" id="open"></i>
+                                    <i class="fa-solid fa-eye-slash eye hidden" id="close"></i>
+                                    <span class="errorMessage"></span>
+                                </div>
+                            </div>
+                            <div class="inputsContainer1">
+                                <div class="input">
+                                    <label for="phoneNumber" class="formLabel">Phone number </label>
+                                    <input autocomplete="off" class="inputField" id="phoneNumber" maxlength="10"
+                                        placeholder="ex. 9123123123">
+                                    <span class="errorMessage"></span>
+                                </div>
+                                <div class="input1">
+                                    <label for="email" class="formLabel">Email </label>
+                                    <input autocomplete="off" class="longInputField" id="email"
+                                        placeholder="email@email.com">
+                                    <span class="errorMessage"></span>
+                                </div>
+                            </div>
+                            <button type="button" class="updateInfo1" id="updateInfo1">Update info</button>
+                        </form>
+                        <form action="" class="formContainer hidden" id="form2">
+                            dasdgda
+                        </form>
+                    </div>
+                </div>
+            </div>
         </div>
+        <!-- No data Found -->
+        <template id="no-notifications">
+            <div class="no-notification">
+                <img src="../images/No Data Found.png" alt="" class="shake">
+            </div>
+        </template>
+        <!--notification loader-->
+        <template id="notificationLoader">
+            <div class="notif" onclick="viewNotification(event)">
+                <div class="imgHolderNotif skeleton1">
+                </div>
+                <div class="notificationContent">
+                    <span class="notificationTitle skeleton1" id="notificationTitle"> </span>
+                    <span class="notificationMessage skeleton1" id="notificationMessage"></span>
+                </div>
+            </div>
+        </template>
+        <!--notification main template-->
+        <template id="notificationMainTemplate">
+            <div class="notif" onclick="viewNotification(event)">
+                <div class="imgHolderNotif">
+                    <img src="../images/logo.png" alt="" id="imgNotif">
+                </div>
+                <div class="notificationContent">
+                    <span class="notificationTitle " id="notificationTitle"> </span>
+                    <span class="notificationMessage " id="notificationMessage"></span>
+                    <span style="display: none;" id="urlRedirect"></span>
+                </div>
+            </div>
+        </template>
     </section>
 </body>
+
 </html>

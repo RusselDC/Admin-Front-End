@@ -1,14 +1,14 @@
 :root{
-    --blue:#0D99FF;
-    --lightgray:#9C9C9C;
-    --darkgray:#414141;
+    --blue:#2196F3;
+    --lightgray:#BDBDBD;
+    --darkgray:#424242;
     --white:#ffffff;        
-    --orange: #FCC865; 
-    --green: #73E977;
-    --red:#fa6363;
-    --smaller:.8vw;
-    --small: 1vw;
-    --medium: 1.2vw;
+    --orange: #FFCC80; 
+    --green: #66BB6A;
+    --red:#EF5350;
+    --smaller:.6vw;
+    --small: .8vw;
+    --medium: 1vw;
     --large: 2.5vw;
     --larger: 3vw;
 }
@@ -29,6 +29,7 @@
     width: calc(100%/3);
     height: 30vh;
     padding: .2vw;
+
 }
 .service{
     position: relative;
@@ -41,9 +42,11 @@
     align-items: center;
     justify-content: center;
     animation: show linear 1s;
-    -webkit-box-shadow:  0px 0px 5px 0px rgb(199, 199, 199);
-    -moz-box-shadow:  0px 0px 5px 0px rgb(199, 199, 199);
-    box-shadow:  0px 0px 5px 0px rgb(170, 170, 170);
+    box-shadow: 0px 0px 1px rgba(3, 7, 18, 0.08),
+    0px 0px 4px rgba(3, 7, 18, 0.06),
+    0px 1px 9px rgba(3, 7, 18, 0.05),
+    0px 2px 15px rgba(3, 7, 18, 0.03),
+    0px 3px 24px rgba(3, 7, 18, 0.02);
 }
 .serviceHeader{
     position: relative;
@@ -52,14 +55,6 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-}
-.spanHeader{
-    min-width: 20vw;
-    border-radius: .4vw;
-    height: 80%;
-    width: fit-content;
-    color: var(--darkgray);
-    font-size: var(--medium);
 }
 .serviceHeader i{
     color: var(--lightgray);
@@ -75,9 +70,11 @@
     display: flex;
     flex-direction: column;
     border-radius: .2vw;
-    -webkit-box-shadow:  0px 0px 5px 0px rgb(199, 199, 199);
-    -moz-box-shadow:  0px 0px 5px 0px rgb(199, 199, 199);
-    box-shadow:  0px 0px 5px 0px rgb(199, 199, 199);
+    box-shadow: 0px 0px 1px rgba(3, 7, 18, 0.08),
+    0px 0px 4px rgba(3, 7, 18, 0.06),
+    0px 1px 9px rgba(3, 7, 18, 0.05),
+    0px 2px 15px rgba(3, 7, 18, 0.03),
+    0px 3px 24px rgba(3, 7, 18, 0.02);
     overflow: hidden;
     animation: show ease-in .2s;
 }
@@ -147,11 +144,12 @@
 }
 .formContainer{
     position: absolute;
+    z-index: 100;
     left: .5vw;
-    width: 99%;
+    width: 100%;
     height: 100%;
-    background-color: #ffffff54;
-    backdrop-filter: blur(2px);
+    backdrop-filter:blur(2px);
+    background: rgba(211, 211, 211, 0.082);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -160,12 +158,14 @@
 .formHandler{
     position: absolute;
     background-color: var(--white);
-    width: 50vw;
-    height: 60vh;
+    width: 60vw;
+    height: 70vh;
     border-radius: .4vw;
-    -webkit-box-shadow:  0px 0px 5px 0px rgb(199, 199, 199);
-    -moz-box-shadow:  0px 0px 5px 0px rgb(199, 199, 199);
-    box-shadow:  0px 0px 5px 0px rgb(199, 199, 199);
+    box-shadow: 0px 0px 1px rgba(3, 7, 18, 0.08),
+    0px 0px 4px rgba(3, 7, 18, 0.06),
+    0px 1px 9px rgba(3, 7, 18, 0.05),
+    0px 2px 15px rgba(3, 7, 18, 0.03),
+    0px 3px 24px rgba(3, 7, 18, 0.02);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -227,9 +227,11 @@
     color: var(--darkgray);
     background-color: lightgray;
     transition: all ease .3s;
-    -webkit-box-shadow:  0px 0px 5px 0px rgb(199, 199, 199);
-    -moz-box-shadow:  0px 0px 5px 0px rgb(199, 199, 199);
-    box-shadow:  0px 0px 5px 0px rgb(199, 199, 199);
+    box-shadow: 0px 0px 1px rgba(3, 7, 18, 0.08),
+    0px 0px 4px rgba(3, 7, 18, 0.06),
+    0px 1px 9px rgba(3, 7, 18, 0.05),
+    0px 2px 15px rgba(3, 7, 18, 0.03),
+    0px 3px 24px rgba(3, 7, 18, 0.02);
 }
 #uploadImg:hover{
     background-color: var(--lightgray);
@@ -255,7 +257,7 @@
     font-family: 'Poppins', Arial, Helvetica, sans-serif; 
 }
 #serviceDescription:focus{
-    border-color: var(--green);
+    border-color: var(--blue);
 }
 #serviceDescription::-webkit-scrollbar{
     display: none;
@@ -275,7 +277,7 @@
     font-family: 'Poppins', Arial, Helvetica, sans-serif; 
 }
 #serviceDescriptionEdit:focus{
-    border-color: var(--green);
+    border-color: var(--blue);
 }
 #serviceDescriptionEdit::-webkit-scrollbar{
     display: none;
@@ -308,7 +310,7 @@
 
 }
 .formInput:focus{
-    border-color: var(--green);
+    border-color: var(--blue);
 }
 .buttonContainer{
     position: absolute;
@@ -396,13 +398,18 @@
     outline: none;
     border-radius: .2vw;
 }
-.hidden{
-    display: none;
-}
 .highlight {
     background-color: lightgray;
     width: fit-content;
     height: fit-content;
     display: inline-flex;
     
+}
+.hidden{
+    display: none;
+}
+.pop-up{
+    opacity: 1;
+    transform: scale(1);
+    transition: opacity 0.5s, transform 0.5s;
 }

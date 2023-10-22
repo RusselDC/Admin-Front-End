@@ -1,0 +1,380 @@
+:root{
+    --blue:#2196F3;
+    --lightgray:#BDBDBD;
+    --darkgray:#424242;
+    --white:#ffffff;        
+    --orange: #FFCC80; 
+    --green: #66BB6A;
+    --red:#EF5350;
+    --smaller:.6vw;
+    --small: .8vw;
+    --medium: 1vw;
+    --large: 2.5vw;
+    --larger: 3vw;
+}
+.containerBody{
+    position: relative;
+    width: 100%;
+    height: 82vh;
+    grid-area: containerBody;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 2.5vh;  
+}
+#editDetailsForm{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: .5vw 0;
+}
+.leftSide{
+    position: relative;
+    width: 30%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    background-color: var(--white);
+    border-radius: .2vw;
+    box-shadow: 0px 0px 1px rgba(3, 7, 18, 0.08),
+    0px 0px 4px rgba(3, 7, 18, 0.06),
+    0px 1px 9px rgba(3, 7, 18, 0.05),
+    0px 2px 15px rgba(3, 7, 18, 0.03),
+    0px 3px 24px rgba(3, 7, 18, 0.02);
+}
+.rightSide{
+    position: relative;
+    width: 69.5%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    background-color: var(--white);
+    background-repeat: no-repeat;
+    border-radius: .2vw;
+    box-shadow: 0px 0px 1px rgba(3, 7, 18, 0.08),
+    0px 0px 4px rgba(3, 7, 18, 0.06),
+    0px 1px 9px rgba(3, 7, 18, 0.05),
+    0px 2px 15px rgba(3, 7, 18, 0.03),
+    0px 3px 24px rgba(3, 7, 18, 0.02);
+    padding: 10vh 0 0 0;
+}
+.imgHolderStaff{
+    position: relative;
+    width: 13vw;
+    height: 13vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius:1vw 1vw 50% 50%;
+    overflow: hidden;
+    border: solid 1px lightgray;
+    background-color: var(--white);
+}
+#preview{
+    position: relative;
+    flex-shrink: 0;
+    width: 100%;
+}
+#uploadImg{
+    position: absolute;
+    z-index: 5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: 1vh;
+    right: 1vh;
+    border: none;
+    outline: none;
+    width: 2vw;
+    height: 2vw;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: var(--small);
+    color: var(--darkgray);
+    background-color: lightgray;
+    transition: all ease .3s;
+    box-shadow: 0px 0px 1px rgba(3, 7, 18, 0.08),
+    0px 0px 4px rgba(3, 7, 18, 0.06),
+    0px 1px 9px rgba(3, 7, 18, 0.05),
+    0px 2px 15px rgba(3, 7, 18, 0.03),
+    0px 3px 24px rgba(3, 7, 18, 0.02);
+}
+#uploadImg:hover{
+    background-color: var(--lightgray);
+}
+.namePreview{
+    width: 100%;
+    font-size: 3.5vh;
+    color: var(--darkgray);
+    text-align: center;
+    margin: 4vh 0 0;
+}
+.previewPosition{
+    width: 100%;
+    text-align: center;
+    font-size: var(--medium);
+    color: var(--blue);
+    margin:0 0 4vh 0 ;
+}
+.uploadPhoto{
+    width: 100%;
+    height: 12vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.uploadPhoto button{
+    width: fit-content;
+    height: fit-content;
+    padding: 1.2vh 2vw;
+    color: white;
+    font-size: var(--small);
+    outline: none;
+    border: solid 1px var(--blue);
+    background: var(--blue);
+    border-radius: .2vw;
+    transition: all ease .3s;
+    cursor: pointer;
+}
+.uploadPhoto button:hover{
+    color: var(--blue);
+    background: var(--white);
+}
+.imgPromtMessage{
+    width: 70%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    height: fit-content;
+    padding: 1.5vh;
+    border: solid 1px lightgray;
+    border-radius: .2vw;
+    font-size: var(--smaller);
+    background: rgba(211, 211, 211, 0.438);
+}
+.highlight{
+    font-weight: 600;
+}
+.joinDate{
+    position: absolute;
+    bottom: 2vh;
+    color: var(--darkgray);
+    font-size: var(--small);
+}
+.settingsNavBar{
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 10vh;
+    display: flex;
+    align-items: center;
+    padding: 0 0 0 1vw;
+    background-color: white;
+}
+.navButtons{
+    position: relative;
+    width: fit-content;
+    height: 100%;
+    padding: 0 1vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--lightgray);
+    font-size: var(--small);
+    cursor: pointer;
+    transition: all ease .3s;
+}
+.navButtons.active, .navButtons:hover{
+    font-weight: bold;
+    color: var(--blue) !important;
+    font-size: var(--medium) !important;
+}
+.formContainer{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    animation: show ease-in .5s;
+    padding: 0 2vw;
+}
+
+.inputsContainer{
+    position: relative;
+    display: flex;
+    width: 100%;
+    height: fit-content;
+}
+.inputsContainer1{
+    position: relative;
+    display: flex;
+    width: 100%;
+    height: fit-content;
+}
+.input{
+    position: relative;
+    min-width: calc(30%);
+    max-width: fit-content;
+    height: fit-content;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 7vh;
+    margin-right: 2vw;
+}
+.input1{
+    position: relative;
+    flex-grow: 1;
+    height: fit-content;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 7vh;
+    margin-right: 2vw;
+}
+.formLabel{
+    width: 100%;
+    color: var(--darkgray);
+    font-size: var(--small);
+}
+.inputField{
+    position: relative;
+    width: 18vw;
+    height: fit-content;
+    font-size: var(--small);
+    padding: 1.2vh;
+    text-align: center;
+    color: var(--darkgray);
+    border: solid 1px white;
+    border-radius: .2vw;
+    outline: none;
+    transition: all ease .3s;
+    box-shadow: 0px 0px 1px rgba(3, 7, 18, 0.08),
+    0px 0px 4px rgba(3, 7, 18, 0.06),
+    0px 1px 9px rgba(3, 7, 18, 0.05),
+    0px 2px 15px rgba(3, 7, 18, 0.03),
+    0px 3px 24px rgba(3, 7, 18, 0.02);
+    background-color: var(--white);
+}
+.passwordField{
+    padding: 1.2vh;
+    position: relative;
+    width: 18vw;
+    height: fit-content;
+    font-size: var(--small);
+    text-align: center;
+    color: var(--darkgray);
+    border: solid 1px white;
+    border-radius: .2vw;
+    outline: none;
+    letter-spacing: .05vw;
+    transition: all ease .3s;
+    box-shadow: 0px 0px 1px rgba(3, 7, 18, 0.08),
+    0px 0px 4px rgba(3, 7, 18, 0.06),
+    0px 1px 9px rgba(3, 7, 18, 0.05),
+    0px 2px 15px rgba(3, 7, 18, 0.03),
+    0px 3px 24px rgba(3, 7, 18, 0.02);
+    background-color: var(--white);
+}
+.longInputField{
+    position: relative;
+    width: 100%;
+    height: fit-content;
+    font-size: var(--small);
+    padding: 1.2vh 0;
+    text-align: center;
+    color: var(--darkgray);
+    border: solid 1px white;
+    border-radius: .2vw;
+    outline: none;
+    letter-spacing: .05vw;
+    transition: all ease .3s;
+    transition: all ease .3s;
+    box-shadow: 0px 0px 1px rgba(3, 7, 18, 0.08),
+    0px 0px 4px rgba(3, 7, 18, 0.06),
+    0px 1px 9px rgba(3, 7, 18, 0.05),
+    0px 2px 15px rgba(3, 7, 18, 0.03),
+    0px 3px 24px rgba(3, 7, 18, 0.02);
+    background-color: var(--white);
+}
+.inputField:focus,.longInputField:focus{
+    box-shadow: none;
+}
+.errorMessage{
+    position: relative;
+    width: 100%;
+    padding-top: .5vh;
+    height: 3vh;
+    text-align: center;
+    font-size: var(--smaller);
+    color: var(--red);
+}
+.eye{
+    position: absolute;
+    top: 4.6vh;
+    right: .8vw;
+    color: lightgray;
+    font-size: var(--small);
+    cursor: pointer;
+    transition: all ease .3s;
+}
+.eye.hidden{
+    display: none !important;
+}
+.eye:hover{
+    color: var(--darkgray);
+}
+.updateInfo1{
+    position: absolute;
+    right: 2vw;
+    bottom: 13vh;
+    width: fit-content;
+    height: fit-content;
+    padding: 1.5vh 2vw;
+    color: var(--blue);
+    font-size: var(--small);
+    outline: none;
+    border: solid 1px white;
+    background: var(--white);
+    border-radius: .2vw;
+    transition: all ease .3s;
+    cursor: pointer;
+}
+.updateInfo1:hover{
+    color: var(--white);
+    background: var(--blue);
+}
+.hidden{
+    display: none;
+}
+.shake{
+    animation: error 0.5s;
+}
+@keyframes error{
+    25%{transform: translateX(-4px);}
+    50%{transform: translateX(4px);}
+    75%{transform: translateX(-4px);}
+}
+@keyframes slideLeft{
+    0%{
+        opacity: 1;
+        transform: translateX(0);
+    }
+    100%{
+        opacity: 0;
+        transform: translateX(100%);
+    }
+}
+@keyframes show{
+    0%{
+        opacity: 0;     
+    }
+    100%{
+        opacity: 1;   
+    }
+}

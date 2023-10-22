@@ -1,0 +1,44 @@
+{
+  "appointments": [
+    {
+      "id": 1,
+      "startTime": "01:00 PM",
+      "imgSource": "kenneth.png",
+      "name": "Michael Clark",
+      "service": "Teeth Whitening",
+      "status": true
+    },
+    {
+      "id": 2,
+      "startTime": "12:30 PM",
+      "imgSource": "kenneth.png",
+      "name": "Bob Brown",
+      "service": "Dental Fillings",
+      "status": true
+    },
+    {
+      "id": 3,
+      "startTime": "04:00 PM",
+      "imgSource": "kenneth.png",
+      "name": "Olivia Taylor",
+      "service": "Cavity Restoration",
+      "status": false
+    },
+    {
+      "id": 4,
+      "startTime": "05:00 PM",
+      "imgSource": "kenneth.png",
+      "name": "Ella Wilson",
+      "service": "Root Canal Therapy",
+      "status": false
+    },
+    {
+      "id": 5,
+      "startTime": "03:00 PM",
+      "imgSource": "kenneth.png",
+      "name": "Sarah Adams",
+      "service": "Dental Extraction",
+      "status": false
+    }
+  ]
+}

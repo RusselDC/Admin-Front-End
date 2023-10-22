@@ -1,0 +1,85 @@
+{
+    "appointments": [
+      {
+        "imageSource": "noProfile.png",
+        "fullName": "John Doe",
+        "servicesAvailed": ["Dental Checkup"],
+        "appointmentStatus": "accepted",
+        "date": "2023-10-10",
+        "time": "10:00 AM"
+      },
+      {
+        "imageSource": "noProfile.png",
+        "fullName": "Jane Smith",
+        "servicesAvailed": ["Teeth Cleaning", "Orthodontics"],
+        "appointmentStatus": "pending",
+        "date": "2023-10-12",
+        "time": "2:30 PM"
+      },
+      {
+        "imageSource": "noProfile.png",
+        "fullName": "David Johnson",
+        "servicesAvailed": ["Dental Implants"],
+        "appointmentStatus": "rejected",
+        "date": "2023-10-15",
+        "time": "11:15 AM"
+      },
+      {
+        "imageSource": "noProfile.png",
+        "fullName": "Emily Wilson",
+        "servicesAvailed": ["Dental Checkup", "Teeth Cleaning"],
+        "appointmentStatus": "accepted",
+        "date": "2023-10-18",
+        "time": "9:45 AM"
+      },
+      {
+        "imageSource": "noProfile.png",
+        "fullName": "Michael Brown",
+        "servicesAvailed": ["Orthodontics"],
+        "appointmentStatus": "pending",
+        "date": "2023-10-20",
+        "time": "3:30 PM"
+      },
+      {
+        "imageSource": "noProfile.png",
+        "fullName": "Sarah Davis",
+        "servicesAvailed": ["Dental Checkup"],
+        "appointmentStatus": "accepted",
+        "date": "2023-10-22",
+        "time": "1:00 PM"
+      },
+      {
+        "imageSource": "noProfile.png",
+        "fullName": "Daniel Lee",
+        "servicesAvailed": ["Dental Implants"],
+        "appointmentStatus": "rejected",
+        "date": "2023-10-25",
+        "time": "10:30 AM"
+      },
+      {
+        "imageSource": "noProfile.png",
+        "fullName": "Olivia White",
+        "servicesAvailed": ["Teeth Cleaning"],
+        "appointmentStatus": "accepted",
+        "date": "2023-10-28",
+        "time": "4:15 PM"
+      },
+      {
+        "imageSource": "noProfile.png",
+        "fullName": "James Miller",
+        "servicesAvailed": ["Dental Checkup"],
+        "appointmentStatus": "pending",
+        "date": "2023-10-30",
+        "time": "2:00 PM"
+      },
+      {
+        "imageSource": "noProfile.png",
+        "fullName": "Sophia Taylor",
+        "servicesAvailed": ["Orthodontics", "Teeth Cleaning"],
+        "appointmentStatus": "accepted",
+        "date": "2023-11-02",
+        "time": "11:45 AM"
+      }
+    ]
+  }
+  

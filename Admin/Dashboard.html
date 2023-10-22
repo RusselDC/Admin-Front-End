@@ -1,33 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
+    <meta name="theme-color" content="#2196F3">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/admin.css">
     <link rel="stylesheet" href="../css/dashboard.css">
-    <script src="../javascript/Dashboard.js"  defer></script>
+    <script src="../javascript/Dashboard.js" defer></script>
+    <script src="../javascript/chart.js" defer></script>
+    <script src="../javascript/sweetalert2.js" defer></script>
     <link rel="website icon" type="png " href="../images/logo.png">
     <script src="https://kit.fontawesome.com/275edc9f9d.js" crossorigin="anonymous" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js" defer></script>
     <title>Dashboard</title>
 </head>
+
 <body onload="onload()">
     <section id="main">
         <div class="header">
             <div class="headerContainer">
                 <div class="headerContent">
-                    <span>Today is June 13, 2023 (Tuesday)</span>                    
+                    <span>Today is October 18, 2023 (Wednesday)</span>
                 </div>
-                <div class="profile">
-                    <div class="info">
-                        <span id="name">
-                            Arellano, John Kenneth R.
-                        </span>
-                        <span id="role">
-                            Dentist
-                        </span>
+                <span class="notificationHolder">
+                    <div class="notificationContainer hidden">
+                        <div class="notifications">
+                            <div class="searchNotification">
+                                <input type="text" name="" id="searchNotification" autocomplete="off" spellcheck="false"
+                                    placeholder="Search notification">
+                                <i class="fa-solid fa-magnifying-glass"></i>
+                            </div>
+                            <div class="allNotification" id="allNotification">
+                            </div>
+                        </div>
+                        <div class="triangle"></div>
                     </div>
-                    <div class="profileHolder">
-                        <img src="../images/kenneth.png" alt="">
+                    <i class="fa-solid fa-bell bellUI" onclick="viewNotificationContainer(event)">
+                        <div class="notification-dot"></div>
+                    </i>
+                </span>
+                <div class="holder">
+                    <div class="profile" id="profileExpand">
+                        <div class="info">
+                            <span id="name">
+                                Welcome, John Kenneth
+                            </span>
+                            <span id="role">
+                                Dentist
+                            </span>
+                        </div>
+                        <div class="profileHolder">
+                            <img src="../images/noProfile.png" alt="">
+                        </div>
+                    </div>
+                    <div class="logoutHolder hidden" id="logoutHolder">
+                        <span class="logoutOpt"><a href="Settings.html"><i
+                                    class="fa-solid fa-gear"></i>Settings</a></span>
+                        <span class="logoutOpt"><span id="logOutButton"><i
+                                    class="fa-solid fa-right-from-bracket"></i>Log out</span></span>
                     </div>
                 </div>
             </div>
@@ -36,14 +67,46 @@
             <img src="../images/logo.png" alt="">
             <nav>
                 <ul>
-                    <li ><a href="" class="links activePage"><i class="fa-solid fa-house-chimney"></i></a></li>
-                    <li><a href="StaffsMainPage.html" class="links"><i class="fa-solid fa-user-nurse"></i></a></li>
-                    <li><a href="PatientsMainPage.html" class="links"><i class="fa-solid fa-hospital-user"></i></a></li>
-                    <li><a href="ServicesMainPage.html" class="links"><i class="fa-solid fa-hand-holding-medical"></i></a></li>
-                    <li><a href="MedicinesMainPage.html" class="links"><i class="fa-solid fa-pills"></i></i></a></li>
-                    <li><a href="AppointmentsMainPage.html" class="links"><i class="fa-solid fa-calendar-check"></i></a></li>
-                    <li><a href="ArchivesMainPage.html" class="links"><i class="fa-solid fa-boxes-packing"></i></a></li>
-                    <li><a href="Settings.html" class="links"><i class="fa-solid fa-gear"></i></a></li>
+                    <li>
+                        <a href="Dashboard.html" class="links activePage" data-tooltip="Dashboard">
+                            <i class="fa-solid fa-house-chimney"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="clinicMainPage.html" class="links" data-tooltip="Clinic">
+                            <i class="fa-solid fa-house-medical-flag"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="StaffsMainPage.html" class="links" data-tooltip="Staff">
+                            <i class="fa-solid fa-user-nurse"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="PatientsMainPage.html" class="links" data-tooltip="Patients">
+                            <i class="fa-solid fa-hospital-user"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="ServicesMainPage.html" class="links" data-tooltip="Services">
+                            <i class="fa-solid fa-hand-holding-medical"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="MedicinesMainPage.html" class="links" data-tooltip="Medicines">
+                            <i class="fa-solid fa-pills"></i></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="AppointmentsMainPage.html" class="links" data-tooltip="Appointments">
+                            <i class="fa-solid fa-calendar-check"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="ArchivesMainPage.html" class="links" data-tooltip="Archives">
+                            <i class="fa-solid fa-boxes-packing"></i>
+                        </a>
+                    </li>
                 </ul>
             </nav>
         </div>
@@ -52,9 +115,134 @@
                 <span class="pageTitle">Dashboard</span>
             </div>
             <div id="containerBody">
-
+                <div class="pieChartContainer">
+                    <div class="piechartHolder">
+                        <div class="polarChart">
+                            <span class="chartLabel"><span id="chartLabel">Appoinments</span> <span class="count" id="count">12</span></span>
+                            <canvas id="doughnutChart"></canvas>
+                            <div class="legend-container"></div>
+                        </div>
+                        <div class="polarChart">
+                            <span class="chartLabel"><span id="chartLabel1">Services</span> <span class="count" id="count1">12</span></span>
+                            <canvas id="doughnutChart1"></canvas>
+                            <div class="legend-container"></div>
+                        </div>
+                        <div class="polarChart">
+                            <span class="chartLabel"><span id="chartLabel2">Patients</span> <span class="count" id="count2">12</span></span>
+                            <canvas id="doughnutChart2"></canvas>
+                            <div class="legend-container"></div>
+                        </div>
+                    </div> 
+                </div>
+                <div class="barChartContainer">
+                    <div class="barChartHolder">
+                        <div class="barChart">
+                            <canvas id="barChart"></canvas>
+                            <div class="legend-container"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="totalContainer">
+                    <div class="totalContainerHolder">
+                        <div class="totalContainerTitle">Today's appointment</div>
+                        <div class="totalContainerLabel">Current</div>
+                        <div class="containerAppointment" id="appointmentCurrent">
+                        </div>
+                        <div class="totalContainerLabel">Upcomming</div>
+                        <div class="containerAppointment" id="appointmentUpcoming">
+                                                  
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
+        <!-- No data Found -->
+        <template id="no-notifications">
+            <div class="no-notification">
+                <img src="../images/No Data Found.png" alt="" class="shake">
+            </div>
+        </template>
+        <!--notification loader-->
+        <template id="notificationLoader">
+            <div class="notif" onclick="viewNotification(event)">
+                <div class="imgHolderNotif skeleton1">
+                </div>
+                <div class="notificationContent">
+                    <span class="notificationTitle skeleton1" id="notificationTitle"> </span>
+                    <span class="notificationMessage skeleton1" id="notificationMessage"></span>
+                </div>
+            </div>
+        </template>
+        <!--notification main template-->
+        <template id="notificationMainTemplate">
+            <div class="notif" onclick="viewNotification(event)">
+                <div class="imgHolderNotif">
+                    <img src="../images/logo.png" alt="" id="imgNotif">
+                </div>
+                <div class="notificationContent">
+                    <span class="notificationTitle " id="notificationTitle"> </span>
+                    <span class="notificationMessage " id="notificationMessage"></span>
+                    <span style="display: none;" id="urlRedirect"></span>
+                </div>
+            </div>
+        </template>
+
+        <!--notificationPreview-->
+         <template id="notificationPreview">
+            <div class="notificationPreview">
+                <div class="imageAndTitle">
+                    <div class="notifImagePreview">
+                        <img src="../images/kenneth.png" alt="">
+                    </div>
+                    <div class="titleMessageNotification">
+                        <span id="notifTitlePreview">New appointment </span>
+                        <span id="notifMessagePreview">John Kenneth Arellano, August 1, 2023</span>
+                    </div>
+                </div> 
+            </div>
+        </template>
+        <!--appointmentLoader-->        
+        <template id="appointmentLoader">
+            <div class="appointment">
+                <span class="time1 skeleton1" ></span>
+                <div class="imageAndDetails">
+                    <div class="imgHolder skeleton1">
+                    </div>
+                    <div class="details">
+                        <span class="name skeleton1"></span>
+                        <span class="serviceAvailed skeleton1">
+                        
+                    </div>
+                </div>
+            </div>  
+        </template>
+        <!--appointmentMain-->
+        <template id="appointmentMain">
+            <div class="appointment" onclick="endAppointment(event)">
+                <span class="time"><i class="fa-solid fa-clock"> </i><span id="time"></span></span>
+                <div class="imageAndDetails">
+                    <div class="imgHolder">
+                        <img src="../images/kenneth.png" alt="" id="imageAppoinment">
+                    </div>
+                    <div class="details">
+                        <span class="name" id="name"></span>
+                        <span style="display: none;" id="appointmentId"></span>
+                        <span class="serviceAvailed" id="serviceAvailed"></span>           
+                    </div>
+                </div>
+            </div>
+        </template>
+        <!--no appointment-->
+        <template id="noappointment">
+            <div class="noappointment">
+                <div class="calendarholder">
+                    <img src="../images/calendar.png" alt="">
+                </div>
+                <span id="prompt"></span>
+            </div>
+        </template>
+        
     </section>
 </body>
+
 </html>

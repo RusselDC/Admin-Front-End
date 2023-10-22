@@ -52,68 +52,6 @@ function listener() {
     });
   });
 
-  numberRecover.addEventListener("click", function () {
-    //recover through number
-    errormessage.innerText = "";
-    errormessage.style.opacity = 0;
-    recovery.style.borderColor = "";
-    continueButton.onclick = function () {
-      var recoveryValue = recovery.value;
-      if (recoveryValue === "") {
-        errormessage.innerText = "Number Empty";
-        errormessage.style.opacity = 1;
-        recovery.classList.add("shake");
-        recovery.style.borderColor = "var(--red)";
-        setTimeout(() => {
-          recovery.classList.remove("shake");
-        }, 500);
-      } else if (isNaN(recoveryValue)) {
-        errormessage.innerText = "Invalid Number";
-        errormessage.style.opacity = 1;
-        recovery.classList.add("shake");
-        recovery.style.borderColor = "var(--red)";
-        setTimeout(() => {
-          recovery.classList.remove("shake");
-        }, 500);
-      } else if (recoveryValue.length < 10) {
-        errormessage.innerText = "Invalid Number";
-        errormessage.style.opacity = 1;
-        recovery.classList.add("shake");
-        recovery.style.borderColor = "var(--red)";
-        setTimeout(() => {
-          recovery.classList.remove("shake");
-        }, 500);
-      } else {
-        //send OTP Code
-        errormessage.innerText = "";
-        errormessage.style.opacity = 0;
-        recovery.style.borderColor = "var(--green)";
-        setTimeout(function () {
-          containerHolder2.style.visibility = "hidden";
-          containerHolder2.style.opacity = 0;
-
-          containerHolder3.style.visibility = "visible";
-          containerHolder3.style.opacity = 1;
-        }, 400);
-      }
-      emailOrPhoneInput.innerText = "+63-" + recoveryValue;
-    };
-    containerHolder1.style.visibility = "hidden";
-    containerHolder1.style.opacity = 0;
-
-    containerHolder2.style.visibility = "visible";
-    containerHolder2.style.opacity = 1;
-
-    recovery.value = "";
-    format.removeAttribute("hidden");
-    recovery.setAttribute("maxLength", "10");
-
-    emailOrPhone.forEach(function (emailOrPhone) {
-      emailOrPhone.innerHTML = "Phone Number";
-    });
-  });
-
-  emailRecover.addEventListener("click", function () {
     errormessage.innerText = "";
     errormessage.style.opacity = 0;
     recovery.style.borderColor = "";
@@ -151,28 +89,17 @@ function listener() {
       }
       emailOrPhoneInput.innerText = recoveryValue;
     };
-    containerHolder1.style.visibility = "hidden";
-    containerHolder1.style.opacity = 0;
 
     containerHolder2.style.visibility = "visible";
     containerHolder2.style.opacity = 1;
 
     recovery.value = "";
-    format.hidden = true;
-    recovery.removeAttribute("maxLength");
 
     emailOrPhone.forEach(function (emailOrPhone) {
       emailOrPhone.innerHTML = "Email address";
     });
-  });
 
-  back1.addEventListener("click", function () {
-    containerHolder1.style.visibility = "visible";
-    containerHolder1.style.opacity = 1;
 
-    containerHolder2.style.visibility = "hidden";
-    containerHolder2.style.opacity = 0;
-  });
 
   back2.addEventListener("click", function () {
     recovery.value = "";
@@ -458,8 +385,3 @@ function hasUppercaseLetter(passwordValue) {
 
   return false;
 }
-
-// function hasNumberOrSpecialChar(passwordValue) {
-//     var regex = /[0-9!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/;
-//     return regex.test(passwordValue);
-// }

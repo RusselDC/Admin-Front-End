@@ -1,11 +1,33 @@
 function onload() {
   listeners();
+  fetchNotification();
 }
 const formContainer = document.querySelector("#formContainer");
 const addServicesForm = document.querySelector("#addServicesForm");
 const editServicesForm = document.querySelector("#editServicesForm");
 
 function listeners() {
+  const links = document.querySelectorAll(".links");
+  links.forEach((link) => {
+      const tooltipText = link.getAttribute("data-tooltip");
+
+      const tooltip = document.createElement("div");
+      tooltip.classList.add("tooltip");
+      tooltip.textContent = tooltipText;
+
+      link.appendChild(tooltip);
+  });
+  var profileExpand = document.querySelector('#profileExpand');
+  var logoutHolder = document.querySelector('#logoutHolder');
+  var logoutHolderOptions = document.querySelectorAll('.logoutHolder span');
+  profileExpand.addEventListener("click", ()=>{
+    logoutHolder.classList.toggle("hidden");
+    logoutHolderOptions.forEach((action)=>{
+      action.addEventListener("click", ()=>{
+        logoutHolder.classList.add("hidden")
+      })
+    })
+  })
   const containerBody = document.querySelector("#containerBody");
   const templateLoader = document.querySelector("#templateLoader");
   const mainTemplate = document.querySelector("#mainTemplate");
@@ -19,7 +41,7 @@ function listeners() {
   fetch("https://run.mocky.io/v3/c8b2956e-24f2-4bc2-8a39-f3ff7229f4db")
     .then((response) => response.json())
     .then((data) => {
-      containerBody.innerHTML = "";
+      // containerBody.innerHTML = "";
       function filterData(data, searchTerm) {
         if (!searchTerm) {
           return data;
@@ -41,7 +63,7 @@ function listeners() {
           const clone = document.importNode(nodatafound.content, true);
           containerBody.appendChild(clone);
         }
-        filteredData.forEach((obj) => {
+        filteredData.forEach((obj, i) => {
           const clone = document.importNode(mainTemplate.content, true);
           clone.querySelector("#serviceName").innerHTML = highlightText(
             obj.serviceName,
@@ -55,6 +77,7 @@ function listeners() {
             searchTerm
           );
           containerBody.appendChild(clone);
+
         });
         function highlightText(text, searchTerm) {
           if (!searchTerm) {
@@ -411,38 +434,16 @@ function previewImage(event) {
   var file = fileInput.files[0];
 
   if (file) {
-    var reader = new FileReader();
-
-    reader.onload = function (e) {
-      var previewImage = document.getElementById("preview");
-      previewImage.src = e.target.result;
-    };
-
-    reader.readAsDataURL(file);
-  }
-}
-
-function previewImage(event) {
-  var fileInput = event.target;
-  var file = fileInput.files[0];
-
-  if (file) {
     if (validateFileType(file) && validateFileSize(file)) {
-      var reader = new FileReader();
-
-      reader.onload = function (e) {
-        var previewImage = document.getElementById("preview");
-        previewImage.src = e.target.result;
-      };
-
-      reader.readAsDataURL(file);
+      previewFile(file);
     } else {
       Swal.fire({
-        text: "Select a JPEG, JPG, or PNG file under 5MB.",
+        text: "Please select a JPEG, JPG, or PNG file under 5MB.",
         icon: "warning",
         timer: 2000,
         showConfirmButton: false,
       });
+      fileInput.value = "";
     }
   }
 }
@@ -540,4 +541,118 @@ function createCheckboxes(data, serviceId, templateCheckbox) {
     console.log("obj.id:", obj.id);
     console.log("input.checked:", input.checked);
   });
+}
+function viewNotification(event) {
+  var url = event.currentTarget.querySelector("#urlRedirect").textContent;
+  window.location.href ="../Admin" + url;
+}
+
+async function fetchNotification(){
+  const container = document.querySelector("#allNotification")
+  const loader = document.querySelector("#notificationLoader")
+  const mainContainer = document.querySelector("#notificationMainTemplate")
+  const nodatafound = document.querySelector("#no-notifications")
+  try {
+    for (let i = 0; i < 5; i++) {
+      const clone = document.importNode(loader.content, true);
+      container.appendChild(clone);
+    }
+    const response = await fetch("../JSON/notification.json");
+    const data = await response.json();
+    console.log( data);
+
+    function filterData(data, searchTerm) {
+      searchTerm = searchTerm ? searchTerm.toLowerCase() : "";
+      const filteredData = [];
+
+      for (const notifs of data.notification) {
+        const title = notifs.title.toLowerCase();
+        const text = notifs.text.toLowerCase();
+        if (
+          title.includes(searchTerm) ||
+          text.includes(searchTerm)
+        ) {
+          filteredData.push(notifs);
+        }
+      }
+
+      return filteredData;
+    }
+    function updateDisplay(searchTerm) {
+      const filteredData = filterData(data, searchTerm);
+      container.innerHTML = "";
+
+      if (filteredData.length === 0) {
+        const clone = document.importNode(nodatafound.content, true);
+        container.appendChild(clone);
+      } else {
+        let hasUnreadNotifications = false; 
+        filteredData.sort((a, b) => {
+          if (a.status === b.status) {
+            return 0;
+          }
+          return a.status ? 1 : -1;
+        });
+        filteredData.forEach((item) => {
+          const clone = document.importNode(mainContainer.content, true);
+
+          var notificationStatus = item.status
+
+          if(notificationStatus === false){
+            clone.querySelector(".notif").classList.add("unread")
+            const notifDot = document.createElement("div");
+            notifDot.classList.add("notifDot");
+            clone.querySelector(".notif").appendChild(notifDot);
+            hasUnreadNotifications = true; 
+          }
+          clone.querySelector("#imgNotif").src = "../images/" + item.image;
+          clone.querySelector("#notificationTitle").innerHTML = highlightText(
+            item.title,
+            searchTerm
+          );
+          clone.querySelector("#notificationMessage").innerHTML = highlightText(
+            item.text,
+            searchTerm
+          );
+          clone.querySelector("#urlRedirect").innerHTML = item.url;
+          container.appendChild(clone);
+        });
+        const notificationDots = document.querySelector(".notification-dot");
+        if (!hasUnreadNotifications) {
+          notificationDots.classList.add("hidden")
+        }
+        else{
+          notificationDots.classList.remove("hidden")
+        }
+      }
+    }
+    function highlightText(text, searchTerm) {
+      if (!searchTerm) {
+        return `<span>${text}</span>`;
+      }
+
+      const regex = new RegExp(`(${escapeRegExp(searchTerm)})`, "gi");
+      return text.replace(regex, (match) => `<p class="highlight">${match}</p>`);
+    }
+
+    function escapeRegExp(string) {
+      return string.replace(/[.*+\-?^${}()|[\]\\]/g, "\\$&");
+    }
+
+    updateDisplay("");
+    var search = document.querySelector("#searchNotification");
+    search.addEventListener("input", function () {
+      updateDisplay(this.value);
+    });
+  }
+  catch (error) {
+    console.error("An error occurred:", error);
+  }
+
+}
+function viewNotificationContainer(event) {
+  var parent = event.target.parentElement;
+  var notificationContainer = parent.querySelector(".notificationContainer");
+  notificationContainer.classList.toggle("hidden");
+  event.target.classList.toggle("showContainer")
 }

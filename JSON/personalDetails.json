@@ -1,0 +1,24 @@
+{
+    "details": 
+      {
+        "imgSource": "noProfile.png",
+        "firstName": "John Kenneth",
+        "middleName": "Roque",
+        "lastName": "Arellano",
+        "position": "Dentist",
+        "religion": "Chatolic",
+        "birthday": "2002-04-18",
+        "age": 21,
+        "civilStatus": "Single",
+        "email": "johnkenneth.arellano.r@bulsu.edu.ph",
+        "contactNumber": "9519077637",
+        "province": "Bulacan",
+        "city": "Paombong",
+        "barangay": "Sto. Rosario",
+        "houseNumberStreet": "778 Sitio Ibayo",
+        "status": "active",
+        "password": "Pogikoshet123",
+        "dateHired": "2022-12-10"
+      }
+}
+  

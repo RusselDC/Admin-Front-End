@@ -1,0 +1,37 @@
+{
+    "clinics":[
+        {
+            "id":1,
+            "name":"Pablo De Jesus",
+            "imageSource":"1.jpeg",
+            "description":"Bring smiles to everyone",
+            "contactNumber": "09123123123",
+            "emailAddress": "clinic1@gmail.com",
+            "staffs": 12,
+            "services": 23,
+            "location": "Tangos Baliwag Bulacan"
+        },
+        {
+            "id":2,
+            "name":"Smith Family Clinic",
+            "imageSource":"4.jpeg",
+            "description":"Caring for your family's health Caring for your family's health Caring for your family's health Caring for your family's health Caring for your family's health",
+            "contactNumber": "09234567890",
+            "emailAddress": "clinic2@gmail.com",
+            "staffs": 8,
+            "services": 15,
+            "location": "Tangos Baliwag Bulacan"
+        },
+        {
+            "id":3,
+            "name":"Dental Excellence Center",
+            "imageSource":"clinicPlaceholder.png",
+            "description":"Your smile, our priority",
+            "contactNumber": "09345678901",
+            "emailAddress": "clinic3@gmail.com",
+            "staffs": 6,
+            "services": 12,
+            "location": "Tangos Baliwag Bulacan"
+        }
+    ]
+}

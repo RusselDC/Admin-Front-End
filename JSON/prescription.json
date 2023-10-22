@@ -1,0 +1,113 @@
+{
+    "patients": [
+      {
+        "patientName": "John Kenneth Arellano",
+        "age": 35,
+        "address": "123 Main Street, City, Country",
+        "clinicName": "Gamot sa tae",
+        "clinicLogo": "noProfile.png",
+        "issuedBy": "Dr. Smith",
+        "dateIssued": "2023-02-18",
+        "medicinesPrescribed": {
+          "medicineA": {
+            "medicineName": "Ibuprofen",
+            "medicineBrand": "Advil",
+            "medicineType": "Tablet",
+            "medicineDosage": 200,
+            "medicineDosageType": "mg",
+            "medicineTotal": 10
+          },
+          "medicineB": {
+            "medicineName": "Acetaminophen",
+            "medicineBrand": "Tylenol",
+            "medicineType": "Tablet",
+            "medicineDosage": 500,
+            "medicineDosageType": "mg",
+            "medicineTotal": 20
+          }
+        }
+      },
+      {
+        "patientName": "Jane Smith",
+        "age": 42,
+        "address": "456 Elm Street, City, Country",
+        "clinicName": "Pablo De Jesus",
+        "clinicLogo": "logo.png",
+        "issuedBy": "Dr. Anderson",
+        "dateIssued": "2023-07-14",
+        "medicinesPrescribed": {
+          "medicineA": {
+            "medicineName": "Amoxicillin",
+            "medicineBrand": "Amoxil",
+            "medicineType": "Capsule",
+            "medicineDosage": 500,
+            "medicineDosageType": "mg",
+            "medicineTotal": 20
+          },
+          "medicineB": {
+            "medicineName": "Loratadine",
+            "medicineBrand": "Claritin",
+            "medicineType": "Tablet",
+            "medicineDosage": 10,
+            "medicineDosageType": "mg",
+            "medicineTotal": 30
+          }
+        }
+      },
+      {
+        "patientName": "David Johnson",
+        "age": 57,
+        "address": "789 Oak Avenue, City, Country",
+        "clinicName": "Pablo De Jesus",
+        "clinicLogo": "logo.png",
+        "issuedBy": "Dr. Patel",
+        "dateIssued": "2023-06-28",
+        "medicinesPrescribed": {
+          "medicineA": {
+            "medicineName": "Lisinopril",
+            "medicineBrand": "Zestril",
+            "medicineType": "Tablet",
+            "medicineDosage": 10,
+            "medicineDosageType": "mg",
+            "medicineTotal": 30
+          },
+          "medicineB": {
+            "medicineName": "Metformin",
+            "medicineBrand": "Glucophage",
+            "medicineType": "Tablet",
+            "medicineDosage": 500,
+            "medicineDosageType": "mg",
+            "medicineTotal": 60
+          }
+        }
+      },
+      {
+        "patientName": "Emily Thompson",
+        "age": 28,
+        "address": "987 Maple Road, City, Country",
+        "clinicName": "Pablo De Jesus",
+        "clinicLogo": "logo.png",
+        "issuedBy": "Dr. Garcia",
+        "dateIssued": "2023-07-05",
+        "medicinesPrescribed": {
+          "medicineA": {
+            "medicineName": "Levothyroxine",
+            "medicineBrand": "Synthroid",
+            "medicineType": "Tablet",
+            "medicineDosage": 75,
+            "medicineDosageType": "mcg",
+            "medicineTotal": 60
+          },
+          "medicineB": {
+            "medicineName": "Omeprazole",
+            "medicineBrand": "Prilosec",
+            "medicineType": "Capsule",
+            "medicineDosage": 20,
+            "medicineDosageType": "mg",
+            "medicineTotal": 30
+          }
+        }
+      }
+    ]
+  }
+  

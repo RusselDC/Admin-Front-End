@@ -597,3 +597,6 @@ table th {
     width: 65vw;
   }
 }
+.hidden{
+  display: none;
+}

@@ -1,12 +1,24 @@
 function load(){
     scroll();
     login();
-    repeat();
+    // repeat();
     //loader();
     scrollPage();
     listeners();
     animation();
+    fetchClinics();
 }
+document.addEventListener("DOMContentLoaded", function () {
+
+        const targetElement = document.querySelector("#services");
+        if (targetElement) {
+            window.scrollTo({
+                top: targetElement.offsetTop,
+                behavior: "smooth"
+            });
+        }
+    
+});
 // global variables
 var username = document.getElementById('username');
 var password = document.getElementById('password');
@@ -127,15 +139,10 @@ function scroll() {
 
         if (scrollDifference > 0) {
             header.classList.add('navBarScroll');
-            header.classList.remove('show');
-            header.classList.add('hide');
         } else if (nextScrollY === 0) {
-            header.classList.remove('hide');
             header.classList.remove('navBarScroll');
-            header.classList.add('show');
         } else {
             header.classList.add('show');
-            header.classList.remove('hide');
         }
     });
 }
@@ -172,19 +179,43 @@ function login(){
     const login = document.getElementById('user');
     const admin = document.getElementById('admin');
     const register = document.getElementById('register');
+    //add this russel
+    const username = document.getElementById('username');
+    const password = document.getElementById('password');
+    const ul = document.querySelector('.ul');
+    const navBarOptions = document.querySelectorAll('.ul responsive li a');
+    const navBarCheck = document.getElementById('navBarCheck');
+    const confirmPassword = document.getElementById('confirmPassword');
+    const usernameLogIn = document.querySelector("#usernameLogIn");
+    const passwordLogIn = document.getElementById('passwordLogIn');
+    //end of adding
 
+    navBarCheck.addEventListener("click", ()=>{
+        ul.classList.toggle("responsive")
+    })
+    navBarOptions.forEach(link => {
+        link.addEventListener("click",()=>{
+            alert()  
+        })
+    });
     signUpForm.addEventListener('click', () => {
         container.classList.add("right-panel-active")
     });
     loginForm.addEventListener('click', () => {
         container.classList.remove("right-panel-active")
-        username.value = '';
     });
 
     login.addEventListener('click', () => {
         container.classList.toggle("active")
         containerAdmin.classList.remove("active")
         role.classList.remove('visible')
+        //add this also
+        // resetDefault(usernameLogIn)
+        // resetDefault(passwordLogIn)
+        // resetDefault(username)
+        // resetDefault(password)
+        // resetDefault(confirmPassword)
+        //end
     });
     admin.addEventListener('click', () => {
         containerAdmin.classList.toggle("active")
@@ -220,7 +251,6 @@ function validateLogIn(){
     }
     else{
         setSuccessfor(passwordLogIn)
-        window.location.href = '/Admin/Dashboard.html'
     }
 }
 function validateLogInAdmin(){
@@ -450,66 +480,133 @@ function isValidEmail(email) {
 }
 //slideshow
 
-var slides = document.querySelectorAll('.slide');
-var btns = document.querySelectorAll('.imgBtn');
-let currentSlide = 1;
-let timeout;
+// var slides = document.querySelectorAll('.slide');
+// var btns = document.querySelectorAll('.imgBtn');
+// let currentSlide = 1;
+// let timeout;
 
-var manualNav = function(manual){
-    clearTimeout(timeout);
-    slides.forEach((slide) => {
-        slide.classList.remove('activeSlide');
-    });
-    btns.forEach((btn) => {
-        btn.classList.remove('activeSlide');
-    });
-    slides[manual].classList.add('activeSlide');
-    btns[manual].classList.add('activeSlide');
-    currentSlide = manual;
-};
+// var manualNav = function(manual){
+//     clearTimeout(timeout);
+//     slides.forEach((slide) => {
+//         slide.classList.remove('activeSlide');
+//     });
+//     btns.forEach((btn) => {
+//         btn.classList.remove('activeSlide');
+//     });
+//     slides[manual].classList.add('activeSlide');
+//     btns[manual].classList.add('activeSlide');
+//     currentSlide = manual;
+// };
 
-btns.forEach((btn, i) => {
-    btn.addEventListener('click', ()=>{
-        manualNav(i);
-    });
-});
+// btns.forEach((btn, i) => {
+//     btn.addEventListener('click', ()=>{
+//         manualNav(i);
+//     });
+// });
 
-var repeat = function(activeClass){
-    var repeater = () => {
-        timeout = setTimeout(function() {
-            slides.forEach((slide) => {
-                slide.classList.remove('activeSlide');
-            });
-            btns.forEach((btn) => {
-                btn.classList.remove('activeSlide');
-            });
-            currentSlide++;
-            if(currentSlide >= slides.length){
-                currentSlide = 0;
+// var repeat = function(activeClass){
+//     var repeater = () => {
+//         timeout = setTimeout(function() {
+//             slides.forEach((slide) => {
+//                 slide.classList.remove('activeSlide');
+//             });
+//             btns.forEach((btn) => {
+//                 btn.classList.remove('activeSlide');
+//             });
+//             currentSlide++;
+//             if(currentSlide >= slides.length){
+//                 currentSlide = 0;
+//             }
+//             slides[currentSlide].classList.add('activeSlide');
+//             btns[currentSlide].classList.add('activeSlide');
+//             repeater();
+//         }, 5000); 
+//     };
+//     repeater();
+// };
+
+function fetchClinics() {
+    var clinicsContainer = document.querySelector("#clinicsContainer"),
+        loaderTemplate = document.querySelector("#clinicLoaderTemplate"),
+        mainTemplate = document.querySelector("#clinicMainTemplate"),
+        nodatafound = document.querySelector("#no-data-found"),
+        search = document.querySelector("#search");
+
+    for (let i = 0; i < 15; i++) {
+        const clone = document.importNode(loaderTemplate.content, true);
+        clinicsContainer.appendChild(clone);
+    }
+
+    fetch("./JSON/clinic.json")
+        .then((response) => response.json())
+        .then((data) => {
+            function filterData(data, searchTerm) {
+                searchTerm = searchTerm ? searchTerm.toLowerCase() : "";
+                const filteredData = [];
+
+                for (const clinic of data.clinics) {
+                    const name = clinic.name.toLowerCase();
+                    const location = clinic.location.toLowerCase();
+
+                    if (name.includes(searchTerm) || location.includes(searchTerm)) {
+                        filteredData.push(clinic);
+                    }
+                }
+                return filteredData;
             }
-            slides[currentSlide].classList.add('activeSlide');
-            btns[currentSlide].classList.add('activeSlide');
-            repeater();
-        }, 5000); 
-    };
-    repeater();
-};
 
+            function updateDisplay(searchTerm) {
+                clinicsContainer.innerHTML = ""; // Clear existing content
 
+                const filteredData = filterData(data, searchTerm);
 
+                if (filteredData.length === 0) {
+                    const clone = document.importNode(nodatafound.content, true);
+                    clinicsContainer.appendChild(clone);
+                } else {
+                    for (const clinic of filteredData) {
+                        const clinicTemplate = document.importNode(mainTemplate.content, true);
+                        clinicTemplate.querySelector("#clinicName").innerHTML = highlightText(clinic.name, searchTerm);
+                        clinicTemplate.querySelector("#location").innerHTML = highlightText(clinic.location, searchTerm);
+                        clinicTemplate.querySelector("#clinicImage").src = "./images/" + clinic.imageSource;
+                        clinicsContainer.appendChild(clinicTemplate);
+                    }
+                }
+            }
 
+            function highlightText(text, searchTerm) {
+                if (!searchTerm) {
+                    return text;
+                }
 
+                const regex = new RegExp(`(${escapeRegExp(searchTerm)})`, "gi");
+                return text.replace(regex, (match) => `<span class="highlight">${match}</span>`);
+            }
 
+            function escapeRegExp(string) {
+                return string.replace(/[.*+\-?^${}()|[\]\\]/g, "\\$&");
+            }
 
+            // Initialize the display
+            updateDisplay("");
 
+            // Add event listener for search input
+            search.addEventListener("input", function () {
+                updateDisplay(this.value);
+            });
+        })
+        .catch((error) => {
+            console.error("Error fetching clinic data: " + error);
+        });
+}
 
-
-
-
-
-
-
-
+function resetDefault(input) {
+    var parent = input.parentElement;
+    var errorMessage = parent.querySelector(".errorMessage");
+    errorMessage.textContent = ""; // Use textContent to set the error message
+    input.value = "";
+    input.style.borderColor = "";
+}
 
 function loader(){
 

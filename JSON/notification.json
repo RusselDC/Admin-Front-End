@@ -1,0 +1,74 @@
+{
+    "notification": [
+        {
+            "image": "logo.png",
+            "title": "New appointment",
+            "text": "October 12, 2023 10:00 AM",
+            "status": false,
+            "url": "/AppointmentsPendingPage.html"
+        },
+        {
+            "image": "logo.png",
+            "title": "Dental Clinic 2",
+            "text": "Experienced dentists, friendly staff",
+            "status": true,
+            "url": "/AppointmentsPendingPage.html"
+        },
+        {
+            "image": "logo.png",
+            "title": "Dental Clinic 3",
+            "text": "Your smile is our priority",
+            "status": true,
+            "url": "/AppointmentsPendingPage.html"
+        },
+        {
+            "image": "logo.png",
+            "title": "Dental Clinic 4",
+            "text": "Comprehensive dental services",
+            "status": true,
+            "url": "/AppointmentsPendingPage.html"
+        },
+        {
+            "image": "logo.png",
+            "title": "Dental Clinic 5",
+            "text": "Modern dental technology",
+            "status": true,
+            "url": "/AppointmentsPendingPage.html"
+        },
+        {
+            "image": "logo.png",
+            "title": "Dental Clinic 6",
+            "text": "Emergency dental care available",
+            "status": true,
+            "url": "/AppointmentsPendingPage.html"
+        },
+        {
+            "image": "logo.png",
+            "title": "Dental Clinic 7",
+            "text": "Affordable dental treatments",
+            "status": true,
+            "url": "/AppointmentsPendingPage.html"
+        },
+        {
+            "image": "logo.png",
+            "title": "Dental Clinic 8",
+            "text": "Serving the community since 1990",
+            "status": true,
+            "url": "/AppointmentsPendingPage.html"
+        },
+        {
+            "image": "logo.png",
+            "title": "Dental Clinic 9",
+            "text": "Gentle and compassionate care",
+            "status": true,
+            "url": "/AppointmentsPendingPage.html"
+        },
+        {
+            "image": "logo.png",
+            "title": "Dental Clinic 10",
+            "text": "Healthy smiles, happy lives",
+            "status": true,
+            "url": "/AppointmentsPendingPage.html"
+        }
+    ]
+}

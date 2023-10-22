@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="theme-color" content="#2196F3">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Animation</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* styles.css */
+        .data-container {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        /* styles.css */
+        .data-item {
+            width: 200px;
+            height: 100px;
+            margin: 10px;
+            background-color: #3498db;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transform: scale(0.8);
+            transition: opacity 0.5s, transform 0.5s;
+        }
+
+        .data-item.show {
+            opacity: 1;
+            transform: scale(1);
+            /* Scale up to its original size */
+        }
+    </style>
+</head>
+
+<body>
+    <div class="data-container">
+        <!-- Data items will be added here -->
+    </div>
+</body>
+<script>
+    // script.js
+    document.addEventListener("DOMContentLoaded", () => {
+        // Simulate fetching data from the database
+        const data = ["Item 1", "Item 2", "Item 3", "Item 4", "Item 5"];
+
+        // Get the container element
+        const dataContainer = document.querySelector(".data-container");
+
+        // Function to create and show a data item with a delay
+        const createDataItemWithDelay = (item, index) => {
+            const dataItem = document.createElement("div");
+            dataItem.classList.add("data-item");
+            dataItem.textContent = item;
+
+            // Apply animation delay to each item
+            dataItem.style.animationDelay = `${index * 0.5}s`;
+
+            // Add data item to the container
+            dataContainer.appendChild(dataItem);
+
+            // Add the 'show' class to trigger the animation after a delay
+            setTimeout(() => {
+                dataItem.classList.add("show");
+            }, 100 + index * 500); // Adjust the delay timing as needed
+        };
+
+        // Iterate through the data and create data items with a delay
+        data.forEach((item, index) => {
+            createDataItemWithDelay(item, index);
+        });
+    });
+
+
+
+</script>
+
+</html>

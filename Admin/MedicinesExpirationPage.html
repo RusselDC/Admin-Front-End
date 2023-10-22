@@ -3,6 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
+    <meta name="theme-color" content="#2196F3">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/admin.css">
     <link rel="stylesheet" href="../css/medicine.css">
@@ -23,17 +24,42 @@
                     <a href="" class="headerLink headerLinkActive">Expiration Report</a>
                     <a href="MedicinesPrescriptionPage.html" class="headerLink">Presc. History</a>
                 </div>
-                <div class="profile">
-                    <div class="info">
-                        <span id="name">
-                            Arellano, John Kenneth R.
-                        </span>
-                        <span id="role">
-                            Dentist
-                        </span>
+                <span class="notificationHolder">
+                    <div class="notificationContainer hidden">
+                        <div class="notifications">
+                            <div class="searchNotification">
+                                <input type="text" name="" id="searchNotification" autocomplete="off" spellcheck="false"
+                                    placeholder="Search notification">
+                                <i class="fa-solid fa-magnifying-glass"></i>
+                            </div>
+                            <div class="allNotification" id="allNotification">
+                            </div>
+                        </div>
+                        <div class="triangle"></div>
                     </div>
-                    <div class="profileHolder">
-                        <img src="../images/kenneth.png" alt="">
+                    <i class="fa-solid fa-bell bellUI" onclick="viewNotificationContainer(event)">
+                        <div class="notification-dot"></div>
+                    </i>
+                </span>
+                <div class="holder">
+                    <div class="profile" id="profileExpand">
+                        <div class="info">
+                            <span id="name">
+                                Welcome, John Kenneth
+                            </span>
+                            <span id="role">
+                                Dentist
+                            </span>
+                        </div>
+                        <div class="profileHolder">
+                            <img src="../images/noProfile.png" alt="">
+                        </div>
+                    </div>
+                    <div class="logoutHolder hidden" id="logoutHolder">
+                        <span class="logoutOpt"><a href="Settings.html"><i
+                                    class="fa-solid fa-gear"></i>Settings</a></span>
+                        <span class="logoutOpt"><span id="logOutButton"><i
+                                    class="fa-solid fa-right-from-bracket"></i>Log out</span></span>
                     </div>
                 </div>
             </div>
@@ -42,16 +68,46 @@
             <img src="../images/logo.png" alt="">
             <nav>
                 <ul>
-                    <li><a href="Dashboard.html" class="links"><i class="fa-solid fa-house-chimney"></i></a></li>
-                    <li><a href="StaffsMainPage.html" class="links"><i class="fa-solid fa-user-nurse"></i></a></li>
-                    <li><a href="PatientsMainPage.html" class="links"><i class="fa-solid fa-hospital-user"></i></a></li>
-                    <li><a href="ServicesMainPage.html" class="links"><i
-                                class="fa-solid fa-hand-holding-medical"></i></a></li>
-                    <li><a href="" class="links activePage"><i class="fa-solid fa-pills"></i></i></a></li>
-                    <li><a href="AppointmentsMainPage.html" class="links"><i class="fa-solid fa-calendar-check"></i></a>
+                    <li>
+                        <a href="Dashboard.html" class="links" data-tooltip="Dashboard">
+                            <i class="fa-solid fa-house-chimney"></i>
+                        </a>
                     </li>
-                    <li><a href="ArchivesMainPage.html" class="links"><i class="fa-solid fa-boxes-packing"></i></a></li>
-                    <li><a href="Settings.html" class="links"><i class="fa-solid fa-gear"></i></a></li>
+                    <li>
+                        <a href="clinicMainPage.html" class="links" data-tooltip="Clinic">
+                            <i class="fa-solid fa-house-medical-flag"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="StaffsMainPage.html" class="links" data-tooltip="Staff">
+                            <i class="fa-solid fa-user-nurse"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="PatientsMainPage.html" class="links" data-tooltip="Patients">
+                            <i class="fa-solid fa-hospital-user"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="ServicesMainPage.html" class="links" data-tooltip="Services">
+                            <i class="fa-solid fa-hand-holding-medical"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="MedicinesMainPage.html" class="links activePage" data-tooltip="Medicines">
+                            <i class="fa-solid fa-pills"></i></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="AppointmentsMainPage.html" class="links" data-tooltip="Appointments">
+                            <i class="fa-solid fa-calendar-check"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="ArchivesMainPage.html" class="links" data-tooltip="Archives">
+                            <i class="fa-solid fa-boxes-packing"></i>
+                        </a>
+                    </li>
                 </ul>
             </nav>
         </div>
@@ -60,7 +116,7 @@
                 <span class="pageTitle">Medicine</span>
                 <div class="sort">
                     <div class="searchBar">
-                        <input type="text" placeholder="Search" id="search">
+                        <input autocomplete="off" placeholder="Search" id="search" spellcheck="false">
                         <i class="fa-sharp fa-solid fa-magnifying-glass"></i>
                     </div>
                     <button id="addMedicine"><span>Medicine</span><i class="fa-solid fa-plus "></i></button>
@@ -71,8 +127,8 @@
             </div>
             <!-- No Data Found Template -->
             <template id="no-data-found">
-                <div class="no-data-found" >
-                    <img src="../images/No Data Found.png" alt="">
+                <div class="no-data-found">
+                    <img src="../images/No Data Found.png" alt="" class="shake">
                 </div>
             </template>
             <!-- Medicine Type Template -->
@@ -147,7 +203,7 @@
                 <form action="" id="addMedicineFormContainer">
                     <div class="formTitle">Add Medicine</div>
                     <div class="inputHolder">
-                        <input type="text" class="inputValue" placeholder="Medicine Classification"
+                        <input autocomplete="off" class="inputValue" placeholder="Medicine Classification"
                             id="medicineClassification" autocomplete="off">
                         <div class="medicineClassificationHolder" id="medicineClassificationHolder">
                         </div>
@@ -156,13 +212,13 @@
                         <div class="medicineNameHolder">
                             <label for="medicineNameAdd" class="labelForm">Medicine Name <span
                                     class="asterisk">*</span></label>
-                            <input type="text" id="medicineNameAdd" class="inputValue" placeholder="Ex. Ibufrofen"
-                                name="medicineName">
+                            <input autocomplete="off" id="medicineNameAdd" class="inputValue"
+                                placeholder="Ex. Ibufrofen" name="medicineName">
                         </div>
                         <div class="medicineIdHolder">
                             <label for="medicineIDAdd" class="labelForm">Medicine Id <span
                                     class="asterisk">*</span></label>
-                            <input type="text" id="medicineIDAdd" class="inputValue" placeholder="ADV-1253"
+                            <input autocomplete="off" id="medicineIDAdd" class="inputValue" placeholder="ADV-1253"
                                 name="medicineID">
                         </div>
                     </div>
@@ -170,13 +226,14 @@
                         <div class="medicineBrand">
                             <label for="medicineBrandName" class="labelForm">Medicine Brand <span
                                     class="asterisk">*</span></label>
-                            <input type="text" id="medicineBrandName" class="inputValue" placeholder="Ex. Advil PM"
-                                name="medicineBrand">
+                            <input autocomplete="off" id="medicineBrandName" class="inputValue"
+                                placeholder="Ex. Advil PM" name="medicineBrand">
                         </div>
                         <div class="medicineDosage">
                             <label for="dosage" class="labelForm">Dosage <span class="asterisk">*</span></label>
                             <div class="dosageContainer">
-                                <input type="text" name="dosage" style="display:none;" value="15" id="dosageValue" />
+                                <input autocomplete="off" name="dosage" style="display:none;" value="15"
+                                    id="dosageValue" />
                                 <input type="number" id="medicineDosage" class=" inputValue" value="15" min="0">
                                 <span class="caretDosage" id="sortCarretDosage"><span id="dosageType">ML</span> <i
                                         class="fa-solid fa-caret-down sortCarretDosageTypeCaret"></i></span>
@@ -193,7 +250,7 @@
                             <label for="medicineTypeHolder" class="labelForm">Type <span class="asterisk">*</span>
                             </label>
                             <div class="medicineTypeContainer">
-                                <input type="text" name="medicineType" style="display:none;" value="Tablet"
+                                <input autocomplete="off" name="medicineType" style="display:none;" value="Tablet"
                                     id="medicineTypeValue" />
                                 <span class="medicineTypeHolder" id="medicineTypeHolder"><span
                                         id="medicineTypeName">Tablet</span> <i
@@ -245,23 +302,23 @@
                 <form action="">
                     <div class="formTitle">View Medicine</div>
                     <div class="inputHolder">
-                        <input type="text" class="inputValue" id="medicineClassificationPrescribe" autocomplete="off"
-                            readonly>
+                        <input autocomplete="off" class="inputValue" id="medicineClassificationPrescribe"
+                            autocomplete="off" readonly>
                     </div>
                     <div class="inputHolder1">
                         <div class="medicineNameHolder">
                             <label for="medicineNameEdit" class="labelForm">Medicine Name</label>
-                            <input type="text" id="medicineNameView" class="inputValue" readonly>
+                            <input autocomplete="off" id="medicineNameView" class="inputValue" readonly>
                         </div>
                         <div class="medicineIdHolder">
                             <label for="medicineIDEdit" class="labelForm">Medicine Id</label>
-                            <input type="text" id="medicineIDView" class="inputValue" readonly>
+                            <input autocomplete="off" id="medicineIDView" class="inputValue" readonly>
                         </div>
                     </div>
                     <div class="inputHolder1">
                         <div class="medicineBrand">
                             <label for="medicineBrandNameView" class="labelForm">Medicine Brand</label>
-                            <input type="text" id="medicineBrandNameView" class="inputValue" readonly>
+                            <input autocomplete="off" id="medicineBrandNameView" class="inputValue" readonly>
                         </div>
                         <div class="medicineDosage">
                             <label for="medicineDosageView" class="labelForm">Dosage</label>
@@ -311,6 +368,36 @@
                 </form>
             </div>
         </div>
+        <!-- No data Found -->
+        <template id="no-data-found">
+            <div class="no-notification">
+                <img src="../images/No Data Found.png" alt="" class="shake">
+            </div>
+        </template>
+        <!--notification loader-->
+        <template id="notificationLoader">
+            <div class="notif" onclick="viewNotification(event)">
+                <div class="imgHolderNotif skeleton1">
+                </div>
+                <div class="notificationContent">
+                    <span class="notificationTitle skeleton1" id="notificationTitle"> </span>
+                    <span class="notificationMessage skeleton1" id="notificationMessage"></span>
+                </div>
+            </div>
+        </template>
+        <!--notification main template-->
+        <template id="notificationMainTemplate">
+            <div class="notif" onclick="viewNotification(event)">
+                <div class="imgHolderNotif">
+                    <img src="../images/logo.png" alt="" id="imgNotif">
+                </div>
+                <div class="notificationContent">
+                    <span class="notificationTitle " id="notificationTitle"> </span>
+                    <span class="notificationMessage " id="notificationMessage"></span>
+                    <span style="display: none;" id="urlRedirect"></span>
+                </div>
+            </div>
+        </template>
     </section>
 </body>
 

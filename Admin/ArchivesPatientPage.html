@@ -1,35 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
+    <meta name="theme-color" content="#2196F3">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/admin.css">
-    <script src="../javascript/Archive.js"  defer></script>
+    <script src="../javascript/Archive.js" defer></script>
     <link rel="website icon" type="png " href="../images/logo.png">
     <script src="https://kit.fontawesome.com/275edc9f9d.js" crossorigin="anonymous" defer></script>
     <title>Archive</title>
 </head>
+
 <body onload="onload()">
     <section id="main">
         <div class="header">
             <div class="headerContainer">
                 <div class="headerContent">
-                    <a href="ArchivesMainPage.html" class="headerLink">Staff</a> 
+                    <a href="ArchivesMainPage.html" class="headerLink">Staff</a>
                     <a href="" class="headerLink headerLinkActive">Patient</a>
-                    <a href="ArchivesMedicinePage.html" class="headerLink">Medicine</a> 
-                    <a href="ArchivesAppointmentPage.html" class="headerLink">Appointment</a>                      
+                    <a href="ArchivesMedicinePage.html" class="headerLink">Medicine</a>
+                    <a href="ArchivesAppointmentPage.html" class="headerLink">Appointment</a>
                 </div>
-                <div class="profile">
-                    <div class="info">
-                        <span id="name">
-                            Arellano, John Kenneth R.
-                        </span>
-                        <span id="role">
-                            Dentist
-                        </span>
+                <span class="notificationHolder">
+                    <div class="notificationContainer hidden">
+                        <div class="notifications">
+                            <div class="searchNotification">
+                                <input type="text" name="" id="searchNotification" autocomplete="off" spellcheck="false"
+                                    placeholder="Search notification">
+                                <i class="fa-solid fa-magnifying-glass"></i>
+                            </div>
+                            <div class="allNotification" id="allNotification">
+                            </div>
+                        </div>
+                        <div class="triangle"></div>
                     </div>
-                    <div class="profileHolder">
-                        <img src="../images/kenneth.png" alt="">
+                    <i class="fa-solid fa-bell bellUI" onclick="viewNotificationContainer(event)">
+                        <div class="notification-dot"></div>
+                    </i>
+                </span>
+                <div class="holder">
+                    <div class="profile" id="profileExpand">
+                        <div class="info">
+                            <span id="name">
+                                Welcome, John Kenneth
+                            </span>
+                            <span id="role">
+                                Dentist
+                            </span>
+                        </div>
+                        <div class="profileHolder">
+                            <img src="../images/noProfile.png" alt="">
+                        </div>
+                    </div>
+                    <div class="logoutHolder hidden" id="logoutHolder">
+                        <span class="logoutOpt"><a href="Settings.html"><i
+                                    class="fa-solid fa-gear"></i>Settings</a></span>
+                        <span class="logoutOpt"><span id="logOutButton"><i
+                                    class="fa-solid fa-right-from-bracket"></i>Log out</span></span>
                     </div>
                 </div>
             </div>
@@ -38,14 +66,46 @@
             <img src="../images/logo.png" alt="">
             <nav>
                 <ul>
-                    <li ><a href="Dashboard.html" class="links"><i class="fa-solid fa-house-chimney"></i></a></li>
-                    <li><a href="StaffsMainPage.html" class="links"><i class="fa-solid fa-user-nurse"></i></a></li>
-                    <li><a href="PatientsMainPage.html" class="links"><i class="fa-solid fa-hospital-user"></i></a></li>
-                    <li><a href="ServicesMainPage.html" class="links"><i class="fa-solid fa-hand-holding-medical"></i></a></li>
-                    <li><a href="MedicinesMainPage.html" class="links"><i class="fa-solid fa-pills"></i></i></a></li>
-                    <li><a href="AppointmentsMainPage.html" class="links"><i class="fa-solid fa-calendar-check"></i></a></li>
-                    <li><a href="" class="links activePage"><i class="fa-solid fa-boxes-packing"></i></a></li>
-                    <li><a href="Settings.html" class="links"><i class="fa-solid fa-gear"></i></a></li>
+                    <li>
+                        <a href="Dashboard.html" class="links" data-tooltip="Dashboard">
+                            <i class="fa-solid fa-house-chimney"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="clinicMainPage.html" class="links" data-tooltip="Clinic">
+                            <i class="fa-solid fa-house-medical-flag"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="StaffsMainPage.html" class="links" data-tooltip="Staff">
+                            <i class="fa-solid fa-user-nurse"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="PatientsMainPage.html" class="links" data-tooltip="Patients">
+                            <i class="fa-solid fa-hospital-user"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="ServicesMainPage.html" class="links" data-tooltip="Services">
+                            <i class="fa-solid fa-hand-holding-medical"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="MedicinesMainPage.html" class="links" data-tooltip="Medicines">
+                            <i class="fa-solid fa-pills"></i></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="AppointmentsMainPage.html" class="links" data-tooltip="Appointments">
+                            <i class="fa-solid fa-calendar-check"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="ArchivesMainPage.html" class="links activePage" data-tooltip="Archives">
+                            <i class="fa-solid fa-boxes-packing"></i>
+                        </a>
+                    </li>
                 </ul>
             </nav>
         </div>
@@ -54,10 +114,11 @@
                 <span class="pageTitle">Archive</span>
                 <div class="sort">
                     <div class="searchBar">
-                        <input type="text" placeholder="Search" id="search">
+                        <input autocomplete="off" placeholder="Search" id="search" spellcheck="false">
                         <i class="fa-sharp fa-solid fa-magnifying-glass"></i>
                     </div>
-                    <button class="sortButton" id="sortButton"><span id="sortText">All</span> <i class="fa-solid fa-caret-down"></i></button>
+                    <button class="sortButton" id="sortButton"><span id="sortText">All</span> <i
+                            class="fa-solid fa-caret-down"></i></button>
                     <div class="sortOptions1" id="sortOptions">
                         <span id="allMedicine">All</span>
                         <span id="dateRemoved">Date</span>
@@ -67,6 +128,37 @@
                 </div>
             </div>
         </div>
+        <!-- No data Found -->
+        <template id="no-notifications">
+            <div class="no-notification">
+                <img src="../images/No Data Found.png" alt="" class="shake">
+            </div>
+        </template>
+        <!--notification loader-->
+        <template id="notificationLoader">
+            <div class="notif" onclick="viewNotification(event)">
+                <div class="imgHolderNotif skeleton1">
+                </div>
+                <div class="notificationContent">
+                    <span class="notificationTitle skeleton1" id="notificationTitle"> </span>
+                    <span class="notificationMessage skeleton1" id="notificationMessage"></span>
+                </div>
+            </div>
+        </template>
+        <!--notification main template-->
+        <template id="notificationMainTemplate">
+            <div class="notif" onclick="viewNotification(event)">
+                <div class="imgHolderNotif">
+                    <img src="../images/logo.png" alt="" id="imgNotif">
+                </div>
+                <div class="notificationContent">
+                    <span class="notificationTitle " id="notificationTitle"> </span>
+                    <span class="notificationMessage " id="notificationMessage"></span>
+                    <span style="display: none;" id="urlRedirect"></span>
+                </div>
+            </div>
+        </template>
     </section>
 </body>
+
 </html>

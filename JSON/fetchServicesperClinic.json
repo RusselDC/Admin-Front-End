@@ -1,0 +1,45 @@
+{
+    "services": [
+      {
+        "serviceName": "Dental Checkup",
+        "imageSource": "1.jpeg"
+      },
+      {
+        "serviceName": "Teeth Cleaning",
+        "imageSource": "2.jpeg"
+      },
+      {
+        "serviceName": "Orthodontics",
+        "imageSource": "3.jpeg"
+      },
+      {
+        "serviceName": "Dental Implants",
+        "imageSource": "4.jpeg"
+      },
+      {
+        "serviceName": "Oral Surgery",
+        "imageSource": "5.jpeg"
+      },
+      {
+        "serviceName": "Dental X-Rays",
+        "imageSource": "4.jpeg"
+      },
+      {
+        "serviceName": "Pediatric Dentistry",
+        "imageSource": "3.jpeg"
+      },
+      {
+        "serviceName": "Gum Disease Treatment",
+        "imageSource": "1.jpeg"
+      },
+      {
+        "serviceName": "Root Canal Therapy",
+        "imageSource": "2.jpeg"
+      },
+      {
+        "serviceName": "Dentures",
+        "imageSource": "5.jpeg"
+      }
+    ]
+  }
+  

@@ -1,328 +1,159 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="../css/admin.css" />
-    <link rel="stylesheet" href="../css/patient.css" />
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="theme-color" content="#2196F3">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/admin.css">
     <script src="../javascript/Patients.js" defer></script>
-    <link rel="website icon" type="png " href="../images/logo.png" />
-    <script
-      src="https://kit.fontawesome.com/275edc9f9d.js"
-      crossorigin="anonymous"
-      defer
-    ></script>
+    <link rel="website icon" type="png " href="../images/logo.png">
+    <script src="https://kit.fontawesome.com/275edc9f9d.js" crossorigin="anonymous" defer></script>
     <title>Patient</title>
-  </head>
-  <body onload="onload()">
+</head>
+
+<body onload="onload()">
     <section id="main">
-      <div class="header">
-        <div class="headerContainer">
-          <div class="headerContent">
-            <a href="" class="headerLink headerLinkActive">Patient's List</a>
-          </div>
-          <div class="profile">
-            <div class="info">
-              <span id="name"> Arellano, John Kenneth R. </span>
-              <span id="role"> Dentist </span>
+        <div class="header">
+            <div class="headerContainer">
+                <div class="headerContent">
+                    <a href="" class="headerLink headerLinkActive">Patient's List</a>
+                </div>
+                <span class="notificationHolder">
+                    <div class="notificationContainer hidden">
+                        <div class="notifications">
+                            <div class="searchNotification">
+                                <input type="text" name="" id="searchNotification" autocomplete="off" spellcheck="false"
+                                    placeholder="Search notification">
+                                <i class="fa-solid fa-magnifying-glass"></i>
+                            </div>
+                            <div class="allNotification" id="allNotification">
+                            </div>
+                        </div>
+                        <div class="triangle"></div>
+                    </div>
+                    <i class="fa-solid fa-bell bellUI" onclick="viewNotificationContainer(event)">
+                        <div class="notification-dot"></div>
+                    </i>
+                </span>
+                <div class="holder">
+                    <div class="profile" id="profileExpand">
+                        <div class="info">
+                            <span id="name">
+                                Welcome, John Kenneth
+                            </span>
+                            <span id="role">
+                                Dentist
+                            </span>
+                        </div>
+                        <div class="profileHolder">
+                            <img src="../images/noProfile.png" alt="">
+                        </div>
+                    </div>
+                    <div class="logoutHolder hidden" id="logoutHolder">
+                        <span class="logoutOpt"><a href="Settings.html"><i
+                                    class="fa-solid fa-gear"></i>Settings</a></span>
+                        <span class="logoutOpt"><span id="logOutButton"><i
+                                    class="fa-solid fa-right-from-bracket"></i>Log out</span></span>
+                    </div>
+                </div>
             </div>
-            <div class="profileHolder">
-              <img src="../images/kenneth.png" alt="" />
+        </div>
+        <div class="sidebar">
+            <img src="../images/logo.png" alt="">
+            <nav>
+                <ul>
+                    <li>
+                        <a href="Dashboard.html" class="links" data-tooltip="Dashboard">
+                            <i class="fa-solid fa-house-chimney"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="clinicMainPage.html" class="links" data-tooltip="Clinic">
+                            <i class="fa-solid fa-house-medical-flag"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="StaffsMainPage.html" class="links" data-tooltip="Staff">
+                            <i class="fa-solid fa-user-nurse"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="PatientsMainPage.html" class="links activePage" data-tooltip="Patients">
+                            <i class="fa-solid fa-hospital-user"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="ServicesMainPage.html" class="links" data-tooltip="Services">
+                            <i class="fa-solid fa-hand-holding-medical"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="MedicinesMainPage.html" class="links" data-tooltip="Medicines">
+                            <i class="fa-solid fa-pills"></i></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="AppointmentsMainPage.html" class="links" data-tooltip="Appointments">
+                            <i class="fa-solid fa-calendar-check"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="ArchivesMainPage.html" class="links" data-tooltip="Archives">
+                            <i class="fa-solid fa-boxes-packing"></i>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+        <div class="mainContainer">
+            <div class="containerHeader">
+                <span class="pageTitle">Patient</span>
+                <div class="sort">
+                    <div class="searchBar">
+                        <input autocomplete="off" placeholder="Search" id="search" spellcheck="false">
+                        <i class="fa-sharp fa-solid fa-magnifying-glass"></i>
+                    </div>
+                    <button class="sortButton" id="sortButton"><span id="sortText">All</span> <i
+                            class="fa-solid fa-caret-down"></i></button>
+                    <div class="sortOptions1" id="sortOptions">
+                        <span id="allPatients">All</span>
+                        <span id="activePatient">Active</span>
+                    </div>
+                </div>
             </div>
-          </div>
         </div>
-      </div>
-      <div class="sidebar">
-        <img src="../images/logo.png" alt="" />
-        <nav>
-          <ul>
-            <li>
-              <a href="Dashboard.html" class="links"
-                ><i class="fa-solid fa-house-chimney"></i
-              ></a>
-            </li>
-            <li>
-              <a href="StaffsMainPage.html" class="links"
-                ><i class="fa-solid fa-user-nurse"></i
-              ></a>
-            </li>
-            <li>
-              <a href="" class="links activePage"
-                ><i class="fa-solid fa-hospital-user"></i
-              ></a>
-            </li>
-            <li>
-              <a href="ServicesMainPage.html" class="links"
-                ><i class="fa-solid fa-hand-holding-medical"></i
-              ></a>
-            </li>
-            <li>
-              <a href="MedicinesMainPage.html" class="links"
-                ><i class="fa-solid fa-pills"></i
-              ></a>
-            </li>
-            <li>
-              <a href="AppointmentsMainPage.html" class="links"
-                ><i class="fa-solid fa-calendar-check"></i
-              ></a>
-            </li>
-            <li>
-              <a href="ArchivesMainPage.html" class="links"
-                ><i class="fa-solid fa-boxes-packing"></i
-              ></a>
-            </li>
-            <li>
-              <a href="Settings.html" class="links"
-                ><i class="fa-solid fa-gear"></i
-              ></a>
-            </li>
-          </ul>
-        </nav>
-      </div>
-      <div class="mainContainer">
-        <div class="containerHeader">
-          <span class="pageTitle">Patient</span>
-          <div class="sort">
-            <div class="searchBar">
-              <!-- <input type="text" placeholder="Search" id="search" /> -->
-              <input
-                type="text"
-                id="search"
-                placeholder="Search"
-                onkeyup="filterTable()"
-              />
-
-              <i class="fa-sharp fa-solid fa-magnifying-glass"></i>
+        <!-- No data Found -->
+        <template id="no-notifications">
+            <div class="no-notification">
+                <img src="../images/No Data Found.png" alt="" class="shake">
             </div>
-            <button class="sortButton" id="sortButton">
-              <span id="sortText">All</span>
-              <i class="fa-solid fa-caret-down"></i>
-            </button>
-            <div class="sortOptions1" id="sortOptions">
-              <span id="allPatients">All</span>
-              <span id="activePatient">Active</span>
+        </template>
+        <!--notification loader-->
+        <template id="notificationLoader">
+            <div class="notif" onclick="viewNotification(event)">
+                <div class="imgHolderNotif skeleton1">
+                </div>
+                <div class="notificationContent">
+                    <span class="notificationTitle skeleton1" id="notificationTitle"> </span>
+                    <span class="notificationMessage skeleton1" id="notificationMessage"></span>
+                </div>
             </div>
-          </div>
-        </div>
-        <div class="tableContainer">
-          <table id="patientContainerTable">
-            <thead>
-              <tr>
-                <th class="patient col">Patient</th>
-                <th class="sex col">Sex</th>
-                <th class="age col">Age</th>
-                <th class="actions col">Actions</th>
-              </tr>
-            </thead>
-            <tbody id="tableBody">
-              <button id="addPatient">
-                <i class="fa-regular fa-plus"></i>Add Patient
-              </button>
-              <tr>
-                <td class="patient col">
-                  <div>
-                    <img src="/images/nicole.png" alt="" />
-                    <span class="name">Nicole Santos</span>
-                  </div>
-                </td>
-                <td class="sex col">Female</td>
-                <td class="age col">20</td>
-                <td class="actions col">
-                  <button id="viewPatient"><a href="./PatientViewPatient.html">View Patient</a></button
-                  ><button id="archive">
-                    <i class="fa-solid fa-box-archive"></i>
-                  </button>
-                </td>
-              </tr>
-              <tr>
-                <td class="patient col">
-                  <div>
-                    <img src="/images/nicole.png" alt="" />
-                    <span class="name">Franchesca Culalic</span>
-                  </div>
-                </td>
-                <td class="sex col">Female</td>
-                <td class="age col">20</td>
-                <td class="actions col">
-                  <button id="viewPatient"><a href="./PatientViewPatient.html">View Patient</a></button
-                  ><button id="archive">
-                    <i class="fa-solid fa-box-archive"></i>
-                  </button>
-                </td>
-              </tr>
-              <tr>
-                <td class="patient col">
-                  <div>
-                    <img src="/images/kenneth.png" alt="" />
-                    <span class="name">John Kenneth Arellano</span>
-                  </div>
-                </td>
-                <td class="sex col">Male</td>
-                <td class="age col">20</td>
-                <td class="actions col">
-                  <button id="viewPatient"><a href="./PatientViewPatient.html">View Patient</a></button
-                  ><button id="archive">
-                    <i class="fa-solid fa-box-archive"></i>
-                  </button>
-                </td>
-              </tr>
-              <tr>
-                <td class="patient col">
-                  <div>
-                    <img src="/images/nicole.png" alt="" />
-                    <span class="name">Russel Dela Cruz</span>
-                  </div>
-                </td>
-                <td class="sex col">Male</td>
-                <td class="age col">20</td>
-                <td class="actions col">
-                  <button id="viewPatient"><a href="./PatientViewPatient.html">View Patient</a></button
-                  ><button id="archive">
-                    <i class="fa-solid fa-box-archive"></i>
-                  </button>
-                </td>
-              </tr>
-              <tr>
-                <td class="patient col">
-                  <div>
-                    <img src="/images/nicole.png" alt="" />
-                    <span class="name">Alessandra Juan</span>
-                  </div>
-                </td>
-                <td class="sex col">Female</td>
-                <td class="age col">20</td>
-                <td class="actions col">
-                  <button id="viewPatient"><a href="./PatientViewPatient.html">View Patient</a></button
-                  ><button id="archive">
-                    <i class="fa-solid fa-box-archive"></i>
-                  </button>
-                </td>
-              </tr>
-              <tr>
-                <td class="patient col">
-                  <div>
-                    <img src="/images/nicole.png" alt="" />
-                    <span class="name">Geneses Galang</span>
-                  </div>
-                </td>
-                <td class="sex col">Male</td>
-                <td class="age col">20</td>
-                <td class="actions col">
-                  <button id="viewPatient"><a href="./PatientViewPatient.html">View Patient</a></button
-                  ><button id="archive">
-                    <i class="fa-solid fa-box-archive"></i>
-                  </button>
-                </td>
-              </tr>
-              <tr>
-                <td class="patient col">
-                  <div>
-                    <img src="/images/nicole.png" alt="" />
-                    <span class="name">Alessandra Juan</span>
-                  </div>
-                </td>
-                <td class="sex col">Female</td>
-                <td class="age col">20</td>
-                <td class="actions col">
-                  <button id="viewPatient"><a href="./PatientViewPatient.html">View Patient</a></button
-                  ><button id="archive">
-                    <i class="fa-solid fa-box-archive"></i>
-                  </button>
-                </td>
-              </tr>
-              <tr>
-                <td class="patient col">
-                  <div>
-                    <img src="/images/nicole.png" alt="" />
-                    <span class="name">Geneses Galang</span>
-                  </div>
-                </td>
-                <td class="sex col">Male</td>
-                <td class="age col">20</td>
-                <td class="actions col">
-                  <button id="viewPatient"><a href="./PatientViewPatient.html">View Patient</a></button
-                  ><button id="archive">
-                    <i class="fa-solid fa-box-archive"></i>
-                  </button>
-                </td>
-              </tr>
-              <tr>
-                <td class="patient col">
-                  <div>
-                    <img src="/images/nicole.png" alt="" />
-                    <span class="name">Nicole Santos</span>
-                  </div>
-                </td>
-                <td class="sex col">Female</td>
-                <td class="age col">20</td>
-                <td class="actions col">
-                  <button id="viewPatient"><a href="./PatientViewPatient.html">View Patient</a></button
-                  ><button id="archive">
-                    <i class="fa-solid fa-box-archive"></i>
-                  </button>
-                </td>
-              </tr>
-              <tr>
-                <td class="patient col">
-                  <div>
-                    <img src="/images/nicole.png" alt="" />
-                    <span class="name">Nicole Santos</span>
-                  </div>
-                </td>
-                <td class="sex col">Female</td>
-                <td class="age col">20</td>
-                <td class="actions col">
-                  <button id="viewPatient"><a href="./PatientViewPatient.html">View Patient</a></button
-                  ><button id="archive">
-                    <i class="fa-solid fa-box-archive"></i>
-                  </button>
-                </td>
-              </tr>
-              <tr>
-                <td class="patient col">
-                  <div>
-                    <img src="/images/nicole.png" alt="" />
-                    <span class="name">Nicole Santos</span>
-                  </div>
-                </td>
-                <td class="sex col">Female</td>
-                <td class="age col">20</td>
-                <td class="actions col">
-                  <button id="viewPatient"><a href="./PatientViewPatient.html">View Patient</a></button
-                  ><button id="archive">
-                    <i class="fa-solid fa-box-archive"></i>
-                  </button>
-                </td>
-              </tr>
-              <tr>
-                <td class="patient col">
-                  <div>
-                    <img src="/images/nicole.png" alt="" />
-                    <span class="name">Nicole Santos</span>
-                  </div>
-                </td>
-                <td class="sex col">Female</td>
-                <td class="age col">20</td>
-                <td class="actions col">
-                  <button id="viewPatient"><a href="./PatientViewPatient.html">View Patient</a></button
-                  ><button id="archive">
-                    <i class="fa-solid fa-box-archive"></i>
-                  </button>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-        <div class="pagination">
-          <span id="page-count">Page 1 of 1</span>
-          <button id="prev-page">Previous</button>
-          <button id="next-page">Next</button>
-        </div>
-      </div>
+        </template>
+        <!--notification main template-->
+        <template id="notificationMainTemplate">
+            <div class="notif" onclick="viewNotification(event)">
+                <div class="imgHolderNotif">
+                    <img src="../images/logo.png" alt="" id="imgNotif">
+                </div>
+                <div class="notificationContent">
+                    <span class="notificationTitle " id="notificationTitle"> </span>
+                    <span class="notificationMessage " id="notificationMessage"></span>
+                    <span style="display: none;" id="urlRedirect"></span>
+                </div>
+            </div>
+        </template>
     </section>
+</body>
 
-    <script src="/javascript/patientSearchBar.js"></script>
-    <script src="/javascript/patientTablePagination.js"></script>
-    <script src="/javascript/patientView.js"></script>
-  </body>
 </html>

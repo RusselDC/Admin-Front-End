@@ -1,0 +1,22 @@
+{
+
+    "totalAppointments": [27, 12, 56],
+    "topServices": [
+        {
+            "serviceName":"Bunot Bagang",
+            "total":12
+        }, 
+        {
+            "serviceName":"Bunot Buhok",
+            "total":42
+        },
+        {
+            "serviceName":"Bunot Baril",
+            "total":32
+        }
+    ],
+    "totalPatients": [34, 44],
+    "dataBarChart1": [12, 34, 54, 12, 34, 54, 12, 34, 54, 12],
+    "dataBarChart2": [52, 24, 48, 52, 24, 48, 52, 24, 48, 52],
+    "dataBarChart3": [32, 64, 24, 32, 64, 24, 32, 64, 24, 32]
+}   

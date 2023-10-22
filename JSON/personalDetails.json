@@ -10,14 +10,14 @@
         "birthday": "2002-04-18",
         "age": 21,
         "civilStatus": "Single",
-        "email": "johnkenneth.arellano.r@bulsu.edu.ph",
+        "email": "#",
         "contactNumber": "9519077637",
         "province": "Bulacan",
         "city": "Paombong",
         "barangay": "Sto. Rosario",
         "houseNumberStreet": "778 Sitio Ibayo",
         "status": "active",
-        "password": "Pogikoshet123",
+        "password": "#",
         "dateHired": "2022-12-10"
       }
 }
